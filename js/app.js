@@ -305,7 +305,7 @@ function showReport(quiet){
   if(!quiet && matchMedia("(max-width:960px)").matches) rail.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});
 }
 function noteText(blocks){
-  const L=[ "Tummy Trouble Tool - summary for my baby's doctor", "" ];
+  const L=[ "AI Driven Nutrition - summary for my baby's doctor", "" ];
   Q.forEach(q=>L.push(`${q.short}: ${optLabel(q.id,ans[q.id])}`));
   const f=blocks.filter(b=>LV[b.level]>=1);
   L.push("");
