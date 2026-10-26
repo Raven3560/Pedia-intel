@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tummy Trouble Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><defs><radialGradient id="lg" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#ffd9c4"/><stop offset="1" stop-color="#e98f6c"/></radialGradient></defs><ellipse cx="17" cy="18" rx="14" ry="13" fill="url(#lg)"/><path d="M10 15c3 3 7-3 10 0s4 4 4 4" fill="none" stroke="#178E80" stroke-width="2.2" stroke-linecap="round"/><circle cx="17" cy="23" r="1.6" fill="#b5664a"/></svg>
+      <div><b>Tummy Trouble Tool</b><span>8 gentle questions about your baby's tummy</span></div>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="Sections"><button type="button" data-tab="lab" aria-pressed="true">Case lab<span class="tab-hcp">HCP</span></button><button type="button" data-tab="check" aria-pressed="false">Tummy check</button><button type="button" data-tab="kol" aria-pressed="false">KOL finder<span class="tab-hcp">HCP</span></button></nav>
+    <nav class="beads" id="beads" aria-label="Question progress"></nav>
+    <div class="tools">
+      <div class="seg" role="group" aria-label="View">
+        <button type="button" id="vParent" aria-pressed="true">Parent</button>
+        <button type="button" id="vHcp" aria-pressed="false">Clinician lens</button>
+      </div>
+      <button type="button" class="iconbtn" id="night" aria-pressed="false" title="Night feed mode (dark)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span class="lbl">Night feed</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap" id="viewCheck">
+  <main class="main">
+    <section class="stage" id="stage" aria-label="Interactive baby view">
+      <div class="t3d" id="gl3" aria-hidden="true"></div>
+      <div class="fallback"><div class="blob"></div></div>
+      <div class="loader" id="loader"><span></span>Settling baby on the blanket</div>
+      <div class="st-cap"><span class="chip"><span class="live"></span>Baby view</span><span class="st-say" id="say" aria-live="polite">Say hello. Each answer changes what you see, outside and inside.</span>
+        <div class="seg vseg" id="viewSeg" role="group" aria-label="Baby view"><button type="button" data-v="outside" aria-pressed="true">Outside</button><button type="button" data-v="inside" aria-pressed="false">See inside</button></div></div>
+      <div id="flagSlot"></div>
+      <div id="toastSlot"></div>
+      <div class="legend" id="legend"></div>
+    </section>
+    <section class="rail" id="rail"></section>
+  </main>
+
+  <section class="lens" id="lens" aria-label="Clinician lens">
+    <div class="lens-head">
+      <div><p class="eyebrow">Clinician lens</p><h2>How this path was built</h2><p>Every answer maps to a content module. The map below lights up the modules this baby's answers trigger, so you can see exactly why each piece of advice appears.</p></div>
+    </div>
+    <div class="lgrid">
+      <div class="panel"><h3>Logic map: questions to modules</h3><div class="mapwrap" id="map"></div></div>
+      <div style="display:flex;flex-direction:column;gap:20px;min-width:0">
+        <div class="panel" id="pathPanel"></div>
+        <div class="panel"><h3>Load a demo scenario</h3><div class="presets" id="presets"></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap" id="viewLab" hidden></div>
+<div class="wrap" id="viewKol" hidden></div>
+
+<footer>
+  <div class="wrap">
+    <div class="ims">IMPORTANT NOTICE: MOTHER'S MILK IS BEST FOR YOUR BABY</div>
+    <div>This tool shares general information to help you talk with your baby's doctor. It does not diagnose any condition and does not replace medical advice. If you are worried about your baby, talk to a paediatrician. In an emergency, go to the nearest hospital.</div>
+    <div>Prepared by Mediception for healthcare professional education.</div>
+  </div>
+</footer>
+
+<script src="js/baby-front.js"></script>
+<script src="js/cases.js"></script>
+<script src="data/kol-data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
