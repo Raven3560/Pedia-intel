@@ -43,7 +43,7 @@ button{font:inherit;color:inherit}
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
 .brand svg{flex:none}
 .brand b{font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:-.02em;white-space:nowrap}
-.brand span{display:block;font-size:12px;color:var(--ink-2);line-height:1.2}
+.brand span{display:block;font-size:12px;color:var(--ink-2);line-height:1.2;font-weight:700}
 .beads{display:flex;align-items:center;gap:0;margin-left:auto}
 .bead{all:unset;cursor:pointer;width:26px;height:26px;display:grid;place-items:center;position:relative}
 .bead i{width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--ledge);transition:transform .3s,background .3s,border-color .3s}
