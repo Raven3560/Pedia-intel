@@ -1,0 +1,318 @@
+{
+ "id": "scurvy-selective-eating-child",
+ "engine": "adult",
+ "group": "child",
+ "track": "maln",
+ "aud": [
+  "paed",
+  "diet"
+ ],
+ "level": "Core",
+ "min": 7,
+ "added": "2026-11-16",
+ "pub": {
+  "cite": "Hahn T, Adams W, Williams K. Is vitamin C enough? A case report of scurvy in a five-year-old girl and review of the literature. BMC Pediatr 2019;19(1):74",
+  "url": "https://doi.org/10.1186/s12887-019-1437-3"
+ },
+ "title": "Leg pain and a limp in a five-year-old",
+ "sub": "Scurvy from lifelong selective eating in a typically developing child",
+ "pt": {
+  "tag": "5 y",
+  "name": "Girl, Hahn 2019",
+  "line": "Typically developing, the youngest of six children, born at term weighing 3.88 kg. A rash recurring over 4 years was diagnosed as ichthyosis vulgaris, and she was referred to gastroenterology for decreased appetite."
+ },
+ "vitals": [
+  [
+   "Age",
+   "5 y"
+  ],
+  [
+   "BMI",
+   "1st centile"
+  ],
+  [
+   "Ferritin",
+   "3.9 ng/mL"
+  ]
+ ],
+ "scene": {
+  "view": "outside",
+  "build": "child",
+  "muscle": 0.55,
+  "fat": 0.2,
+  "oedema": 0,
+  "pallor": 0.5,
+  "stress": 0.5,
+  "weak": 0.5,
+  "feeding": "oral",
+  "fill": 0.3,
+  "distension": 0,
+  "hr": 100,
+  "spo2": 98,
+  "temp": 36.8,
+  "alarm": false
+ },
+ "steps": [
+  {
+   "s": "Third visit in three weeks",
+   "v": "Two weeks after the dermatology visit she came to the emergency department with right knee pain; her mother reported pain in both legs and a limp. Knee and leg X-rays were normal, Lyme testing was negative, and she went home with a diagnosis of tenosynovitis. A week later she is back with left knee and ankle pain, and heel pain when asked to bear weight. The pain is moving from joint to joint.",
+   "q": "What is the most useful next step?",
+   "o": [
+    [
+     "Take a detailed diet history and add nutritional blood tests, including a vitamin C level and iron studies",
+     "Migratory leg pain with poor appetite and a skin complaint should prompt a look at what she eats.",
+     1
+    ],
+    [
+     "Reassure the family that these are growing pains",
+     "Pain on weight bearing with a limp and repeat attendances is not typical of growing pains.",
+     0
+    ],
+    [
+     "Repeat the Lyme test and start antibiotics",
+     "Lyme testing was negative; treating without a cause delays the diagnosis.",
+     0
+    ],
+    [
+     "Arrange a bone marrow aspirate before any other test",
+     "Children with scurvy often undergo invasive tests first; a diet history and a blood level come before them.",
+     0
+    ]
+   ],
+   "a": "Her vitamin C level was under 5 micromol/L (reference 23 to 114). Prealbumin was low at 14 mg/dL, ferritin 3.9 ng/mL and iron saturation 15%; vitamins A and D were normal. The feeding history showed lifelong problems: after moving off infant formula at 1 year she never accepted baby food, and for 4 years ate cereal snacks, one type of cracker and, inconsistently, chocolate pudding, vanilla ice cream, chocolate and banana, with skim milk and water. She ate no vegetables or meat and no fruit except an occasional banana. In a review of 166 children with scurvy, musculoskeletal complaints were the most frequent manifestation (92% of those assessed), 18% had invasive investigations, and a provisional misdiagnosis was made in about a third.",
+   "g": [
+    "Hahn T, Adams W, Williams K. BMC Pediatr 2019",
+    "Trapani S et al. A narrative review on pediatric scurvy: the last twenty years. Nutrients 2022"
+   ],
+   "p": "A limping child with a very narrow diet: ask what is on the plate.",
+   "pre": {
+    "view": "outside",
+    "muscle": 0.55,
+    "fat": 0.2,
+    "pallor": 0.5,
+    "stress": 0.6,
+    "weak": 0.6,
+    "feeding": "oral",
+    "fill": 0.3,
+    "hr": 104
+   },
+   "fx": {
+    "ok": {
+     "cap": "The diet history and a blood test give the answer.",
+     "set": {
+      "stress": 0.45
+     },
+     "hl": "muscle"
+    },
+    "bad": {
+     "cap": "Another visit ends without the cause; the pain goes on.",
+     "set": {
+      "stress": 0.75,
+      "weak": 0.7
+     },
+     "hl": "muscle",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Vitamin C deficiency confirmed",
+   "v": "Vitamin C is under 5 micromol/L, with low ferritin, iron saturation and prealbumin. Her BMI is at the 1st centile.",
+   "q": "What is the best immediate management?",
+   "o": [
+    [
+     "Start oral ascorbic acid, check for and treat other deficiencies with a multivitamin and attention to her iron status, and refer for a feeding assessment",
+     "A diet this narrow rarely lacks one nutrient only, and the supplement does not change the diet.",
+     1
+    ],
+    [
+     "Give vitamin C alone and discharge when the pain settles",
+     "Symptoms resolve, but the eating pattern that caused the deficiency stays.",
+     0
+    ],
+    [
+     "Admit every child with scurvy for intravenous vitamin C",
+     "In published cases most children were treated by mouth throughout.",
+     0
+    ],
+    [
+     "Advise fruit juice at home and no supplement",
+     "She refuses to taste new foods and drinks; advice alone will not correct a deficiency this severe.",
+     0
+    ]
+   ],
+   "a": "She was started on ascorbic acid and referred to the feeding programme; a multivitamin was added within a day because other deficiencies were considered likely, and vitamins A and D were then found to be normal. The paper does not give the ascorbic acid dose or describe iron treatment; the authors describe her as anaemic. In their review of 77 published children with diet-related scurvy, 42% were anaemic and 22% had another nutrient deficiency. In the later review of 166 children, vitamin C was given orally throughout in 87% of the cases with treatment data, reported doses ranged from 100 to 300 mg up to 4,000 mg daily, and mean treatment was about one month or until recovery.",
+   "g": [
+    "Hahn T, Adams W, Williams K. BMC Pediatr 2019",
+    "Trapani S et al. Nutrients 2022"
+   ],
+   "p": "Vitamin C treats the scurvy; it does not treat the diet.",
+   "dp": "Use a 3-day food record and a list of every accepted food to estimate energy, protein, iron and vitamin intake. Plot weight, height and BMI centile, and agree with the paediatrician which other micronutrients to test, guided by the food groups she avoids.",
+   "pre": {
+    "view": "inside",
+    "muscle": 0.55,
+    "fat": 0.2,
+    "pallor": 0.5,
+    "stress": 0.5,
+    "weak": 0.6,
+    "feeding": "oral",
+    "fill": 0.3,
+    "hr": 100
+   },
+   "fx": {
+    "ok": {
+     "cap": "Ascorbic acid and a multivitamin started; feeding team referral made.",
+     "set": {
+      "stress": 0.3,
+      "weak": 0.4,
+      "hr": 94
+     },
+     "hl": "stomach"
+    },
+    "bad": {
+     "cap": "The pain improves, but the same few foods are back on the plate.",
+     "set": {
+      "stress": 0.4,
+      "pallor": 0.5
+     },
+     "hl": "stomach",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Feeding programme",
+   "v": "The feeding assessment confirms a diet that has never exceeded ten foods, refusal to taste anything new, and a BMI at the 1st centile. Her mother asks whether the vitamins are enough.",
+   "q": "How should the diet itself be addressed?",
+   "o": [
+    [
+     "A structured feeding intervention with gradual, repeated exposure to new foods from every food group, with supplements continued while the diet widens",
+     "This is what changed her diet; variety came through repeated small exposures.",
+     1
+    ],
+    [
+     "Long-term multivitamins with no change to the diet",
+     "Supplements correct the deficiency but leave growth and the eating pattern untreated.",
+     0
+    ],
+    [
+     "Wait: picky eating always resolves by itself",
+     "Common picky eating often remits, but children who restrict to the point of deficiency do not change without help.",
+     0
+    ],
+    [
+     "Offer more of the energy-dense foods she already accepts and leave variety for later",
+     "The authors link her weight gain to greater variety as well as energy density; a monotonous diet lowers intake.",
+     0
+    ]
+   ],
+   "a": "Because of her poor growth and extremely limited diet she was admitted to an intensive day treatment feeding programme. Through gradual repeated exposure to new foods she learned to eat 29 foods from all food groups. The authors argue that vitamin C supplementation is necessary but not sufficient, since it does not correct the selective eating that caused the deficiency. They cite a population study in which 46% of parents described their child as a picky eater at some point and picky eating remitted within 3 years in two thirds, and note there is no evidence that children who restrict their diet to the point of deficiency change without intervention.",
+   "g": [
+    "Hahn T, Adams W, Williams K. BMC Pediatr 2019"
+   ],
+   "p": "Treat the eating pattern, not only the blood result.",
+   "dp": "Set food-group goals rather than a calorie count alone: count accepted foods by group at each visit (she started with no more than ten and learned 29 new ones), and keep the multivitamin until the diet covers her needs.",
+   "pre": {
+    "view": "inside",
+    "muscle": 0.56,
+    "fat": 0.2,
+    "pallor": 0.4,
+    "stress": 0.3,
+    "weak": 0.35,
+    "feeding": "oral",
+    "fill": 0.3,
+    "hr": 96
+   },
+   "fx": {
+    "ok": {
+     "cap": "New foods are introduced one small step at a time.",
+     "set": {
+      "fill": 0.6,
+      "stress": 0.15,
+      "weak": 0.2,
+      "pallor": 0.3
+     },
+     "hl": "stomach"
+    },
+    "bad": {
+     "cap": "The diet stays at the same few foods; growth stays on the 1st centile.",
+     "set": {
+      "fill": 0.3,
+      "stress": 0.35
+     },
+     "hl": "stomach",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Six and twelve months later",
+   "v": "Six months after intensive treatment her weight is up 4 kg and her height 3 cm, with BMI at the 61st centile. At one year, weight is up 7 kg and height 7.6 cm, and BMI is at the 85th centile. All signs of the deficiency have resolved.",
+   "q": "What should follow-up focus on now?",
+   "o": [
+    [
+     "Keep reviewing growth and the range of foods eaten, with a meal observed at visits: she remains at risk of new deficiencies and of weight problems in either direction",
+     "BMI has moved from the 1st to the 85th centile in a year, so the trajectory needs watching, not only the deficiency.",
+     1
+    ],
+    [
+     "Discharge: the deficiency has resolved and BMI has recovered",
+     "Selective eating can persist for years; long-term outcomes after scurvy are rarely reported.",
+     0
+    ],
+    [
+     "Encourage as many energy-dense foods as possible to keep weight rising",
+     "Her BMI centile is already climbing quickly; balance and variety matter more now.",
+     0
+    ],
+    [
+     "Stop feeding therapy and check a vitamin C level once a year instead",
+     "A yearly blood test would detect relapse late and would miss other nutrients and growth.",
+     0
+    ]
+   ],
+   "a": "For the year after intensive treatment a feeding therapist followed her as an outpatient, working on variety and helping the family keep the gains; a meal was conducted at every appointment so that her intake of a range of foods could be confirmed. The authors write that, from their experience with selective eaters, such children remain at risk of further nutrient deficiencies or of weight problems, either underweight or possibly overweight. They also note that follow-up of 6 months or longer was reported for only nine children in the published literature.",
+   "g": [
+    "Hahn T, Adams W, Williams K. BMC Pediatr 2019",
+    "Trapani S et al. Nutrients 2022"
+   ],
+   "p": "Follow the growth chart and the food list, not just the vitamin level.",
+   "dp": "At each review plot weight, height and BMI centile, update the accepted-food list by food group, and adjust portions and energy density as the centile climbs.",
+   "pre": {
+    "view": "outside",
+    "muscle": 0.8,
+    "fat": 0.6,
+    "pallor": 0.05,
+    "stress": 0.05,
+    "weak": 0,
+    "feeding": "oral",
+    "fill": 0.6,
+    "hr": 90,
+    "spo2": 99,
+    "alarm": false
+   },
+   "fx": {
+    "ok": {
+     "cap": "Growing, pain-free, and still followed by the feeding team.",
+     "set": {
+      "stress": 0
+     },
+     "hl": "stomach"
+    },
+    "bad": {
+     "cap": "Follow-up stops; diet and weight drift unobserved.",
+     "set": {
+      "fat": 0.7,
+      "stress": 0.15
+     },
+     "hl": "stomach",
+     "kind": "warn"
+    }
+   }
+  }
+ ],
+ "refs": [
+  "Hahn T, Adams W, Williams K. Is vitamin C enough? A case report of scurvy in a five-year-old girl and review of the literature. BMC Pediatr 2019;19(1):74",
+  "Trapani S et al. A Narrative Review on Pediatric Scurvy: The Last Twenty Years. Nutrients 2022;14(3):684"
+ ]
+}

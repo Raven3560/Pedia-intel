@@ -1,0 +1,314 @@
+{
+ "id": "fpies-after-nec",
+ "engine": "nicu",
+ "track": "nicu",
+ "aud": [
+  "paed",
+  "diet"
+ ],
+ "level": "Advanced",
+ "min": 8,
+ "pub": {
+  "cite": "Lu Y, Zhang ZQ. Food protein-induced enterocolitis syndrome presenting after necrotizing enterocolitis in a preterm neonate: a case report. Transl Pediatr 2021;10(5):1393-8",
+  "url": "https://doi.org/10.21037/tp-21-9"
+ },
+ "title": "Recurrent bloody stools in a preterm infant",
+ "sub": "Food protein-induced enterocolitis after NEC in a 28-week preterm baby",
+ "pt": {
+  "tag": "28 wk",
+  "name": "Baby boy, Lu 2021",
+  "line": "Born at 28 weeks by caesarean, 1,240 g. Preterm formula and expressed breast milk from day 2, advancing by 10 to 20 mL/kg/day."
+ },
+ "vitals": [
+  [
+   "GA",
+   "28 wk"
+  ],
+  [
+   "Weight",
+   "1,240 g"
+  ],
+  [
+   "Feeds",
+   "EBM + formula"
+  ]
+ ],
+ "scene": {
+  "mode": "nicu",
+  "fill": 0.3,
+  "feeding": true,
+  "hr": 150,
+  "spo2": 95,
+  "temp": 36.8
+ },
+ "steps": [
+  {
+   "s": "Day 7",
+   "v": "On 40 mL/kg/day he has apnoeas, larger gastric residuals, a distended, tender abdomen with sluggish bowel sounds and grossly bloody stools. CRP is raised and the white cell count is low. The X-ray shows pneumatosis intestinalis in the descending colon.",
+   "q": "What is the right response?",
+   "o": [
+    [
+     "Treat as NEC: stop enteral feeds, decompress the stomach, take a blood culture, start broad-spectrum IV antibiotics and parenteral nutrition, support breathing and circulation, and involve the surgeons",
+     "Pneumatosis with systemic signs is definite NEC.",
+     1
+    ],
+    [
+     "Switch to an amino acid formula and keep feeding",
+     "Bloody stools with pneumatosis and systemic illness are NEC until proven otherwise; feeds must stop.",
+     0
+    ],
+    [
+     "Halve the feed volume and repeat the X-ray tomorrow",
+     "Not enough for definite NEC.",
+     0
+    ],
+    [
+     "Give a glycerine suppository",
+     "Does not treat NEC and delays care.",
+     0
+    ]
+   ],
+   "a": "The team managed this as NEC (reported as stage IIIA): feeds stopped, IV antibiotics started, and he needed ventilation and circulatory support. The blood culture grew E. coli and antibiotics were changed to match. Feeds with expressed breast milk restarted on day 15.",
+   "g": [
+    "Lu Y, Zhang ZQ. FPIES presenting after NEC in a preterm neonate: a case report. Transl Pediatr 2021",
+    "Neu J, Walker WA. Necrotizing enterocolitis. NEJM 2011",
+    "Walsh MC, Kliegman RM. Necrotizing enterocolitis: treatment based on staging criteria. Pediatr Clin North Am 1986"
+   ],
+   "p": "Pneumatosis plus systemic signs: treat as NEC first.",
+   "pre": {
+    "mode": "gut",
+    "feeding": true,
+    "fill": 0.3,
+    "distension": 0.7,
+    "stress": 0.5,
+    "colour": "red",
+    "stool": "normal",
+    "hr": 178,
+    "spo2": 89,
+    "alarm": true
+   },
+   "fx": {
+    "ok": {
+     "cap": "Feeds stopped, stomach decompressed, antibiotics and support started.",
+     "set": {
+      "feeding": false,
+      "fill": 0.02,
+      "distension": 0.45,
+      "stress": 0.3,
+      "hr": 166,
+      "spo2": 93,
+      "alarm": false
+     },
+     "mode": "gut",
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "Feeding through NEC: the bowel distends further.",
+     "set": {
+      "feeding": true,
+      "distension": 1,
+      "stress": 0.9,
+      "hr": 192,
+      "spo2": 84,
+      "alarm": true
+     },
+     "mode": "gut",
+     "hl": "gut",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Day 29",
+   "v": "His mother's supply has fallen, so preterm formula is added. Two weeks after feeds restarted he passes bloody stools again, but he looks well: soft, non-tender abdomen, active bowel sounds, normal CRP and white cell count. The X-ray shows only mild small-bowel wall thickening, without pneumatosis.",
+   "q": "What should this pattern make you consider?",
+   "o": [
+    [
+     "A reaction to cow's milk protein (food protein-induced enterocolitis) alongside NEC: bleeding after a new cow's milk exposure in a well baby with normal markers and no pneumatosis",
+     "The picture differs from the first episode, and the feeds have changed.",
+     1
+    ],
+    [
+     "Certain recurrent NEC; nothing else needs considering",
+     "Recurrent NEC is possible, but a well baby with normal markers after a new cow's milk exposure needs a wider differential.",
+     0
+    ],
+    [
+     "Swallowed maternal blood",
+     "Not plausible on day 29 in a tube-fed baby.",
+     0
+    ],
+    [
+     "Haemorrhagic disease of the newborn; give vitamin K and carry on",
+     "Does not fit this picture.",
+     0
+    ]
+   ],
+   "a": "The team treated this as recurrent NEC: feeds were stopped for 3 days and antibiotics given until the blood culture came back negative. The authors point to features that separate FPIES from NEC: a well-looking baby, normal inflammatory markers, no progression of systemic signs, a link in time to cow's milk protein, and quick improvement once it is removed. Mistaking FPIES for NEC leads to repeated fasting, antibiotics and longer stays.",
+   "g": [
+    "Lu Y, Zhang ZQ. Transl Pediatr 2021",
+    "Nowak-Węgrzyn A et al. International consensus guidelines for the diagnosis and management of FPIES. J Allergy Clin Immunol 2017"
+   ],
+   "p": "Before every recurrence of bloody stools, ask what changed in the feeds.",
+   "pre": {
+    "mode": "inside",
+    "feeding": true,
+    "fill": 0.4,
+    "distension": 0.1,
+    "stress": 0.1,
+    "colour": "red",
+    "stool": "normal",
+    "hr": 150,
+    "spo2": 96,
+    "alarm": false
+   },
+   "fx": {
+    "ok": {
+     "cap": "The cow's milk exposure is flagged as a possible trigger.",
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "A second course of empirical NEC treatment; the trigger stays in the feeds.",
+     "set": {
+      "feeding": false,
+      "fill": 0.05
+     },
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Days 46 and 54",
+   "v": "Day 46: expressed breast milk at 140 mL/kg/day with a cow's milk-based fortifier is followed by bloody stools in a well baby, with a mild rise in eosinophils. Day 54: preterm formula is tried again. He develops distension and grossly bloody stools; eosinophils are 13.8%, and CRP and white cell count are normal.",
+   "q": "What is the best feeding plan now?",
+   "o": [
+    [
+     "Remove cow's milk protein: mother's own milk with a fortifier that is not cow's milk-based where available, an extensively hydrolysed formula if milk runs short, and lactation support to rebuild supply",
+     "Removes the trigger and keeps human milk first.",
+     1
+    ],
+    [
+     "Continue the same formula and give antibiotics with each episode",
+     "Keeps the trigger and repeats unnecessary antibiotics.",
+     0
+    ],
+    [
+     "Keep him nil by mouth on parenteral nutrition until discharge",
+     "Long parenteral nutrition adds line infection and cholestasis risk.",
+     0
+    ],
+    [
+     "Switch to a lactose-free cow's milk formula",
+     "Lactose-free formulas still contain intact cow's milk protein.",
+     0
+    ]
+   ],
+   "a": "After a day of fasting, the team fed breast milk fortified without cow's milk. After the day 54 episode the formula was changed to a hydrolysed formula and the symptoms settled; bloody stools did not recur on expressed breast milk. FPIES guidance is to remove the trigger food. The guideline notes that breastfeeding should continue where possible, that most infants with cow's milk FPIES tolerate an extensively hydrolysed formula, and that 10% to 20% need an amino acid formula.",
+   "g": [
+    "Lu Y, Zhang ZQ. Transl Pediatr 2021",
+    "Nowak-Węgrzyn A et al. J Allergy Clin Immunol 2017",
+    "Vandenplas Y et al. ESPGHAN position paper on cow's milk allergy. JPGN 2024"
+   ],
+   "p": "Breast milk is rarely the problem; the cow's milk protein added to it can be.",
+   "dp": "Chart fortifier and formula changes next to stools and eosinophils. Plan protein and energy targets with a fortifier that is not cow's milk-based, and support expressing to protect supply.",
+   "pre": {
+    "mode": "inside",
+    "feeding": true,
+    "fill": 0.45,
+    "distension": 0.35,
+    "stress": 0.3,
+    "colour": "red",
+    "stool": "normal",
+    "hr": 158
+   },
+   "fx": {
+    "ok": {
+     "cap": "Trigger removed: stools clear and feeds advance.",
+     "set": {
+      "colour": "normal",
+      "distension": 0,
+      "stress": 0.05,
+      "hr": 146,
+      "feeding": true,
+      "fill": 0.5
+     },
+     "mode": "inside",
+     "hl": "stomach"
+    },
+    "bad": {
+     "cap": "The trigger stays: bleeding and distension return.",
+     "set": {
+      "colour": "red",
+      "distension": 0.5,
+      "stress": 0.45,
+      "hr": 170
+     },
+     "mode": "gut",
+     "hl": "gut",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Going home",
+   "v": "Day 60. He is feeding well on expressed breast milk with no more bleeding. His mother wants to breastfeed at home and asks about cow's milk later on.",
+   "q": "What is the best discharge plan?",
+   "o": [
+    [
+     "Continue breastfeeding, avoid cow's milk-based formula, give the family an emergency treatment plan, and plan a supervised cow's milk challenge later",
+     "Matches the outcome and current FPIES guidance.",
+     1
+    ],
+    [
+     "Start a standard cow's milk formula at home to build tolerance",
+     "Unsupervised re-exposure risks a severe reaction.",
+     0
+    ],
+    [
+     "Stop breastfeeding to be safe",
+     "Expressed breast milk caused no reactions; breastfeeding should continue.",
+     0
+    ],
+    [
+     "Use specific IgE tests alone to decide when to reintroduce at home",
+     "FPIES is non-IgE-mediated, so IgE tests cannot replace a supervised challenge; the guideline suggests considering them only because IgE sensitisation predicts more persistent disease.",
+     0
+    ]
+   ],
+   "a": "He went home after 60 days in hospital and was breastfed for 8 months with no further bloody stools. The international FPIES guideline advises avoiding the trigger, emergency treatment planning, nutritional support and a supervised oral food challenge to check for resolution; in the United States this is usually attempted 12 to 18 months after the most recent reaction.",
+   "g": [
+    "Lu Y, Zhang ZQ. Transl Pediatr 2021",
+    "Nowak-Węgrzyn A et al. J Allergy Clin Immunol 2017"
+   ],
+   "p": "Write the trigger, the plan and the follow-up date in the discharge summary.",
+   "pre": {
+    "mode": "nicu",
+    "feeding": true,
+    "fill": 0.4,
+    "distension": 0,
+    "stress": 0,
+    "colour": "normal",
+    "hr": 144,
+    "spo2": 97,
+    "alarm": false
+   },
+   "fx": {
+    "ok": {
+     "cap": "Home on breast milk, with a plan.",
+     "set": {}
+    },
+    "bad": {
+     "cap": "Re-exposure at home risks another reaction.",
+     "kind": "warn"
+    }
+   }
+  }
+ ],
+ "refs": [
+  "Lu Y, Zhang ZQ. Food protein-induced enterocolitis syndrome presenting after necrotizing enterocolitis in a preterm neonate: a case report. Transl Pediatr 2021;10:1393-8",
+  "Nowak-Węgrzyn A et al. International consensus guidelines for the diagnosis and management of food protein-induced enterocolitis syndrome. J Allergy Clin Immunol 2017;139:1111-26",
+  "Neu J, Walker WA. N Engl J Med 2011;364:255-64",
+  "Walsh MC, Kliegman RM. Pediatr Clin North Am 1986;33:179-201",
+  "Vandenplas Y et al. J Pediatr Gastroenterol Nutr 2024;78:386-413"
+ ]
+}

@@ -1,0 +1,334 @@
+{
+ "id": "sarcopenic-dysphagia-achalasia",
+ "engine": "adult",
+ "group": "adult",
+ "track": "sarc",
+ "aud": [
+  "geri",
+  "phys",
+  "diet"
+ ],
+ "level": "Advanced",
+ "min": 8,
+ "added": "2026-11-16",
+ "pub": {
+  "cite": "Furukawa F, Kakita K. Treatment of Esophageal Achalasia With Sarcopenic Dysphagia by Rehabilitation and Nutritional Support: A Case Report. Cureus 2024;16(7):e64529",
+  "url": "https://doi.org/10.7759/cureus.64529"
+ },
+ "title": "Slow, effortful eating after pneumonia at 90",
+ "sub": "Sarcopenic dysphagia that unmasked oesophageal achalasia after COVID-19 pneumonia",
+ "pt": {
+  "tag": "90 y",
+  "name": "Woman, Furukawa 2024",
+  "line": "Lumbar compression fractures a year earlier, with a decline from walking alone to using a walker. Transferred for rehabilitation after five weeks of acute care for COVID-19 pneumonia, during which she had peripheral parenteral nutrition and a liquid diet."
+ },
+ "vitals": [
+  [
+   "Age",
+   "90 y"
+  ],
+  [
+   "Weight",
+   "32.3 kg"
+  ],
+  [
+   "BMI",
+   "16.2"
+  ]
+ ],
+ "scene": {
+  "view": "outside",
+  "build": "older",
+  "muscle": 0.3,
+  "fat": 0.2,
+  "oedema": 0,
+  "pallor": 0.3,
+  "stress": 0.4,
+  "weak": 0.9,
+  "feeding": "oral",
+  "fill": 0.2,
+  "distension": 0,
+  "hr": 84,
+  "spo2": 96,
+  "temp": 36.6,
+  "alarm": false
+ },
+ "steps": [
+  {
+   "s": "Admission to rehabilitation",
+   "v": "She cannot sit in a chair for five minutes, spends most of the day in bed and needs heavy help with daily activities. She has lost 4 kg in six months. Height 141 cm, weight 32.3 kg, MNA-SF 3 points, albumin 2.6 g/dL. Grip strength is 11.9 kg (right) and 10.1 kg (left), SPPB 0 points, skeletal muscle mass index 4.4 kg/m2 by bioimpedance, tongue pressure 19 kPa. Videofluoroscopy shows difficulty moving the bolus from the mouth to the pharynx, with pharyngeal residue.",
+   "q": "What best explains her swallowing difficulty?",
+   "o": [
+    [
+     "Sarcopenic dysphagia: whole-body sarcopenia (low muscle mass, low strength and low physical performance) with weak swallowing muscles after illness, undernutrition and bed rest",
+     "All three AWGS 2019 components are low, and tongue pressure and the oral-phase findings point to weak swallowing muscles.",
+     1
+    ],
+    [
+     "Normal ageing of the swallow; no action is needed",
+     "Weight loss, an albumin of 2.6 g/dL and an SPPB of 0 are not normal ageing and need treatment.",
+     0
+    ],
+    [
+     "Loss of taste and smell from COVID-19 alone",
+     "Taste and smell loss reduced her appetite, but they do not explain poor bolus transfer and pharyngeal residue.",
+     0
+    ],
+    [
+     "A primary oesophageal problem only; keep her nil by mouth until endoscopy",
+     "The videofluoroscopy findings are oral and pharyngeal, and stopping oral intake would add to disuse and undernutrition.",
+     0
+    ]
+   ],
+   "a": "The team diagnosed sarcopenia by the AWGS 2019 criteria and classed it as secondary: disease-related (COVID-19, malnutrition) and activity-related (bed rest in isolation). Her values sit well below the AWGS 2019 cut-offs for women (grip strength under 18 kg, SPPB 9 or less, bioimpedance muscle index under 5.7 kg/m2). Because she had dysphagia with whole-body sarcopenia and sarcopenia was judged the main cause, sarcopenic dysphagia was diagnosed. The position paper of four Japanese societies defines it as dysphagia caused by sarcopenia of the whole body and the swallowing muscles; dysphagia from neuromuscular disease is excluded.",
+   "g": [
+    "Furukawa F, Kakita K. Cureus 2024",
+    "Chen LK et al. AWGS 2019 consensus update on sarcopenia diagnosis and treatment. J Am Med Dir Assoc 2020",
+    "Fujishima I et al. Sarcopenia and dysphagia: position paper by four professional organizations. Geriatr Gerontol Int 2019"
+   ],
+   "p": "New dysphagia after illness and bed rest in a thin older adult: measure muscle, not only the swallow.",
+   "pre": {
+    "view": "outside",
+    "muscle": 0.3,
+    "fat": 0.2,
+    "pallor": 0.3,
+    "stress": 0.4,
+    "weak": 0.9,
+    "feeding": "oral",
+    "fill": 0.2
+   },
+   "fx": {
+    "ok": {
+     "cap": "Sarcopenia and the weak swallow are named together.",
+     "set": {
+      "view": "inside",
+      "stress": 0.3
+     },
+     "hl": "muscle"
+    },
+    "bad": {
+     "cap": "The muscle loss goes unaddressed and intake stays low.",
+     "set": {
+      "stress": 0.5,
+      "fill": 0.1
+     },
+     "hl": "muscle",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Treatment plan",
+   "v": "Sarcopenic dysphagia is diagnosed. Her appetite is slowly returning as taste and smell recover, and she manages a pureed diet by mouth.",
+   "q": "Which plan fits best?",
+   "o": [
+    [
+     "Energy about 30 kcal/kg/day and protein about 1.1 g/kg/day on ideal body weight, a pureed diet by mouth with intravenous nutrition weaned as intake allows, and daily physical, occupational and speech therapy",
+     "Nutrition and rehabilitation together are the treatment for sarcopenic dysphagia.",
+     1
+    ],
+    [
+     "Nil by mouth with tube feeding until her swallow tests are normal",
+     "She can take a pureed diet; stopping oral intake removes the swallowing practice she needs.",
+     0
+    ],
+    [
+     "Bed rest until her weight recovers, then start exercise",
+     "Bed rest was one cause of her sarcopenia; activity and nutrition have to go together.",
+     0
+    ],
+    [
+     "Limit protein to 0.6 g/kg/day because of her age",
+     "Older adults need at least 1 g/kg/day; restricting protein worsens muscle loss.",
+     0
+    ]
+   ],
+   "a": "The team set 30 kcal/kg/day of energy and 1.1 g/kg/day of protein on ideal body weight, with rehabilitation from physical, occupational and speech therapists for three hours a day until discharge. She came to tolerate a pureed diet without intravenous nutrition. The authors cite a recommended range for sarcopenic dysphagia of 25 to 35 kcal/kg/day and 1.0 to 1.2 g/kg/day protein on ideal body weight. This matches the ESPEN geriatric guiding values of about 30 kcal/kg/day and at least 1 g protein/kg/day, individually adjusted, and its advice to offer texture-modified, enriched foods when chewing or swallowing is impaired. The position paper states that treatment needs both dysphagia rehabilitation and nutritional intervention.",
+   "g": [
+    "Furukawa F, Kakita K. Cureus 2024",
+    "Volkert D et al. ESPEN practical guideline: clinical nutrition and hydration in geriatrics. Clin Nutr 2022",
+    "Fujishima I et al. Geriatr Gerontol Int 2019"
+   ],
+   "p": "Feed the muscle and train it at the same time.",
+   "dp": "Work from ideal, not actual, body weight as the paper did. If ideal weight is taken as BMI 22 (about 44 kg at 141 cm; the paper does not state its method), the targets are roughly 1,300 kcal and 48 g protein a day. Enrich the pureed diet, chart intake at every meal and weigh weekly.",
+   "pre": {
+    "view": "inside",
+    "muscle": 0.3,
+    "fat": 0.2,
+    "pallor": 0.3,
+    "stress": 0.3,
+    "weak": 0.9,
+    "feeding": "oral",
+    "fill": 0.25
+   },
+   "fx": {
+    "ok": {
+     "cap": "Pureed meals to target, with three hours of therapy a day.",
+     "set": {
+      "fill": 0.5,
+      "stress": 0.25,
+      "weak": 0.8
+     },
+     "hl": "muscle"
+    },
+    "bad": {
+     "cap": "Without enough energy, protein and activity, muscle keeps wasting.",
+     "set": {
+      "muscle": 0.25,
+      "stress": 0.5,
+      "weak": 1
+     },
+     "hl": "muscle",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Step up to a soft diet",
+   "v": "When she moves from the pureed diet to a soft diet that needs chewing, severe chest pain and vomiting start straight after eating. CT shows a food mass filling the lower to upper thoracic oesophagus; three hours later most has passed. A contrast swallow shows reduced oesophageal peristalsis with retained contrast, and oesophageal achalasia is diagnosed. Before her pneumonia she had eaten regular food without vomiting.",
+   "q": "How should feeding be adapted now?",
+   "o": [
+    [
+     "Smaller paste-consistency meals six times a day, sitting up in a wheelchair for two hours after meals, with the same energy and protein targets and rehabilitation continued",
+     "Small, frequent, well-processed meals pass the oesophagus while nutrition and muscle recover.",
+     1
+    ],
+    [
+     "Stop oral intake and plan long-term parenteral nutrition",
+     "The gut works and pureed food passed without symptoms; oral feeding can continue in an adapted form.",
+     0
+    ],
+    [
+     "Persist with three soft meals a day to train chewing",
+     "Poorly chewed boluses were lodging in the oesophagus; pushing on repeats the obstruction.",
+     0
+    ],
+    [
+     "Halve the energy target so that less food has to pass",
+     "Undernutrition and muscle loss are driving the problem; the target stays, the meal pattern changes.",
+     0
+    ]
+   ],
+   "a": "After the diagnosis she was given smaller paste meals six times a day and kept in a wheelchair for two hours after meals. Her achalasia symptoms diminished and then disappeared as nutritional status, muscle mass and daily activities improved. The authors' reading is that weak tongue and chewing muscles (oral-phase sarcopenic dysphagia) left solid food poorly processed, so it would not pass an oesophagus that already emptied badly, and that fatigue during long meals made this worse. By one month, meals took 30 to 40 minutes rather than 50; by two months she ate soft, bite-size food three to five times a day.",
+   "g": [
+    "Furukawa F, Kakita K. Cureus 2024",
+    "Volkert D et al. ESPEN practical guideline. Clin Nutr 2022"
+   ],
+   "p": "Change the texture and the meal pattern before you change the route.",
+   "dp": "Split the same daily target across six small paste meals. Record time taken per meal as a marker of fatigue, and step texture up only when meals are quicker and symptom-free.",
+   "pre": {
+    "view": "inside",
+    "muscle": 0.32,
+    "fat": 0.2,
+    "pallor": 0.3,
+    "stress": 0.9,
+    "weak": 0.85,
+    "feeding": "oral",
+    "fill": 0.9,
+    "distension": 0.2,
+    "hr": 104,
+    "spo2": 95,
+    "alarm": true
+   },
+   "fx": {
+    "ok": {
+     "cap": "Six small paste meals, upright for two hours: the pain and vomiting settle.",
+     "set": {
+      "stress": 0.2,
+      "fill": 0.4,
+      "distension": 0,
+      "hr": 82,
+      "alarm": false
+     },
+     "hl": "stomach"
+    },
+    "bad": {
+     "cap": "Food lodges in the oesophagus again: chest pain and vomiting return.",
+     "set": {
+      "stress": 1,
+      "fill": 1,
+      "distension": 0.3,
+      "hr": 110,
+      "alarm": true
+     },
+     "hl": "stomach",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Discharge at three months",
+   "v": "She eats regular solid food three times a day in 15 to 20 minutes, with no chest pain or vomiting, and walks with a walker. Weight is 33.6 kg (from 32.3 kg), albumin 3.8 g/dL (from 2.6), skeletal muscle mass 13.7 kg (from 12.3) and FIM motor score 78 (from 25).",
+   "q": "What should the discharge nutrition plan say?",
+   "o": [
+    [
+     "Keep the energy and protein targets with regular meals, continue daily exercise, weigh regularly, and return early if swallowing slows or chest pain and vomiting recur",
+     "Gains in muscle and function are recent and need maintaining; recurrence would show first at mealtimes.",
+     1
+    ],
+    [
+     "Stop the targets now that albumin is normal",
+     "Albumin has recovered but weight is still 33.6 kg; muscle and function need continued support.",
+     0
+    ],
+    [
+     "Return to a pureed diet for life to be safe",
+     "She now manages regular food without symptoms; needless texture restriction lowers intake.",
+     0
+    ],
+    [
+     "Weight rose only 1.3 kg, so arrange a gastrostomy",
+     "Muscle mass, albumin and function all improved on oral intake; tube feeding is not indicated.",
+     0
+    ]
+   ],
+   "a": "She went home eating regular food and walking with a walker. One and a half years after discharge her daily activities were maintained and the achalasia symptoms had not returned. The authors caution that this is a single case, that the natural course or other factors may explain part of the improvement, and that the physiological link between sarcopenic dysphagia and achalasia was not measured. The paper does not describe oral nutritional supplements. Where food alone falls short, ESPEN advises supplements providing at least 400 kcal and 30 g protein a day, continued for at least one month, and that older people are encouraged to stay physically active with enough energy and protein to maintain muscle.",
+   "g": [
+    "Furukawa F, Kakita K. Cureus 2024",
+    "Volkert D et al. ESPEN practical guideline. Clin Nutr 2022"
+   ],
+   "p": "Discharge with targets, an exercise plan and a weight to watch.",
+   "dp": "Give the family the daily energy and protein targets in household measures, a weekly weight chart and a threshold for review, such as any fall in weight or meals again taking longer than 30 minutes.",
+   "pre": {
+    "view": "outside",
+    "muscle": 0.45,
+    "fat": 0.25,
+    "pallor": 0.1,
+    "stress": 0.1,
+    "weak": 0.65,
+    "feeding": "oral",
+    "fill": 0.5,
+    "distension": 0,
+    "hr": 78,
+    "spo2": 97,
+    "alarm": false
+   },
+   "fx": {
+    "ok": {
+     "cap": "Home on regular food, walking with a walker.",
+     "set": {
+      "muscle": 0.5,
+      "stress": 0.05
+     },
+     "hl": "muscle"
+    },
+    "bad": {
+     "cap": "Without a plan, intake and activity slip and muscle is lost again.",
+     "set": {
+      "muscle": 0.38,
+      "weak": 0.8,
+      "stress": 0.3
+     },
+     "hl": "muscle",
+     "kind": "warn"
+    }
+   }
+  }
+ ],
+ "refs": [
+  "Furukawa F, Kakita K. Treatment of Esophageal Achalasia With Sarcopenic Dysphagia by Rehabilitation and Nutritional Support: A Case Report. Cureus 2024;16(7):e64529",
+  "Chen LK et al. Asian Working Group for Sarcopenia: 2019 Consensus Update on Sarcopenia Diagnosis and Treatment. J Am Med Dir Assoc 2020;21(3):300-307.e2",
+  "Fujishima I et al. Sarcopenia and dysphagia: Position paper by four professional organizations. Geriatr Gerontol Int 2019;19(2):91-97",
+  "Volkert D et al. ESPEN practical guideline: Clinical nutrition and hydration in geriatrics. Clin Nutr 2022;41(4):958-989"
+ ]
+}

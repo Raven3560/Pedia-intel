@@ -1,0 +1,277 @@
+{
+ "id": "ccd-preterm",
+ "engine": "nicu",
+ "track": "fluid",
+ "aud": [
+  "paed",
+  "diet"
+ ],
+ "level": "Advanced",
+ "min": 8,
+ "pub": {
+  "cite": "Cendal I et al. Prenatal and postnatal manifestations of congenital chloride diarrhea due to a heterozygote variant of the SLC26A3 gene: a case report. Front Pediatr 2021;9:758006",
+  "url": "https://doi.org/10.3389/fped.2021.758006"
+ },
+ "title": "Polyhydramnios, abdominal distension and watery stools",
+ "sub": "Congenital chloride diarrhoea in a 32-week preterm baby, first mistaken for bowel obstruction",
+ "pt": {
+  "tag": "32 wk",
+  "name": "Baby boy, Cendal 2021",
+  "line": "Born at 32+4 weeks by emergency caesarean, 2,260 g. Polyhydramnios needed amnioreduction at 28 weeks; antenatal scans showed dilated, fluid-filled bowel loops."
+ },
+ "vitals": [
+  [
+   "GA",
+   "32+4 wk"
+  ],
+  [
+   "Weight",
+   "2,260 g"
+  ],
+  [
+   "Day 1 loss",
+   "15%"
+  ]
+ ],
+ "scene": {
+  "mode": "nicu",
+  "distension": 0.55,
+  "stool": "watery",
+  "fill": 0.05,
+  "feeding": false,
+  "stress": 0.35,
+  "hr": 156,
+  "spo2": 95,
+  "temp": 36.7
+ },
+ "steps": [
+  {
+   "s": "Birth",
+   "v": "The abdomen is distended and no meconium is passed; a rectal washout returns only watery fluid. He loses 340 g (15%) on day 1. The X-ray shows fluid levels suggesting low bowel obstruction, and a laparotomy on day 2 finds nothing wrong in the abdomen.",
+   "q": "Looking back, which combination points to a congenital secretory diarrhoea rather than an obstruction?",
+   "o": [
+    [
+     "Polyhydramnios with dilated, fluid-filled bowel loops before birth, watery rectal output instead of meconium, and a large early weight loss",
+     "Fetal diarrhoea fills the bowel and the amniotic sac with fluid.",
+     1
+    ],
+    [
+     "Abdominal distension alone",
+     "Distension is common to both obstruction and congenital diarrhoea.",
+     0
+    ],
+    [
+     "Prematurity alone",
+     "Here preterm birth followed the polyhydramnios; it does not point to a cause.",
+     0
+    ],
+    [
+     "Bile-stained vomiting",
+     "Points to malrotation or a proximal obstruction; it was not part of this picture.",
+     0
+    ]
+   ],
+   "a": "In congenital chloride diarrhoea, watery diarrhoea before birth causes polyhydramnios, dilated fluid-filled bowel and preterm birth, and the newborn's distended abdomen without meconium can mimic obstruction. At laparotomy this baby's bowel was evenly distended with air and clear fluid. The authors note that the watery stools are often confused with urine, which delays diagnosis; here it was first considered on day 20.",
+   "g": [
+    "Cendal I et al. Congenital chloride diarrhea: a case report. Front Pediatr 2021",
+    "Wedenoja S, Höglund P, Holmberg C. Review article: the clinical management of congenital chloride diarrhoea. Aliment Pharmacol Ther 2010"
+   ],
+   "p": "Polyhydramnios plus a fluid-filled bowel on the scan: think congenital diarrhoea before theatre.",
+   "pre": {
+    "mode": "nicu",
+    "distension": 0.55,
+    "stool": "watery",
+    "stress": 0.35,
+    "hr": 160
+   },
+   "fx": {
+    "ok": {
+     "cap": "The pattern is named: watery losses, not a blockage.",
+     "set": {},
+     "mode": "gut",
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "The search for an obstruction goes on while fluid pours out.",
+     "set": {
+      "stress": 0.5,
+      "hr": 170
+     },
+     "mode": "gut",
+     "hl": "gut",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Day 20",
+   "v": "Feeds have been mainly oral since day 7, and a marked hypochloraemic metabolic alkalosis has developed. No obvious diarrhoea was seen; constipation was even suspected, but rectal catheterisation released a large amount of stool. Cystic fibrosis has been excluded by genetic testing.",
+   "q": "Which test best supports congenital chloride diarrhoea?",
+   "o": [
+    [
+     "Faecal chloride (above 90 mmol/L once fluid and salt losses are corrected), then SLC26A3 gene testing",
+     "High stool chloride with metabolic alkalosis is the hallmark; genetics confirms it.",
+     1
+    ],
+    [
+     "Stool culture for bacteria and viruses",
+     "Infection would not explain a hypochloraemic metabolic alkalosis.",
+     0
+    ],
+    [
+     "Serum gastrin",
+     "Not diagnostic.",
+     0
+    ],
+    [
+     "Contrast enema",
+     "Imaging cannot show a transport defect.",
+     0
+    ]
+   ],
+   "a": "Most diarrhoea causes acidosis; stool losses with metabolic alkalosis point to chloride loss in the stool. The authors describe a faecal chloride above 90 mmol/L as pathognomonic and note it is rarely measured, which delays diagnosis; diagnosis rests on high faecal chloride once serum electrolytes are corrected, confirmed by genetic testing. In this baby, next-generation sequencing found a homozygous SLC26A3 variant (c.2024_2026dupTCA), and both parents were carriers.",
+   "g": [
+    "Wedenoja S et al. Aliment Pharmacol Ther 2010",
+    "Cendal I et al. Front Pediatr 2021"
+   ],
+   "p": "Diarrhoea with alkalosis: measure the stool chloride.",
+   "pre": {
+    "mode": "inside",
+    "stool": "watery",
+    "distension": 0.2,
+    "fill": 0.3,
+    "feeding": true,
+    "stress": 0.3,
+    "hr": 158
+   },
+   "fx": {
+    "ok": {
+     "cap": "Stool chloride and genetics confirm the diagnosis.",
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "The salt-losing cause stays hidden.",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Treatment",
+   "v": "The diagnosis is confirmed.",
+   "q": "What is the mainstay of treatment?",
+   "o": [
+    [
+     "Lifelong oral sodium chloride and potassium chloride, adjusted to keep serum electrolytes and acid-base balance normal",
+     "Replacing what is lost prevents dehydration and electrolyte disturbance.",
+     1
+    ],
+    [
+     "Sodium bicarbonate to replace the losses",
+     "Bicarbonate worsens the metabolic alkalosis.",
+     0
+    ],
+    [
+     "Restrict fluids to reduce the stool output",
+     "Restriction deepens salt and water depletion.",
+     0
+    ],
+    [
+     "Loperamide to stop the diarrhoea",
+     "Antimotility drugs do not fix the transport defect and are unsafe in infants.",
+     0
+    ]
+   ],
+   "a": "Life-long salt substitution with NaCl and KCl stabilises fluid, electrolyte and acid-base balance, and the long-term outcome is favourable when treatment is right. Untreated disease can be fatal in the first weeks. In this case NaCl and KCl started on day 20, a sepsis episode followed, parenteral nutrition stopped at 50 days, and he went home after 61 days on feeds with added 0.9% saline.",
+   "g": [
+    "Wedenoja S et al. Aliment Pharmacol Ther 2010",
+    "Cendal I et al. Front Pediatr 2021"
+   ],
+   "p": "Treat the salt loss, not the stool count.",
+   "dp": "Add the prescribed salt to each feed, recalculate as weight rises, and chart weight, stool output and urinary chloride.",
+   "pre": {
+    "mode": "inside",
+    "stool": "watery",
+    "fill": 0.4,
+    "feeding": true,
+    "stress": 0.25,
+    "hr": 154
+   },
+   "fx": {
+    "ok": {
+     "cap": "Salt replaced: the alkalosis corrects and weight climbs, though stools stay loose.",
+     "set": {
+      "stress": 0.05,
+      "hr": 142,
+      "distension": 0
+     },
+     "mode": "inside",
+     "hl": "stomach"
+    },
+    "bad": {
+     "cap": "Electrolytes keep swinging and he does not grow.",
+     "set": {
+      "stress": 0.5,
+      "hr": 168
+     },
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Follow-up",
+   "v": "At 6 months he is growing well with normal electrolytes, and passes up to 12 soft stools a day.",
+   "q": "What should the family be told?",
+   "o": [
+    [
+     "Frequent loose stools are expected; keep giving the salt, and get help early in any illness with fever, vomiting or more diarrhoea, because salt and water needs rise quickly",
+     "Intercurrent illness is the main danger.",
+     1
+    ],
+    [
+     "Stop the salt once the stools are soft",
+     "Replacement is lifelong.",
+     0
+    ],
+    [
+     "Stools should be normal by now; investigate further",
+     "Ongoing loose stools are expected.",
+     0
+    ],
+    [
+     "Avoid salt in the diet",
+     "The opposite of what he needs.",
+     0
+    ]
+   ],
+   "a": "Children with congenital chloride diarrhoea keep having loose stools; with proper treatment the long-term outcome is favourable. The review highlights managing acute dehydration and hypokalaemia during gastroenteritis or other infections, and the case authors stress keeping vaccinations up to date to avoid infections that can cause life-threatening dehydration. This infant also had nappy dermatitis, heavy sweating and neurological findings at 6 months, so follow-up was multidisciplinary.",
+   "g": [
+    "Wedenoja S et al. Aliment Pharmacol Ther 2010",
+    "Cendal I et al. Front Pediatr 2021"
+   ],
+   "p": "Give the family a written sick-day plan.",
+   "pre": {
+    "mode": "nicu",
+    "stool": "watery",
+    "fill": 0.4,
+    "feeding": true,
+    "stress": 0,
+    "distension": 0,
+    "hr": 138
+   },
+   "fx": {
+    "ok": {
+     "cap": "The family know what is normal and when to come in.",
+     "set": {}
+    },
+    "bad": {
+     "cap": "Without a sick-day plan, the next tummy bug is dangerous.",
+     "kind": "warn"
+    }
+   }
+  }
+ ],
+ "refs": [
+  "Cendal I, Szafrańska A, Fuchs T, Patkowski D, Smigiel R, Królak-Olejnik B. Prenatal and postnatal manifestations of congenital chloride diarrhea due to a heterozygote variant of the SLC26A3 gene: a case report. Front Pediatr 2021;9:758006",
+  "Wedenoja S, Höglund P, Holmberg C. Review article: the clinical management of congenital chloride diarrhoea. Aliment Pharmacol Ther 2010;31:477-85"
+ ]
+}

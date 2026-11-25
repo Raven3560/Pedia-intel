@@ -1,0 +1,332 @@
+{
+ "id": "glottic-cancer-cachexia-crt",
+ "engine": "adult",
+ "group": "adult",
+ "track": "onc",
+ "aud": [
+  "phys",
+  "diet"
+ ],
+ "level": "Advanced",
+ "min": 8,
+ "added": "2026-11-16",
+ "pub": {
+  "cite": "Shirado K et al. Exercise and Nutrition Therapy in a Patient With Glottic Cancer Cachexia Undergoing Chemoradiotherapy: A Case Report. Cureus 2025;17(5):e84455",
+  "url": "https://doi.org/10.7759/cureus.84455"
+ },
+ "title": "Weight loss in the first week of chemoradiotherapy",
+ "sub": "Cancer cachexia with sarcopenia during chemoradiotherapy for glottic cancer, managed with exercise and nutrition therapy",
+ "pt": {
+  "tag": "Late 60s",
+  "name": "Man, Shirado 2025",
+  "line": "Independent in daily activities, with hypertension. Admitted for chemoradiotherapy for left glottic cancer (T2N0M0), ECOG performance status 0. BMI 22.1 kg/m2 on admission, with no weight loss beforehand."
+ },
+ "vitals": [
+  [
+   "Age",
+   "Late 60s"
+  ],
+  [
+   "Weight",
+   "63.1 kg"
+  ],
+  [
+   "BMI",
+   "22.1"
+  ]
+ ],
+ "scene": {
+  "view": "outside",
+  "build": "adult",
+  "muscle": 0.7,
+  "fat": 0.45,
+  "oedema": 0,
+  "pallor": 0.1,
+  "stress": 0.2,
+  "weak": 0.15,
+  "feeding": "oral",
+  "fill": 0.5,
+  "distension": 0,
+  "hr": 76,
+  "spo2": 98,
+  "temp": 36.6,
+  "alarm": false
+ },
+ "steps": [
+  {
+   "s": "Day 8 of admission",
+   "v": "Chemoradiotherapy (cisplatin with radiotherapy planned to 70 Gy in 35 fractions) began on day 2. By day 8 his weight has fallen from 63.1 kg to 60.9 kg (3.5%). Bioimpedance shows an appendicular skeletal muscle index of 6.5 kg/m2. Grip strength is 33.4 kg on each side, gait speed 0.96 m/s and the five-repetition sit-to-stand time 9.65 seconds. The appetite questionnaire (SNAQ) score is 14, CRP is under 0.02 mg/dL and albumin 3.8 g/dL.",
+   "q": "How should his nutritional and muscle status be classified?",
+   "o": [
+    [
+     "Sarcopenia (low muscle mass with slow gait) with early cancer cachexia and malnutrition: treat now",
+     "Low muscle index plus low physical performance meets AWGS 2019; rapid weight loss with cancer and reduced appetite fits Asian cachexia criteria.",
+     1
+    ],
+    [
+     "Normal: BMI is above 21 and albumin is normal",
+     "BMI and albumin miss a 3.5% loss in a week and a low muscle index.",
+     0
+    ],
+    [
+     "Grip strength is normal, so sarcopenia is excluded",
+     "AWGS 2019 needs low muscle mass plus low strength or low physical performance; his gait speed is under 1.0 m/s.",
+     0
+    ],
+    [
+     "Too early to classify; reassess when weight loss reaches 10%",
+     "Waiting for 10% loss forfeits the window in which muscle can be protected.",
+     0
+    ]
+   ],
+   "a": "The team diagnosed sarcopenia by AWGS 2019 (men: bioimpedance muscle index under 7.0 kg/m2, with grip under 28 kg or gait speed under 1.0 m/s), cancer cachexia by the Asian Working Group for Cachexia criteria (underlying disease, weight loss over 2% or BMI under 21, plus anorexia, low grip strength or raised CRP) and malnutrition by the GLIM criteria, which need at least one phenotypic and one aetiologic criterion. The AWGC criteria describe weight loss over 3 to 6 months; here the loss occurred within eight days, and the authors attribute it to tumour-related and treatment-related factors together with insufficient intake. The paper does not itemise which criteria were scored as met.",
+   "g": [
+    "Shirado K et al. Cureus 2025",
+    "Chen LK et al. AWGS 2019 consensus update. J Am Med Dir Assoc 2020",
+    "Arai H et al. Diagnosis and outcomes of cachexia in Asia: working consensus report from the AWGC. J Cachexia Sarcopenia Muscle 2023",
+    "Cederholm T et al. GLIM criteria for the diagnosis of malnutrition. Clin Nutr 2019"
+   ],
+   "p": "A normal BMI can hide low muscle and rapid weight loss.",
+   "pre": {
+    "view": "outside",
+    "muscle": 0.62,
+    "fat": 0.42,
+    "pallor": 0.15,
+    "stress": 0.3,
+    "weak": 0.25,
+    "feeding": "oral",
+    "fill": 0.35
+   },
+   "fx": {
+    "ok": {
+     "cap": "Sarcopenia, cachexia and malnutrition are recorded on day 8.",
+     "set": {
+      "view": "inside",
+      "stress": 0.25
+     },
+     "hl": "muscle"
+    },
+    "bad": {
+     "cap": "Nothing is recorded; weight and muscle keep falling through treatment.",
+     "set": {
+      "muscle": 0.55,
+      "fat": 0.35,
+      "stress": 0.4
+     },
+     "hl": "muscle",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Revising the plan",
+   "v": "Since admission his plan has been weight maintenance, at 26.9 kcal/kg ideal body weight/day with protein 1.01 g/kg ideal body weight/day. He has six more weeks of chemoradiotherapy ahead.",
+   "q": "What should change?",
+   "o": [
+    [
+     "Raise intake to about 30 kcal/kg and 1.1 g protein/kg ideal body weight a day, add oral nutritional supplements timed after exercise, start supervised aerobic and resistance training, and have the dietitian review at least weekly",
+     "Combined nutrition and exercise, adjusted to monitoring, is the multimodal approach for cachexia.",
+     1
+    ],
+    [
+     "Keep the plan unchanged; weight loss is expected during chemoradiotherapy",
+     "Weight loss during treatment is common but linked to worse outcomes and treatment interruptions; it should be countered.",
+     0
+    ],
+    [
+     "Place a gastrostomy now and stop oral intake",
+     "He is swallowing; counselling and supplements come first, with tube feeding for severe mucositis or obstructing tumours.",
+     0
+    ],
+    [
+     "Rest and avoid exercise until treatment ends",
+     "Exercise is safe during cancer treatment and helps maintain muscle strength and mass.",
+     0
+    ]
+   ],
+   "a": "The dietitian and physician reset the goal to a gain of about 1 kg a month with maintained muscle, adjusting the diet to about 30 kcal/kg and 1.1 g protein/kg ideal body weight a day and reviewing at least weekly. Two oral nutritional supplements were added (125 mL with 200 kcal and 7.5 g protein; 120 mL jelly with 100 kcal and 10 g protein; each with branched-chain amino acids and 20 micrograms of vitamin D), taken within 30 minutes of the end of rehabilitation. From day 8 a physiotherapist supervised 40 to 60 minutes of exercise, five to six days a week: cycle ergometer at 60% of heart rate reserve and machine resistance training at about the 10-repetition maximum for two sets. ESPEN recommends 25 to 30 kcal/kg/day and protein above 1 g/kg/day, if possible up to 1.5 g/kg/day, in cancer; individualised counselling and supplements during head and neck radiotherapy; and suggests resistance exercise in addition to aerobic exercise.",
+   "g": [
+    "Shirado K et al. Cureus 2025",
+    "Muscaritoli M et al. ESPEN practical guideline: clinical nutrition in cancer. Clin Nutr 2021"
+   ],
+   "p": "Set a weight and muscle goal, then review it every week.",
+   "dp": "The 1.1 g/kg/day used here is at the lower end of the ESPEN range (above 1 and up to 1.5 g/kg/day), so there is room to go higher if intake allows. Time a protein-containing supplement soon after each exercise session and chart daily weight and weekly body composition, as the team did.",
+   "pre": {
+    "view": "inside",
+    "muscle": 0.62,
+    "fat": 0.42,
+    "pallor": 0.15,
+    "stress": 0.3,
+    "weak": 0.25,
+    "feeding": "oral",
+    "fill": 0.35
+   },
+   "fx": {
+    "ok": {
+     "cap": "Higher targets, supplements after exercise, training five to six days a week.",
+     "set": {
+      "feeding": "ons",
+      "fill": 0.6,
+      "muscle": 0.65,
+      "stress": 0.2
+     },
+     "hl": "muscle"
+    },
+    "bad": {
+     "cap": "Intake and activity are left as they are; muscle is lost week by week.",
+     "set": {
+      "muscle": 0.52,
+      "fat": 0.35,
+      "weak": 0.4,
+      "stress": 0.45
+     },
+     "hl": "muscle",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Weeks five and six",
+   "v": "Throat pain reaches grade 2, with grade 2 constipation and grade 1 to 2 radiation dermatitis. The EAT-10 swallowing score climbs from 0 on day 8 to 16 on day 40, and food intake declines after day 40. BMI, which had risen from 21.3 to 21.6 kg/m2, starts to fall.",
+   "q": "What is the best response?",
+   "o": [
+    [
+     "Control the pain, keep oral intake going with supplements, continue exercise at a tolerated intensity, monitor closely and move to tube feeding only if oral intake becomes inadequate",
+     "Symptom control protects intake, and a stepwise approach keeps the least invasive route that works.",
+     1
+    ],
+    [
+     "Stop exercise until chemoradiotherapy ends",
+     "Stopping removes the main stimulus protecting muscle; intensity can be adjusted instead.",
+     0
+    ],
+    [
+     "Stop oral intake and start parenteral nutrition",
+     "Parenteral nutrition is for when adequate oral or enteral nutrition is not possible.",
+     0
+    ],
+    [
+     "Pause radiotherapy until his weight recovers",
+     "The aim of nutrition support is to avoid treatment interruptions, not cause them.",
+     0
+    ]
+   ],
+   "a": "Paracetamol and opioids were used as needed for throat pain. He completed the planned chemoradiotherapy without stopping physiotherapy and without fasting or enteral feeding. Exercise was adjusted so that overall and muscle fatigue stayed under 4 on the modified Borg scale. ESPEN recommends ensuring intake during head and neck radiotherapy primarily by counselling and oral nutritional supplements to avoid deterioration and radiotherapy interruptions, screening for and managing dysphagia, tube feeding in severe radiation-induced mucositis or obstructing tumours, and parenteral nutrition only if adequate oral or enteral nutrition is not possible.",
+   "g": [
+    "Shirado K et al. Cureus 2025",
+    "Muscaritoli M et al. ESPEN practical guideline. Clin Nutr 2021"
+   ],
+   "p": "Treat the pain to protect the intake.",
+   "pre": {
+    "view": "inside",
+    "muscle": 0.64,
+    "fat": 0.42,
+    "pallor": 0.25,
+    "stress": 0.6,
+    "weak": 0.3,
+    "feeding": "ons",
+    "fill": 0.3,
+    "hr": 84
+   },
+   "fx": {
+    "ok": {
+     "cap": "Pain controlled; he keeps eating, drinking supplements and training.",
+     "set": {
+      "stress": 0.35,
+      "fill": 0.45,
+      "hr": 78
+     },
+     "hl": "stomach"
+    },
+    "bad": {
+     "cap": "Intake or training stops and the losses accelerate.",
+     "set": {
+      "muscle": 0.5,
+      "fat": 0.32,
+      "stress": 0.7,
+      "weak": 0.5,
+      "fill": 0.1
+     },
+     "hl": "muscle",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Day 52, before discharge",
+   "v": "Weight is 60.4 kg, a loss of 0.82% since day 8, and the muscle index is unchanged at 6.5 kg/m2. Gait speed has improved to 1.13 m/s and sit-to-stand time to 8.96 seconds; grip strength is 32.5 kg (right) and 32.3 kg (left). Phase angle has fallen from 5.1 to 4.4 degrees, haemoglobin from 15 to 11.5 g/dL, and CRP is 0.91 mg/dL. EAT-10 is 10.",
+   "q": "How should these results be read for the plan after discharge?",
+   "o": [
+    [
+     "Weight and muscle were held and function improved, but intake fell late, CRP is raised and phase angle and haemoglobin have dropped: continue nutrition support and exercise after discharge, with review of weight, swallowing and muscle",
+     "The risk has not ended with the last fraction; late effects on swallowing and intake still need follow-up.",
+     1
+    ],
+    [
+     "Grip strength fell, so the programme failed",
+     "A fall of about 1 kg is small; the authors judged it within a clinically acceptable range.",
+     0
+    ],
+    [
+     "Targets were met, so nutrition follow-up can stop at discharge",
+     "Intake and BMI were falling in the final two weeks and swallowing symptoms persist.",
+     0
+    ],
+    [
+     "Phase angle has fallen, so start home parenteral nutrition",
+     "He is eating by mouth; a falling phase angle alone is not an indication for parenteral nutrition.",
+     0
+    ]
+   ],
+   "a": "From day 8 to day 52 he lost 0.82% of body weight and kept his muscle index while completing chemoradiotherapy; a pilot study cited by the authors reported about 7% weight loss and 5% muscle loss over 14 weeks with a similar protocol. The authors conclude that combined exercise and nutrition therapy may help attenuate functional decline and muscle loss, and state that a single case cannot establish cause. They note that the clinical meaning of the fall in phase angle is unclear. The report ends at discharge and does not describe the plan afterwards. ESPEN recommends regular physical activity for cancer survivors and continued attention to dysphagia and intake after radiotherapy.",
+   "g": [
+    "Shirado K et al. Cureus 2025",
+    "Muscaritoli M et al. ESPEN practical guideline. Clin Nutr 2021",
+    "Arai H et al. AWGC working consensus report. J Cachexia Sarcopenia Muscle 2023"
+   ],
+   "p": "The end of radiotherapy is not the end of nutritional risk.",
+   "dp": "Hand over the energy and protein targets, the supplement plan and the last body composition results to the outpatient team, and book weight, EAT-10 and intake review soon after discharge.",
+   "pre": {
+    "view": "outside",
+    "muscle": 0.66,
+    "fat": 0.4,
+    "pallor": 0.35,
+    "stress": 0.35,
+    "weak": 0.15,
+    "feeding": "ons",
+    "fill": 0.35,
+    "hr": 80,
+    "spo2": 98,
+    "alarm": false
+   },
+   "fx": {
+    "ok": {
+     "cap": "Discharged with a nutrition and exercise plan and a review date.",
+     "set": {
+      "stress": 0.2,
+      "fill": 0.5
+     },
+     "hl": "muscle"
+    },
+    "bad": {
+     "cap": "Support stops at discharge while intake is still falling.",
+     "set": {
+      "muscle": 0.55,
+      "fat": 0.32,
+      "stress": 0.5,
+      "weak": 0.35
+     },
+     "hl": "muscle",
+     "kind": "warn"
+    }
+   }
+  }
+ ],
+ "refs": [
+  "Shirado K et al. Exercise and Nutrition Therapy in a Patient With Glottic Cancer Cachexia Undergoing Chemoradiotherapy: A Case Report. Cureus 2025;17(5):e84455",
+  "Muscaritoli M et al. ESPEN practical guideline: Clinical Nutrition in cancer. Clin Nutr 2021;40(5):2898-2913",
+  "Chen LK et al. Asian Working Group for Sarcopenia: 2019 Consensus Update on Sarcopenia Diagnosis and Treatment. J Am Med Dir Assoc 2020;21(3):300-307.e2",
+  "Arai H et al. Diagnosis and outcomes of cachexia in Asia: Working Consensus Report from the Asian Working Group for Cachexia. J Cachexia Sarcopenia Muscle 2023;14(5):1949-1958",
+  "Cederholm T et al. GLIM criteria for the diagnosis of malnutrition: a consensus report from the global clinical nutrition community. Clin Nutr 2019;38(1):1-9"
+ ]
+}

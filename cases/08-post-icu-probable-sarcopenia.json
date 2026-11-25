@@ -1,0 +1,325 @@
+{
+ "id": "post-icu-probable-sarcopenia",
+ "engine": "adult",
+ "group": "adult",
+ "track": "sarc",
+ "aud": [
+  "phys",
+  "geri",
+  "diet"
+ ],
+ "level": "Core",
+ "min": 7,
+ "added": "2026-11-16",
+ "pub": {
+  "cite": "Kurt C, Yumusakhuylu Y, Erhan B. A Case Report of Probable Secondary Sarcopenia After Intensive Care Hospitalization. J Frailty Sarcopenia Falls 2024;9(2):157-160",
+  "url": "https://doi.org/10.22540/JFSF-09-157"
+ },
+ "title": "Unable to stand after intensive care",
+ "sub": "Probable secondary sarcopenia after urosepsis and an intensive care stay",
+ "pt": {
+  "tag": "65 y",
+  "name": "Woman, Kurt 2024",
+  "line": "Hypertension and a heart rhythm disorder. After lithotripsy for a 12 mm kidney stone she developed urosepsis and spent 10 days in intensive care, with ventilation from day 3 and inotropes from day 5."
+ },
+ "vitals": [
+  [
+   "Age",
+   "65 y"
+  ],
+  [
+   "Weight",
+   "57 kg"
+  ],
+  [
+   "Grip",
+   "10 kg"
+  ]
+ ],
+ "scene": {
+  "view": "outside",
+  "build": "older",
+  "muscle": 0.45,
+  "fat": 0.4,
+  "oedema": 0,
+  "pallor": 0.3,
+  "stress": 0.4,
+  "weak": 0.9,
+  "feeding": "oral",
+  "fill": 0.3,
+  "distension": 0,
+  "hr": 88,
+  "spo2": 96,
+  "temp": 36.8,
+  "alarm": false
+ },
+ "steps": [
+  {
+   "s": "Referral from the urology ward",
+   "v": "Antibiotics are complete and she is out of intensive care, but she moves only by wheelchair and has difficulty sitting and standing. Her weight fell from 65 kg to 57 kg in intensive care. Joint range of movement is full. Hip extension, hip abduction and finger flexion and abduction are 3/5.",
+   "q": "What is the most useful next assessment?",
+   "o": [
+    [
+     "Screen with the SARC-F questionnaire, then measure grip strength and a chair-stand test",
+     "Simple bedside tests of strength identify probable sarcopenia and give a baseline.",
+     1
+    ],
+    [
+     "Serum albumin, to grade the muscle loss",
+     "Albumin does not measure muscle mass or strength.",
+     0
+    ],
+    [
+     "Wait until her weight returns before assessing muscle",
+     "An 8 kg loss with new disability is the reason to assess now.",
+     0
+    ],
+    [
+     "CT body composition before any bedside test",
+     "The consensus pathway starts with strength; imaging of muscle quantity comes after, to confirm.",
+     0
+    ]
+   ],
+   "a": "Her SARC-F score was 6 out of 10; she could not lift a 4.5 kg weight. She managed 5 stands in the 30-second sit-to-stand test, and grip strength by dynamometer was 10 kg. EWGSOP2 advises SARC-F for case finding, makes low muscle strength the key criterion and sets the cut-off for women at under 16 kg: with low strength alone, sarcopenia is probable; it is confirmed by low muscle quantity or quality, and severe when physical performance is also low. Muscle quantity was not measured here, so the authors report probable secondary sarcopenia, related to illness, inactivity and poor intake. They describe it as a missed diagnosis while attention was on her other problems.",
+   "g": [
+    "Kurt C, Yumusakhuylu Y, Erhan B. J Frailty Sarcopenia Falls 2024",
+    "Cruz-Jentoft AJ et al. Sarcopenia: revised European consensus on definition and diagnosis (EWGSOP2). Age Ageing 2019"
+   ],
+   "p": "After critical illness, ask about strength and measure grip.",
+   "pre": {
+    "view": "outside",
+    "muscle": 0.45,
+    "fat": 0.4,
+    "pallor": 0.3,
+    "stress": 0.4,
+    "weak": 0.9,
+    "feeding": "oral",
+    "fill": 0.3
+   },
+   "fx": {
+    "ok": {
+     "cap": "Grip 10 kg, SARC-F 6: probable sarcopenia is on the problem list.",
+     "set": {
+      "view": "inside",
+      "stress": 0.3
+     },
+     "hl": "muscle"
+    },
+    "bad": {
+     "cap": "Weakness stays unmeasured and unnamed.",
+     "set": {
+      "stress": 0.5
+     },
+     "hl": "muscle",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Choosing treatment",
+   "v": "Probable secondary sarcopenia is diagnosed. She is alert and able to take part in therapy.",
+   "q": "What is the first-line treatment?",
+   "o": [
+    [
+     "A supervised, progressive resistance exercise programme, combined with adequate protein and energy",
+     "Resistance-based training is the one intervention with a strong recommendation for sarcopenia.",
+     1
+    ],
+    [
+     "Vitamin D supplementation on its own",
+     "Evidence is insufficient for vitamin D alone as a treatment for sarcopenia.",
+     0
+    ],
+    [
+     "Anabolic hormone therapy",
+     "Evidence is insufficient to recommend anabolic hormones.",
+     0
+    ],
+    [
+     "Rest in bed on a high-energy diet until strength returns",
+     "Inactivity was one cause; muscle needs loading as well as feeding.",
+     0
+    ]
+   ],
+   "a": "She had a 4-week intensive programme of range of movement, strengthening, balance, coordination and gait training, with occupational therapy for hand function. Resistance exercise was given in two sessions a week, at 40% to 60% of one-repetition maximum progressing to 70% to 85%, 3 sets of 10 repetitions, with 120 seconds of rest between sets. The ICFSR guideline strongly recommends resistance-based training for sarcopenia, conditionally recommends protein supplementation or a protein-rich diet, combined with physical activity, and found insufficient evidence to recommend vitamin D alone or anabolic hormones.",
+   "g": [
+    "Kurt C, Yumusakhuylu Y, Erhan B. J Frailty Sarcopenia Falls 2024",
+    "Dent E et al. International clinical practice guidelines for sarcopenia (ICFSR): screening, diagnosis and management. J Nutr Health Aging 2018"
+   ],
+   "p": "Exercise is the prescription; nutrition makes it work.",
+   "pre": {
+    "view": "inside",
+    "muscle": 0.45,
+    "fat": 0.4,
+    "pallor": 0.25,
+    "stress": 0.3,
+    "weak": 0.9,
+    "feeding": "oral",
+    "fill": 0.35
+   },
+   "fx": {
+    "ok": {
+     "cap": "Progressive resistance training starts, twice a week.",
+     "set": {
+      "muscle": 0.5,
+      "weak": 0.75,
+      "stress": 0.25
+     },
+     "hl": "muscle"
+    },
+    "bad": {
+     "cap": "No loading: strength does not return.",
+     "set": {
+      "muscle": 0.4,
+      "weak": 1,
+      "stress": 0.5
+     },
+     "hl": "muscle",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Nutrition prescription",
+   "v": "The dietitian joins the team as the exercise programme starts. She weighs 57 kg and is eating by mouth.",
+   "q": "Which nutrition plan fits best?",
+   "o": [
+    [
+     "Protein about 1.2 g/kg/day spread across the day's meals, enough energy to stop further weight loss, and vitamin D, all under dietitian supervision",
+     "This is what the team prescribed, and it sits within position-paper targets for older adults with illness.",
+     1
+    ],
+    [
+     "0.8 g/kg/day of protein is enough for every adult",
+     "Older adults need at least 1.0 to 1.2 g/kg/day, and more during or after illness.",
+     0
+    ],
+    [
+     "Restrict protein in every older patient to protect the kidneys",
+     "Only people with severe kidney disease who are not on dialysis may need to limit protein.",
+     0
+    ],
+    [
+     "Leave the diet unchanged until the exercise programme is finished",
+     "Exercise raises needs; energy and protein have to be adequate during training.",
+     0
+    ]
+   ],
+   "a": "Nutrition was arranged under a dietitian's supervision: 1.2 g/kg/day of protein, distributed across all the day's meals, and 1,000 IU/day of vitamin D. The authors cite a recommended protein intake of 1.0 to 1.2 g/kg/day when kidney function is normal and there are no other contraindications, and a benefit of vitamin D replacement at 700 to 1,000 IU/day. The PROT-AGE position paper recommends at least 1.0 to 1.2 g/kg/day for people over 65, and 1.2 to 1.5 g/kg/day for most older adults with acute or chronic disease, with severe kidney disease (eGFR under 30 mL/min/1.73 m2, not on dialysis) as the exception. ESPEN advises adequate energy and protein during exercise interventions to maintain weight and muscle. Her kidney function and vitamin D level are not reported.",
+   "g": [
+    "Kurt C, Yumusakhuylu Y, Erhan B. J Frailty Sarcopenia Falls 2024",
+    "Bauer J et al. Evidence-based recommendations for optimal dietary protein intake in older people (PROT-AGE). J Am Med Dir Assoc 2013",
+    "Volkert D et al. ESPEN practical guideline: clinical nutrition and hydration in geriatrics. Clin Nutr 2022"
+   ],
+   "p": "Write protein as grams per kilogram per day, then turn it into meals.",
+   "dp": "At 57 kg, 1.2 g/kg/day is about 68 g of protein a day; the ESPEN guiding value of 30 kcal/kg/day is about 1,700 kcal (both calculated here, not reported in the paper). Check kidney function before setting the protein target, plan protein at every meal and weigh weekly.",
+   "pre": {
+    "view": "inside",
+    "muscle": 0.47,
+    "fat": 0.4,
+    "pallor": 0.25,
+    "stress": 0.3,
+    "weak": 0.85,
+    "feeding": "oral",
+    "fill": 0.3
+   },
+   "fx": {
+    "ok": {
+     "cap": "Protein at every meal, to 1.2 g/kg/day, alongside training.",
+     "set": {
+      "fill": 0.55,
+      "muscle": 0.55,
+      "stress": 0.2
+     },
+     "hl": "muscle"
+    },
+    "bad": {
+     "cap": "Training without enough protein and energy: weight keeps falling.",
+     "set": {
+      "muscle": 0.4,
+      "fat": 0.3,
+      "stress": 0.45
+     },
+     "hl": "muscle",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Before discharge",
+   "v": "After the programme, lower-limb strength is full and she walks unassisted. SARC-F is 3 (from 6), the 30-second sit-to-stand count is 10 (from 5) and grip strength is 12 kg (from 10 kg). Bruise-like discolouration of both lower legs that began in intensive care has cleared after hyperbaric oxygen, apart from necrosis of one toe.",
+   "q": "How should these results shape the plan?",
+   "o": [
+    [
+     "Function has recovered faster than grip strength, which is still low: continue resistance exercise and the protein plan at home, and re-measure strength at follow-up",
+     "Grip of 12 kg remains under the 16 kg cut-off, so treatment is not finished.",
+     1
+    ],
+    [
+     "She walks unaided, so sarcopenia is cured and treatment can stop",
+     "Walking has recovered, but grip strength is still in the sarcopenic range.",
+     0
+    ],
+    [
+     "Grip rose by only 2 kg, so the programme has failed and should stop",
+     "SARC-F halved and chair stands doubled; the programme is working and needs more time.",
+     0
+    ],
+    [
+     "Replace resistance exercise with walking alone",
+     "Walking helps fitness, but resistance training is what is recommended for muscle strength.",
+     0
+    ]
+   ],
+   "a": "She was discharged with a home exercise programme and the authors note that she continues to exercise. The report does not give longer follow-up, a repeat weight or a measure of muscle mass, so recovery of muscle quantity is not documented. The authors' message is to consider secondary sarcopenia in patients after intensive care and to start resistance exercise and adequate nutrition early.",
+   "g": [
+    "Kurt C, Yumusakhuylu Y, Erhan B. J Frailty Sarcopenia Falls 2024",
+    "Cruz-Jentoft AJ et al. EWGSOP2. Age Ageing 2019",
+    "Dent E et al. ICFSR guidelines. J Nutr Health Aging 2018"
+   ],
+   "p": "Discharge with numbers to beat: grip, chair stands and weight.",
+   "dp": "Send home a written protein and energy plan with the exercise sheet, and book a review of weight, grip strength and chair stands.",
+   "pre": {
+    "view": "outside",
+    "muscle": 0.6,
+    "fat": 0.42,
+    "pallor": 0.1,
+    "stress": 0.1,
+    "weak": 0.3,
+    "feeding": "oral",
+    "fill": 0.5,
+    "hr": 78,
+    "spo2": 97,
+    "alarm": false
+   },
+   "fx": {
+    "ok": {
+     "cap": "Home, walking unaided, with exercise and nutrition plans.",
+     "set": {
+      "muscle": 0.65,
+      "weak": 0.25,
+      "stress": 0.05
+     },
+     "hl": "muscle"
+    },
+    "bad": {
+     "cap": "Exercise and protein stop at the door; strength stays low.",
+     "set": {
+      "muscle": 0.5,
+      "weak": 0.5,
+      "stress": 0.3
+     },
+     "hl": "muscle",
+     "kind": "warn"
+    }
+   }
+  }
+ ],
+ "refs": [
+  "Kurt C, Yumusakhuylu Y, Erhan B. A Case Report of Probable Secondary Sarcopenia After Intensive Care Hospitalization. J Frailty Sarcopenia Falls 2024;9(2):157-160",
+  "Cruz-Jentoft AJ et al. Sarcopenia: revised European consensus on definition and diagnosis. Age Ageing 2019;48(1):16-31",
+  "Dent E et al. International Clinical Practice Guidelines for Sarcopenia (ICFSR): Screening, Diagnosis and Management. J Nutr Health Aging 2018;22(10):1148-1161",
+  "Bauer J et al. Evidence-based recommendations for optimal dietary protein intake in older people: a position paper from the PROT-AGE Study Group. J Am Med Dir Assoc 2013;14(8):542-559",
+  "Volkert D et al. ESPEN practical guideline: Clinical nutrition and hydration in geriatrics. Clin Nutr 2022;41(4):958-989"
+ ]
+}

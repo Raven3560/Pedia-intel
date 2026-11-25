@@ -1,0 +1,242 @@
+{
+ "id": "benign-proctocolitis",
+ "engine": "home",
+ "track": "allergy",
+ "aud": [
+  "paed",
+  "diet"
+ ],
+ "level": "Core",
+ "min": 7,
+ "pub": {
+  "cite": "Gelsomino M, Sinatti D, Miceli Sopo S. Non-allergic benign infantile proctocolitis: a neglected nosographic entity. BMJ Case Rep 2021;14:e244918",
+  "url": "https://doi.org/10.1136/bcr-2021-244918"
+ },
+ "title": "Blood-streaked stools in a breastfed infant",
+ "sub": "Months of maternal elimination diets for rectal bleeding that turned out not to be food-related",
+ "pt": {
+  "tag": "5 wk to 4 mo",
+  "name": "Baby girl, Gelsomino 2021",
+  "line": "Exclusively breastfed girl, well and healthy-appearing. Rectal bleeding with mucus from 1 month 8 days of age."
+ },
+ "vitals": [
+  [
+   "Onset",
+   "5 wk"
+  ],
+  [
+   "Feeding",
+   "EBF"
+  ],
+  [
+   "Hb",
+   "125 g/L"
+  ]
+ ],
+ "scene": {
+  "view": "outside",
+  "colour": "red",
+  "stool": "normal",
+  "hr": 138,
+  "temp": 36.8
+ },
+ "steps": [
+  {
+   "s": "First month of bleeding",
+   "v": "From 1 month 8 days she passes bright blood, sometimes with mucus, in her stools. She is exclusively breastfed, healthy-appearing and growing, with no warning signs.",
+   "q": "What is the best first approach?",
+   "o": [
+    [
+     "Examine for an anal fissure and warning signs, keep breastfeeding with no diet change, and review",
+     "In a well infant, observation comes first.",
+     1
+    ],
+    [
+     "Start a strict cow's milk-free diet for the mother straight away",
+     "Elimination diets are often started too early in well babies with minor bleeding.",
+     0
+    ],
+    [
+     "Switch to an amino acid formula",
+     "Breastfeeding should continue.",
+     0
+    ],
+    [
+     "Arrange colonoscopy",
+     "Not indicated in a well infant without warning signs.",
+     0
+    ]
+   ],
+   "a": "After a month of bleeding her mother started a cow's milk-free diet. ESPGHAN advises observation during the first month of bleeding in mild proctocolitis while encouraging breastfeeding. The case authors go further: in a healthy infant under 6 months with small amounts of bright blood for less than 2 months, no fissure and no warning signs, they would wait at least 2 months before eliminating any food.",
+   "g": [
+    "Gelsomino M et al. Non-allergic benign infantile proctocolitis. BMJ Case Rep 2021",
+    "Vandenplas Y et al. ESPGHAN position paper on cow's milk allergy. JPGN 2024"
+   ],
+   "p": "A well baby with streaks of blood: look, then wait.",
+   "pre": {
+    "view": "outside",
+    "colour": "red"
+   },
+   "fx": {
+    "ok": {
+     "cap": "Breastfeeding continues and the baby is watched.",
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "A restrictive diet starts that may not be needed.",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Skin prick tests",
+   "v": "On the mother's cow's milk-free diet the bleeding continues, up to five times a day. At 3 months 18 days, skin prick tests are negative for cow's milk and soy and positive for egg.",
+   "q": "What does the positive egg test tell you?",
+   "o": [
+    [
+     "Sensitisation only: skin prick tests do not diagnose a non-IgE proctocolitis",
+     "Only elimination followed by reintroduction can show a food is the cause.",
+     1
+    ],
+    [
+     "Egg allergy is confirmed and egg must be avoided for life",
+     "Sensitisation is not allergy, and the bleeding is not IgE-mediated.",
+     0
+    ],
+    [
+     "The baby will react to egg on first exposure",
+     "Not predictable from this test in this setting.",
+     0
+    ],
+    [
+     "Cow's milk is ruled out as a cause",
+     "A negative prick test cannot rule out a non-IgE reaction either.",
+     0
+    ]
+   ],
+   "a": "The team advised reintroducing cow's milk and removing egg and soy. The mother removed egg but, out of fear, did not reintroduce cow's milk. ESPGHAN states that specific IgE and skin prick tests show sensitisation but do not confirm allergy, which is diagnosed from symptoms on elimination and reintroduction.",
+   "g": [
+    "Gelsomino M et al. BMJ Case Rep 2021",
+    "Vandenplas Y et al. JPGN 2024"
+   ],
+   "p": "A positive prick test is a question, not an answer.",
+   "dp": "Each extra exclusion narrows the mother's diet; plan calcium and protein sources whenever an elimination is tried.",
+   "pre": {
+    "view": "outside",
+    "colour": "red"
+   },
+   "fx": {
+    "ok": {
+     "cap": "The test is read for what it is.",
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "A second food is cut on the strength of a skin test.",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Admission",
+   "v": "Three days after egg is removed, she passes a large amount of blood and is admitted. Haemoglobin has fallen to 95 g/L (from 125), ferritin is 18 ng/mL. Coagulation, CRP, CMV tests, stool culture and parasitology, faecal calprotectin, abdominal ultrasound and scintigraphy are all normal. Proctoscopy shows proctitis with small aphthae; biopsies show a lymphoplasmacytic infiltrate with 25 eosinophils per high-power field. Five days after egg removal the bleeding stops.",
+   "q": "How do you find out whether egg was really the trigger?",
+   "o": [
+    [
+     "Reintroduce egg, and cow's milk, into the mother's diet and watch for the bleeding to return",
+     "A food is only proven as the cause if symptoms come back on reintroduction.",
+     1
+    ],
+    [
+     "Assume egg was the cause because the bleeding stopped",
+     "Bleeding in these infants often settles on its own; timing alone proves nothing.",
+     0
+    ],
+    [
+     "Keep both foods out of the mother's diet until the baby is 1 year old",
+     "Months of restriction with no proof.",
+     0
+    ],
+    [
+     "Repeat the biopsy",
+     "Histology cannot identify a food trigger.",
+     0
+    ]
+   ],
+   "a": "Egg and cow's milk were reintroduced at 4 months 5 days, about 10 days after the bleeding stopped. The bleeding did not come back, and had not returned at 11 months of age. Because removing cow's milk did not stop the bleeding and reintroducing egg did not restart it, the authors conclude this was not food protein-induced allergic proctocolitis.",
+   "g": [
+    "Gelsomino M et al. BMJ Case Rep 2021"
+   ],
+   "p": "No reintroduction, no diagnosis.",
+   "pre": {
+    "view": "inside",
+    "colour": "red",
+    "stool": "normal"
+   },
+   "fx": {
+    "ok": {
+     "cap": "Both foods return to the mother's diet and the stools stay clear.",
+     "set": {
+      "colour": "normal"
+     },
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "A food-allergy label sticks without proof.",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Next time",
+   "v": "Another exclusively breastfed 6-week-old has had small streaks of bright blood for 3 weeks. She is well and growing, with no fissure and no warning signs.",
+   "q": "What does this case suggest you do?",
+   "o": [
+    [
+     "Consider benign non-allergic proctocolitis: keep breastfeeding, wait at least 2 months before any elimination diet, and investigate only if warning signs appear",
+     "The authors' proposed approach for exactly this picture.",
+     1
+    ],
+    [
+     "Start a multi-food maternal elimination diet now",
+     "The approach this case argues against.",
+     0
+    ],
+    [
+     "Order allergy tests to guide the diet",
+     "Tests show sensitisation, not cause.",
+     0
+    ],
+    [
+     "Arrange endoscopy",
+     "Only if warning signs develop or bleeding persists beyond 1 year.",
+     0
+    ]
+   ],
+   "a": "The authors propose that non-allergic benign infantile proctocolitis should be the first diagnosis suspected when an infant is under 6 months old, the bleeding has lasted less than 2 months and is bright and small, there is no fissure, and the infant is healthy with no warning signs. They would then wait at least 2 months before any elimination diet, and investigate further only if warning signs appear or bleeding persists beyond 1 year. They cite the only randomised trial, in which eliminating trigger foods did not change the duration or severity of bleeding.",
+   "g": [
+    "Gelsomino M et al. BMJ Case Rep 2021"
+   ],
+   "p": "Name the benign option before reaching for a diet.",
+   "pre": {
+    "view": "outside",
+    "colour": "red"
+   },
+   "fx": {
+    "ok": {
+     "cap": "Breastfeeding protected; the diet stays unchanged.",
+     "set": {
+      "colour": "normal"
+     }
+    },
+    "bad": {
+     "cap": "Another mother starts an unnecessary diet.",
+     "kind": "warn"
+    }
+   }
+  }
+ ],
+ "refs": [
+  "Gelsomino M, Sinatti D, Miceli Sopo S. Non-allergic benign infantile proctocolitis: a neglected nosographic entity. BMJ Case Rep 2021;14:e244918",
+  "Vandenplas Y et al. J Pediatr Gastroenterol Nutr 2024;78:386-413"
+ ]
+}

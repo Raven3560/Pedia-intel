@@ -1,0 +1,197 @@
+/* Mediception theme: the same look as OrthoSim Atlas, in dark (default) and light.
+   Dark: deep navy page with teal and blue glows, glass cards. Light: pale blue-white page, white cards, navy ink.
+   Both: teal-to-blue primary buttons, gold accents, Inter for text and Outfit for headings.
+   Loads last and restyles the existing markup. The switch in the header (js/theme.js) sets <html data-theme>.
+   Delete this file's <link> to return to the previous look. */
+
+@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/Inter-400.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/Inter-700.woff2) format("woff2")}
+/* Outfit (SIL Open Font License): one variable file per script, weights 500 to 700 */
+@font-face{font-family:"Outfit";font-style:normal;font-weight:500 700;font-display:swap;src:url(../fonts/Outfit-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Outfit";font-style:normal;font-weight:500 700;font-display:swap;src:url(../fonts/Outfit-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* tokens, dark (the default). The specificity beats the light/dark blocks in styles.css and premium.css, so this file
+   alone decides the colours. The light block further down overrides only what changes. */
+html:root, html:root[data-theme]{
+  color-scheme:dark;
+  --m-navy:#050f24; --m-navy2:#0a1c3d; --m-navy3:#0f2a55; --m-blue:#1D4E9E; --m-teal:#1A8FB5; --m-teal2:#58c9ec;
+  --m-green:#62BB46; --m-gold:#e6c27a; --m-red:#e5636f; --m-sky:#9fd5ff;
+  --m-line:rgba(160,200,240,.14); --m-line2:rgba(160,200,240,.24);
+  --m-glass:rgba(10,28,62,.66); --m-glass2:rgba(14,36,76,.88);
+  --m-grad:linear-gradient(135deg,var(--m-teal),#2a6fd0);
+  --m-glow:0 10px 30px rgba(26,143,181,.35);
+  /* surfaces and ink that flip with the theme */
+  --m-page:var(--m-navy); --m-surf:var(--m-navy2);
+  --m-page-bg:radial-gradient(1200px 700px at 78% -10%,rgba(26,143,181,.22),transparent 60%),radial-gradient(900px 600px at -10% 20%,rgba(29,78,158,.28),transparent 60%),var(--m-navy);
+  --m-stage:radial-gradient(ellipse at 50% 40%,#173a72,#071631 75%);
+  --m-hdr:rgba(5,15,36,.72); --m-foot:rgba(3,10,26,.7);
+  --m-card:rgba(255,255,255,.035); --m-tint:rgba(255,255,255,.03); --m-tint-h:rgba(255,255,255,.06); --m-tint-2:rgba(255,255,255,.07);
+  --m-strong:#fff; --m-icon:#cfdcec; --m-on-gold:#1c1406;
+
+  --f-serif:"Outfit","Plus Jakarta Sans","Inter",system-ui,sans-serif;
+  --f-display:var(--f-serif); --f-lab-c:var(--f-serif);
+  --f-body:"Inter","Plus Jakarta Sans",system-ui,sans-serif; --f-lab:var(--f-body); --f-mono:var(--f-body); --f-lab-m:var(--f-body);
+
+  --bg:var(--m-navy); --bg-2:#0b1a36; --surface:#0c1f43; --paper:#0c1f43; --paper-2:#102853;
+  --line:var(--m-line); --rule:var(--m-line); --rule-red:rgba(229,99,111,.35); --ledge:#030a1a;
+  --ink:#edf3fb; --ink-lab:#edf3fb; --ink-2:#c9d7ea; --muted:#9fb3cc;
+  --lagoon:var(--m-teal2); --lagoon-ink:var(--m-sky); --lagoon-soft:#0f3456; --marigold:var(--m-gold); --clay:var(--m-red); --gold:var(--m-gold);
+  --calm:var(--m-teal2); --watch:var(--m-gold); --doctor:#f0956a; --urgent:var(--m-red);
+  --calm-bg:#0d3048; --watch-bg:#2e2a1c; --doctor-bg:#33211d; --urgent-bg:#3a1a26;
+  --tri-green:var(--m-green); --tri-amber:var(--m-gold); --tri-red:var(--m-red);
+  --stage-top:var(--m-navy3); --stage-bot:#071631;
+  /* --night and --glass stay dark in both themes: premium.css uses them for chips over pictures, with light text */
+  --night:var(--m-navy); --night-2:var(--m-navy2); --glass:rgba(10,28,62,.66); --glass-b:rgba(160,200,240,.24);
+  --g-fill:var(--surface); --g-fill-2:var(--paper-2); --g-brd:var(--m-line); --g-edge:var(--m-line2); --g-r:16px;
+  --sh-1:0 1px 0 rgba(255,255,255,.03) inset,0 12px 30px -16px rgba(0,0,0,.6); --sh-2:0 24px 60px rgba(0,0,0,.45);
+  --r-lg:20px; --r-md:14px; --r-sm:10px;
+}
+
+/* tokens, light. Accent colours are darker here so text keeps at least 4.5:1 contrast on the white cards. */
+html:root[data-theme="light"]{
+  color-scheme:light;
+  --m-teal2:#0a7396; --m-sky:#1d5fa8; --m-gold:#8f6418; --m-red:#c23a4a; --m-green:#327a20;
+  --m-line:rgba(15,42,85,.12); --m-line2:rgba(15,42,85,.2);
+  --m-glass:rgba(255,255,255,.8); --m-glass2:rgba(255,255,255,.94);
+  --m-glow:0 8px 22px rgba(26,143,181,.28);
+  --m-page:#f3f7fc; --m-surf:#ffffff;
+  --m-page-bg:radial-gradient(1200px 700px at 78% -10%,rgba(26,143,181,.13),transparent 60%),radial-gradient(900px 600px at -10% 20%,rgba(29,78,158,.10),transparent 60%),#f3f7fc;
+  --m-stage:radial-gradient(ellipse at 50% 40%,#ffffff,#d9e6f4 75%);
+  --m-hdr:rgba(255,255,255,.8); --m-foot:rgba(255,255,255,.72);
+  --m-card:rgba(255,255,255,.82); --m-tint:rgba(15,42,85,.035); --m-tint-h:rgba(15,42,85,.07); --m-tint-2:rgba(15,42,85,.08);
+  --m-strong:var(--ink); --m-icon:#33496b; --m-on-gold:#fff;
+
+  --bg:#f3f7fc; --bg-2:#e8eff8; --surface:#ffffff; --paper:#ffffff; --paper-2:#f2f6fb;
+  --rule-red:rgba(194,58,74,.3); --ledge:#c9d6e6;
+  --ink:#0a1c3d; --ink-lab:#0a1c3d; --ink-2:#3a4e6e; --muted:#566985;
+  --lagoon-soft:#dcecf6; --doctor:#b9532a;
+  --calm-bg:#dcf0f7; --watch-bg:#f8efdc; --doctor-bg:#fbe6dc; --urgent-bg:#fbe1e5;
+  --stage-top:#ffffff; --stage-bot:#dde9f5;
+  --sh-1:0 1px 2px rgba(10,28,61,.05),0 10px 26px -14px rgba(10,28,61,.18); --sh-2:0 2px 4px rgba(10,28,61,.05),0 24px 50px -22px rgba(10,28,61,.28);
+}
+
+html,body{background:var(--m-page)}
+body{color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.55;background:var(--m-page-bg);background-attachment:fixed}
+::selection{background:rgba(88,201,236,.3)}
+:focus-visible{outline:2px solid var(--m-teal2);outline-offset:2px}
+a{color:inherit}
+
+/* type: Outfit 600 headings like the Atlas */
+h1,h2,h3,h4,.lh h1,.intro h1,.kh h1,.adm h1,.cl-bar h2,.cc h3,.sheet-h h2,.dc-score b,.qcard h2,.lens-head h2,.cs-now h3.q,.lh-stats dd,.lh-steps b,.lab h1,.lab h2,.lab h3,.lab h4,.adm h2,.adm h3{font-family:var(--f-serif);font-weight:600;letter-spacing:-.01em}
+.lh h1,.intro h1,.kh h1,.adm h1{font-weight:600;letter-spacing:-.02em;line-height:1.04}
+.lh h1 em,.intro h1 em,.kh h1 em{font-style:normal;font-weight:600;background:linear-gradient(90deg,var(--m-teal2),var(--m-sky) 60%,var(--m-gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lab-k,.eyebrow,.cc-k,.lh-meta,.lh-stats dt,.mon-tag{font-family:var(--f-body);font-weight:600;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--m-teal2)}
+.lh .lab-k{color:var(--m-teal2)}
+.lh-steps b,.lh-stats dd{color:var(--m-gold)}
+.lh .sub,.wr-h p.sub,.intro p,.kh p{color:var(--ink-2)}
+
+/* header: glass bar with the Mediception logo (white wordmark on dark, navy wordmark on light) */
+.top{background:var(--m-hdr);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--m-line)}
+body::before{background:var(--m-page)}
+.brand{gap:14px;text-decoration:none}
+/* the logo files are pre-shrunk and sharpened to 48px and 96px tall (see srcset in the pages), so keep these heights */
+.brand img{height:48px;width:auto;display:block;flex:none}
+.brand .logo-l,html[data-theme="light"] .brand .logo-d{display:none}
+html[data-theme="light"] .brand .logo-l{display:block}
+.brand .wm{display:flex;flex-direction:column;gap:3px;min-width:0}
+.brand b{font-family:var(--f-serif);font-weight:700;font-size:18px;letter-spacing:.01em;color:var(--ink)}
+.brand b em{font-style:normal;color:var(--m-teal2)}
+.brand span{font-family:var(--f-body)!important;font-size:11px!important;font-weight:500!important;letter-spacing:.08em!important;text-transform:uppercase;color:var(--muted)!important;margin:0}
+.tabs,.seg{background:var(--m-tint);border:1px solid var(--m-line2);border-radius:999px;padding:4px}
+.tabs button,.seg button{color:var(--muted);font-weight:500}
+.tabs button:not([aria-pressed="true"]):hover,.seg button:not([aria-pressed="true"]):hover{color:var(--ink);background:var(--m-tint-h)}
+.tabs button[aria-pressed="true"]{background:var(--m-grad);color:#fff;box-shadow:var(--m-glow);font-weight:600}
+.seg button[aria-pressed="true"]{background:rgba(26,143,181,.25);color:var(--m-strong);box-shadow:inset 0 0 0 1px var(--m-teal)}
+.tab-hcp{background:rgba(230,194,122,.14);color:var(--m-gold);border:1px solid rgba(230,194,122,.4)}
+.tabs button[aria-pressed="true"] .tab-hcp{background:rgba(5,15,36,.35);color:#e6c27a;border-color:rgba(230,194,122,.5)}
+.iconbtn{background:var(--m-tint);border:1px solid var(--m-line2);color:var(--m-icon);border-radius:999px}
+.iconbtn:hover{color:var(--m-strong);background:var(--m-tint-h)}
+.bead i{background:var(--m-surf);border-color:var(--m-line2)}
+.bead.done i{background:var(--m-teal);border-color:var(--m-teal)}
+.bead.cur i{background:rgba(26,143,181,.3);border-color:var(--m-teal2)}
+
+/* light / dark switch (js/theme.js): sun on the left, moon on the right; the knob sits under the active one */
+.theme-sw{position:relative;display:inline-grid;grid-template-columns:30px 30px;align-items:center;justify-items:center;flex:none;height:34px;padding:2px;margin:0;border-radius:999px;border:1px solid var(--m-line2);background:var(--m-tint);color:var(--muted);cursor:pointer;font:inherit;-webkit-tap-highlight-color:transparent}
+.theme-sw:hover{background:var(--m-tint-h);color:var(--ink)}
+.theme-sw svg{position:relative;z-index:1;width:16px;height:16px;transition:color .25s}
+.theme-sw .ts-knob{position:absolute;top:2px;left:2px;width:30px;height:28px;border-radius:999px;background:var(--m-grad);box-shadow:var(--m-glow);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+.theme-sw[aria-checked="true"] .ts-knob{transform:translateX(30px)}
+.theme-sw[aria-checked="true"] .ts-moon,.theme-sw[aria-checked="false"] .ts-sun{color:#fff}
+@media (prefers-reduced-motion:reduce){ .theme-sw .ts-knob,.theme-sw svg{transition:none} }
+
+/* glass cards */
+.cc,.ws-d,.sheet,.panel,.qcard,.kf,.kopen,.adm-card,.adm-side,.sum,.rcard,.note{background:var(--m-card);border:1px solid var(--m-line);box-shadow:none;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+html[data-theme="light"] :is(.cc,.ws-d,.sheet,.panel,.qcard,.kf,.kopen,.adm-card,.adm-side,.sum,.rcard){box-shadow:var(--sh-1)}
+.cc:hover,.kopen:hover{border-color:var(--m-line2);box-shadow:var(--sh-2)}
+.cc::before{background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(88,201,236,.12),transparent 70%)}
+.cc-age{background:rgba(26,143,181,.18);color:var(--m-sky);border:1px solid rgba(88,201,236,.25)}
+.cc-new{background:var(--m-gold);color:var(--m-on-gold)}
+/* "Start case": a pill button at the foot of each case card (the whole card is the click target). It lifts with the
+   card on hover or keyboard focus. The gradient is a deeper cut of --m-grad so the white text keeps 5:1 contrast.
+   A finished case shows a quieter outlined pill ("Completed 3/4 · Retry"). */
+.cc-f{flex-direction:column;align-items:flex-start;gap:12px}
+.cc-go{display:inline-flex;align-items:center;justify-content:flex-start;gap:10px;width:auto;padding:6px 6px 6px 16px;border-radius:999px;background:linear-gradient(135deg,#0f7499,#2a63c4);color:#fff;font-size:14px;font-weight:600;letter-spacing:.005em;box-shadow:var(--m-glow);transition:filter .25s,box-shadow .25s}
+.cc-arr{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.2);line-height:1;transition:transform .25s cubic-bezier(.2,.8,.2,1),background .25s}
+.cc:hover .cc-go,.cc:focus-visible .cc-go{filter:brightness(1.1);box-shadow:0 12px 28px rgba(26,143,181,.45)}
+.cc:hover .cc-arr,.cc:focus-visible .cc-arr{transform:translateX(3px);background:rgba(255,255,255,.3)}
+.cc.done .cc-go{background:rgba(26,143,181,.1);color:var(--m-teal2);box-shadow:inset 0 0 0 1px rgba(26,143,181,.4)}
+.cc.done .cc-arr{background:rgba(26,143,181,.16)}
+@media (prefers-reduced-motion:reduce){ .cc-arr{transition:none} .cc:hover .cc-arr,.cc:focus-visible .cc-arr{transform:none} }
+.stage{background:var(--m-stage);border:1px solid var(--m-line2);box-shadow:var(--sh-2)}
+.census{background:var(--m-card);border-color:var(--m-line)}
+.census th{background:var(--m-tint)}
+.census tr.cr:hover{background:var(--m-tint-h)}
+.wr-h{border-bottom-color:var(--m-line2)}
+.chip,.st-say,.legend .chip,.hint{background:var(--m-glass);border-color:var(--m-line);color:var(--ink)}
+.band{background:var(--m-glass);border:1px solid var(--m-line)}
+
+/* buttons: teal-to-blue primary, ghost secondary, like the Atlas */
+.btn{border-radius:12px;font-weight:600}
+.btn.primary,.lab .act,.adm .act{background:var(--m-grad);color:#fff;border:0;border-radius:12px;box-shadow:var(--m-glow);font-weight:600}
+.lab .act:hover,.adm .act:hover,.btn.primary:hover{background:var(--m-grad);filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 14px 34px rgba(26,143,181,.45);color:#fff}
+.btn.ghost,.btn:not(.primary),.lab .act.sec,.adm .act.sec{background:var(--m-tint);color:var(--ink);box-shadow:inset 0 0 0 1px var(--m-line2);border-color:var(--m-line2)}
+.lab .act.sec:hover,.adm .act.sec:hover{background:var(--m-tint-2);box-shadow:inset 0 0 0 1px var(--m-teal2);filter:none}
+.lab .lnk,.open{color:var(--m-teal2)}
+.opt{background:var(--m-tint);border-color:var(--m-line2);box-shadow:none}
+.opt:hover{border-color:var(--m-teal)}
+.opt[aria-pressed="true"]{background:rgba(26,143,181,.22);border-color:var(--m-teal2);box-shadow:var(--m-glow)}
+.opt-ico{background:var(--m-surf);border-color:var(--m-line)}
+.opt[aria-pressed="true"] .opt-ico,.opt[aria-pressed="true"] .opt-check{background:var(--m-teal);border-color:var(--m-teal);color:#fff}
+.ord{background:var(--m-tint);border-color:var(--m-line2)}
+.ord:hover:not([disabled]){background:rgba(26,143,181,.14);border-color:var(--m-teal2)}
+.trail button,.presets button,.wr-f button{color:var(--muted)}
+.wr-f button[aria-pressed="true"]{color:var(--m-strong);border-color:var(--m-teal2)}
+
+/* Case lab hero picture: a navy (dark) or white (light) card instead of the old night photo frame */
+.h3-card{background:var(--m-surf);box-shadow:0 0 0 1px var(--m-line2),var(--sh-2)}
+.h3-chip,.h3-a{background:var(--m-glass2);color:var(--ink);border:1px solid var(--m-line2)}
+.h3-chip small{color:var(--muted)}
+.h3-b{background:var(--m-grad);color:#fff;box-shadow:var(--m-glow)}
+.h3-b:hover{background:var(--m-grad);filter:brightness(1.1)}
+.h3-hud .lh-live,.lh-live,.chip .live{background:var(--m-teal2)}
+.bedside{background:var(--m-surf);border:1px solid var(--m-line2);color:var(--ink);box-shadow:var(--sh-2)}
+.bedside .p3d{background:var(--m-stage)}
+.bedside .p3d .vseg button[aria-pressed="true"]{background:var(--m-grad);color:#fff}
+.bf-nap,.as-feed{background:var(--m-glass2);color:var(--ink);border:1px solid var(--m-line2)}
+/* the bedside monitor stays dark in both themes, like a real one */
+.monitor{background:#030a1a}
+.monitor .mon-tag{color:#58c9ec}
+
+/* forms (admin) */
+.adm input:not([type=radio]):not([type=checkbox]):not([type=range]),.adm textarea,.adm select{background:var(--m-tint);border-color:var(--m-line2);color:var(--ink);box-shadow:none}
+html[data-theme="light"] .adm :is(input:not([type=radio]):not([type=checkbox]):not([type=range]),textarea,select){background:#fff}
+.adm input:focus,.adm textarea:focus,.adm select:focus{border-color:var(--m-teal2);box-shadow:0 0 0 3px rgba(88,201,236,.2)}
+.drop{border-color:rgba(88,201,236,.45);background:var(--m-tint)}
+html[data-theme="light"] .drop{border-color:rgba(10,115,150,.4)}
+.drop svg{color:var(--m-teal2)}
+
+/* footer */
+footer{background:var(--m-foot);border-top:1px solid var(--m-line);color:var(--muted)}
+footer .ims{color:var(--m-gold)}
+.prev-bar{background:var(--m-glass2);color:var(--ink);border:1px solid var(--m-line2)}
+.prev-bar i{background:var(--m-gold)}
+
+@media (max-width:760px){ .brand img{height:38px} .brand{gap:10px} .brand b{font-size:15.5px} }
+@media (max-width:420px){ .brand img{height:34px} .brand{gap:8px} }
+@media (max-width:400px){ .brand .wm span{display:none} }
+@media print{ body{background:#fff;color:#000} }

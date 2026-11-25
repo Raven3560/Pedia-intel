@@ -1,0 +1,259 @@
+{
+ "id": "pale-yellow-stools",
+ "engine": "home",
+ "track": "liver",
+ "aud": [
+  "paed",
+  "diet"
+ ],
+ "level": "Core",
+ "min": 7,
+ "pub": {
+  "cite": "Couturier L, Jarvis C, Rousseau H, Jimenez V. Biliary atresia. Can Fam Physician 2015;61(11):965-8",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4642905/"
+ },
+ "title": "Persistent jaundice in a thriving infant",
+ "sub": "Biliary atresia diagnosed at 11 weeks after six professionals saw a well, growing baby",
+ "pt": {
+  "tag": "2 d to 11 wk",
+  "name": "Baby boy, Couturier 2015",
+  "line": "Term boy, 3.77 kg, breastfed, followed in a university family medicine unit. Mildly jaundiced on day 2."
+ },
+ "vitals": [
+  [
+   "Born",
+   "39+2 wk"
+  ],
+  [
+   "Weight",
+   "3.77 kg"
+  ],
+  [
+   "Feeding",
+   "Breastfed"
+  ]
+ ],
+ "scene": {
+  "view": "outside",
+  "jaundice": 0.35,
+  "colour": "normal",
+  "stool": "normal",
+  "hr": 140,
+  "temp": 36.8
+ },
+ "steps": [
+  {
+   "s": "Day 2",
+   "v": "Mild jaundice: total bilirubin 195 μmol/L, below the treatment threshold. The conjugated bilirubin is 9 μmol/L, slightly above the laboratory's normal range of 0 to 5. Weight loss is 4.8%. He is ready for discharge.",
+   "q": "What should happen to the conjugated bilirubin result?",
+   "o": [
+    [
+     "Make sure the abnormal result reaches the clinician who will follow him, and arrange a repeat conjugated bilirubin",
+     "An abnormal conjugated level needs an owner and a plan.",
+     1
+    ],
+    [
+     "Nothing: the total bilirubin is below the treatment line",
+     "Treatment nomograms ignore conjugated bilirubin; that is exactly how this result was lost.",
+     0
+    ],
+    [
+     "Start phototherapy before discharge",
+     "Phototherapy treats unconjugated bilirubin, not cholestasis.",
+     0
+    ],
+    [
+     "Advise the mother to stop breastfeeding for 48 hours",
+     "Unnecessary and harmful to breastfeeding.",
+     0
+    ]
+   ],
+   "a": "In this case no follow-up was requested for the raised conjugated level, the result was not sent to the mother or the community physician, and later clinicians were reassured by the mother's report that the bilirubin was normal. The authors point out that the nursery's jaundice guideline did not take conjugated bilirubin into account, and that early measurement of conjugated bilirubin can separate biliary atresia from benign breast milk jaundice.",
+   "g": [
+    "Couturier L et al. Biliary atresia. Can Fam Physician 2015"
+   ],
+   "p": "Every abnormal result needs a named person to act on it.",
+   "pre": {
+    "view": "outside",
+    "jaundice": 0.35,
+    "colour": "normal"
+   },
+   "fx": {
+    "ok": {
+     "cap": "The result has an owner and a repeat test is booked.",
+     "set": {
+      "jaundice": 0.3
+     }
+    },
+    "bad": {
+     "cap": "The one early clue leaves the hospital unseen.",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Day 45",
+   "v": "At day 41 the mother phoned about jaundice; the nurse noted good breastfeeding and soft yellow stools. At day 45 the sclerae and skin are yellow. He is gaining weight well and looks well, and breast milk jaundice is diagnosed, with review in a month.",
+   "q": "What should have happened at this visit?",
+   "o": [
+    [
+     "Jaundice beyond 2 weeks: measure total and conjugated bilirubin now and check the stool colour against a stool colour card",
+     "Prolonged jaundice needs a conjugated bilirubin, however well the baby looks.",
+     1
+    ],
+    [
+     "Reassure: a thriving baby cannot have liver disease",
+     "Babies with biliary atresia usually look well and grow normally early on.",
+     0
+    ],
+    [
+     "Review in a month if still yellow",
+     "A month is a long time when Kasai timing matters.",
+     0
+    ],
+    [
+     "Advise sunlight exposure",
+     "Not a treatment for cholestasis, and it delays diagnosis.",
+     0
+    ]
+   ],
+   "a": "Guidelines advise a conjugated (or direct) bilirubin in any infant still jaundiced after 2 weeks. The authors note that clinicians were reassured because the baby was thriving, and that several of them recorded the stools as 'yellow'; a stool colour card could have helped both professionals and parents recognise them as pale yellow, and therefore abnormal.",
+   "g": [
+    "Couturier L et al. Can Fam Physician 2015",
+    "Fawaz R et al. Guideline for the evaluation of cholestatic jaundice in infants: NASPGHAN and ESPGHAN. JPGN 2017",
+    "NICE CG98. Jaundice in newborn babies under 28 days (2010, updated 2023)"
+   ],
+   "p": "Thriving does not rule out cholestasis.",
+   "pre": {
+    "view": "outside",
+    "jaundice": 0.65,
+    "colour": "normal"
+   },
+   "fx": {
+    "ok": {
+     "cap": "Bloods today and a look at the stool colour card.",
+     "set": {
+      "view": "inside",
+      "colour": "pale",
+      "jaundice": 0.7
+     },
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "Another month passes.",
+     "set": {
+      "jaundice": 0.8
+     },
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Day 76",
+   "v": "Seen at a planned visit: normal development and weight gain, but marked jaundice, pale yellow stools, dark urine and an enlarged liver. Two days later: total bilirubin 169 μmol/L, conjugated 105 μmol/L, ALT 149 IU/L, AST 209 IU/L.",
+   "q": "What is the right next step?",
+   "o": [
+    [
+     "Same-day referral to the paediatric gastroenterology or hepatology team for urgent biliary atresia work-up",
+     "Conjugated hyperbilirubinaemia with pale stools is time-critical.",
+     1
+    ],
+    [
+     "Repeat the bloods in 2 weeks",
+     "Every week of delay worsens the outcome of a Kasai operation.",
+     0
+    ],
+    [
+     "Start ursodeoxycholic acid and review",
+     "Does not replace diagnosis and surgery.",
+     0
+    ],
+    [
+     "Switch to formula",
+     "Feeding is not the problem.",
+     0
+    ]
+   ],
+   "a": "The family physician discussed the results with the on-call paediatric gastroenterologist and sent the baby for urgent work-up, which confirmed biliary atresia. The Kasai portoenterostomy was done at 83 days, with marked fibrosis of the biliary remnants. The jaundice cleared over 3 to 4 weeks, but he had three episodes of cholangitis in the following months. Outcomes after Kasai are better when it is done earlier.",
+   "g": [
+    "Couturier L et al. Can Fam Physician 2015",
+    "Serinet MO et al. Impact of age at Kasai operation on its results in late childhood and adolescence. Pediatrics 2009"
+   ],
+   "p": "Pale stools plus conjugated jaundice: refer the same day.",
+   "pre": {
+    "view": "inside",
+    "jaundice": 0.85,
+    "colour": "pale",
+    "stool": "normal"
+   },
+   "fx": {
+    "ok": {
+     "cap": "Referred the same day; Kasai at 83 days.",
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "More fibrosis while the family waits.",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Fix the system",
+   "v": "In 3 months he was seen by three nurses and three physicians. The abnormal day-2 result was never passed on, and there was no stool colour card in use.",
+   "q": "Which change would most help catch the next baby earlier?",
+   "o": [
+    [
+     "Stool colour cards for parents and staff, a rule that prolonged jaundice triggers a conjugated bilirubin, and a way to send abnormal results to the family's own clinician",
+     "Addresses each failure in this case.",
+     1
+    ],
+    [
+     "Routine liver ultrasound for every newborn",
+     "Not an effective screening approach.",
+     0
+    ],
+    [
+     "More phototherapy in the nursery",
+     "Irrelevant to cholestasis.",
+     0
+    ],
+    [
+     "Leave it to parents to report jaundice",
+     "The mother did report it, twice.",
+     0
+    ]
+   ],
+   "a": "The authors attribute the delay to the rarity of the disease, no stool colour card screening, no institutional policy on following up neonatal jaundice, no electronic record, and fragmented care. Their unit has since trained staff to use stool colour charts. National stool colour card screening in Taiwan increased the proportion of babies having the Kasai operation before 60 days of age.",
+   "g": [
+    "Couturier L et al. Can Fam Physician 2015",
+    "Hsiao CH et al. Universal screening for biliary atresia using an infant stool color card in Taiwan. Hepatology 2008"
+   ],
+   "p": "Put a stool colour card in every discharge pack.",
+   "dp": "After Kasai, plan fat-soluble vitamins and energy-dense feeds with the hepatology team, and track growth closely.",
+   "pre": {
+    "view": "outside",
+    "jaundice": 0.4,
+    "colour": "normal"
+   },
+   "fx": {
+    "ok": {
+     "cap": "A card, a rule and a result that reaches the right person.",
+     "set": {
+      "jaundice": 0.2
+     }
+    },
+    "bad": {
+     "cap": "The same gaps remain for the next baby.",
+     "kind": "warn"
+    }
+   }
+  }
+ ],
+ "refs": [
+  "Couturier L, Jarvis C, Rousseau H, Jimenez V. Biliary atresia. Can Fam Physician 2015;61:965-8",
+  "Fawaz R et al. J Pediatr Gastroenterol Nutr 2017;64:154-68",
+  "NICE CG98",
+  "Serinet MO et al. Pediatrics 2009;123:1280-6",
+  "Hsiao CH et al. Hepatology 2008;47:1233-40"
+ ]
+}

@@ -1,0 +1,356 @@
+{
+ "id": "refeeding-after-sleeve-gastrectomy",
+ "engine": "adult",
+ "group": "adult",
+ "track": "maln",
+ "aud": [
+  "phys",
+  "diet"
+ ],
+ "level": "Advanced",
+ "min": 9,
+ "added": "2026-11-16",
+ "pub": {
+  "cite": "Tan Q et al. Dual Hepatic Injury from Refeeding Syndrome and Starvation in a Malnourished Woman After Bariatric Surgery: A Case Report. Am J Case Rep 2024;25:e944088",
+  "url": "https://doi.org/10.12659/AJCR.944088"
+ },
+ "title": "Severe weight loss one year after bariatric surgery",
+ "sub": "Refeeding syndrome followed by starvation-related liver injury after sleeve gastrectomy",
+ "pt": {
+  "tag": "27 y",
+  "name": "Woman, Tan 2024",
+  "line": "Sleeve gastrectomy a year earlier at 105 kg (BMI 37.2 kg/m2). Since surgery her intake has fallen sharply, with vomiting after high-protein foods and occasional self-induced vomiting. She has eaten about 400 kcal/day for several months and has had amenorrhoea for 9 months."
+ },
+ "vitals": [
+  [
+   "Age",
+   "27 y"
+  ],
+  [
+   "Weight",
+   "33 kg"
+  ],
+  [
+   "BMI",
+   "12.4"
+  ]
+ ],
+ "scene": {
+  "view": "outside",
+  "build": "adult",
+  "muscle": 0.3,
+  "fat": 0.1,
+  "oedema": 0,
+  "pallor": 0.3,
+  "stress": 0.4,
+  "weak": 0.5,
+  "feeding": "oral",
+  "fill": 0.1,
+  "distension": 0,
+  "hr": 60,
+  "spo2": 97,
+  "temp": 36.2,
+  "alarm": false
+ },
+ "steps": [
+  {
+   "s": "Admission",
+   "v": "Weight 33 kg, BMI 12.4 kg/m2. Electrolytes are normal. Fasting glucose is 3.2 mmol/L, AST 135 U/L, ALT 127 U/L and gamma-glutamyltransferase 187 U/L. Thyroid tests show a low T3 and T4 pattern, and gonadotrophins and sex hormones are very low. Echocardiography shows a mild to moderate pericardial effusion. She has been taking vitamin D, calcium and a multivitamin.",
+   "q": "How should nutrition support be started?",
+   "o": [
+    [
+     "Treat as very high refeeding risk: give thiamine and a multivitamin before and during feeding, start at a low energy rate and build up over days, supplement phosphate, potassium and magnesium unless levels are high, and check electrolytes and clinical status daily",
+     "BMI is far below 16 kg/m2 and intake has been negligible for months; normal electrolytes before feeding do not lower the risk.",
+     1
+    ],
+    [
+     "Electrolytes are normal, so start full requirements at 30 kcal/kg/day",
+     "Serum levels can stay normal in starvation while body stores are depleted; full feeding risks refeeding syndrome.",
+     0
+    ],
+    [
+     "Withhold nutrition until the liver enzymes are normal",
+     "Raised transaminases are common in starvation itself and improve with careful feeding, not without it.",
+     0
+    ],
+    [
+     "Correct the low glucose with a high-rate dextrose infusion, then start full feeds",
+     "A large carbohydrate load is the trigger for refeeding syndrome and raises thiamine demand.",
+     0
+    ]
+   ],
+   "a": "The team started 600 kcal/day (18 kcal/kg/day) as enteral nutrition plus diet. NICE CG32 classes anyone with BMI under 16 kg/m2 as high risk and advises considering a start at a maximum of 10 kcal/kg/day, and only 5 kcal/kg/day in extreme cases such as BMI under 14 kg/m2, increasing to meet or exceed full needs by 4 to 7 days. It advises thiamine 200 to 300 mg daily with a multivitamin immediately before and during the first 10 days of feeding, and potassium, phosphate and magnesium supplements unless pre-feeding levels are high. The paper does not report whether thiamine or phosphate was given before feeding began.",
+   "g": [
+    "Tan Q et al. Am J Case Rep 2024",
+    "NICE CG32. Nutrition support for adults: oral nutrition support, enteral tube feeding and parenteral nutrition. 2006, updated 2017"
+   ],
+   "p": "Normal electrolytes before feeding do not mean low refeeding risk.",
+   "dp": "NICE CG32 likely daily requirements during early refeeding: potassium 2 to 4 mmol/kg, phosphate 0.3 to 0.6 mmol/kg and magnesium 0.2 mmol/kg intravenously or 0.4 mmol/kg orally. At 33 kg, 5 to 10 kcal/kg/day is about 165 to 330 kcal/day (calculated here). Count every source of energy, including intravenous glucose.",
+   "pre": {
+    "view": "outside",
+    "muscle": 0.3,
+    "fat": 0.1,
+    "pallor": 0.3,
+    "stress": 0.4,
+    "weak": 0.5,
+    "feeding": "oral",
+    "fill": 0.1,
+    "hr": 60
+   },
+   "fx": {
+    "ok": {
+     "cap": "Vitamins first, a cautious start, electrolytes covered and checked daily.",
+     "set": {
+      "view": "inside",
+      "feeding": "ons",
+      "fill": 0.25,
+      "stress": 0.3
+     },
+     "hl": "stomach"
+    },
+    "bad": {
+     "cap": "A fast start: phosphate is pulled into cells and falls.",
+     "set": {
+      "view": "inside",
+      "feeding": "ons",
+      "fill": 0.7,
+      "stress": 0.7,
+      "oedema": 0.3,
+      "hr": 104,
+      "alarm": true
+     },
+     "hl": "heart",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Day 10 of feeding",
+   "v": "Weight has risen from 33 kg to 34 kg. AST is 1,419 U/L and ALT 334 U/L. Phosphate has fallen from 1.04 to 0.63 mmol/L; potassium, sodium, calcium and magnesium are normal. She is very tired, haemoglobin and albumin are falling, and she bruises at puncture sites, with a prolonged thrombin time and INR and low fibrinogen.",
+   "q": "What is the most likely explanation, and what should be done?",
+   "o": [
+    [
+     "Refeeding syndrome with liver involvement: reduce energy intake for a short period, replace phosphate, give thiamine and other vitamins, and monitor closely",
+     "Hypophosphataemia with weight gain soon after feeding began is the signature of refeeding syndrome.",
+     1
+    ],
+    [
+     "Viral hepatitis: stop all nutrition and isolate her",
+     "Hepatitis does not explain the fall in phosphate, and stopping nutrition deepens starvation.",
+     0
+    ],
+    [
+     "Liver injury from her vitamin supplements: stop all vitamins",
+     "Vitamins, especially thiamine, are part of the treatment of refeeding syndrome.",
+     0
+    ],
+    [
+     "Not enough energy is reaching the liver: double the feed rate today",
+     "With phosphate falling, a rapid increase risks worsening refeeding syndrome.",
+     0
+    ]
+   ],
+   "a": "The team diagnosed refeeding syndrome on the unexplained rise in liver enzymes with hypophosphataemia after feeding began. They cut intake to 300 kcal/day (9 kcal/kg/day) as limited intravenous glucose and enteral nutrition, and gave phosphate, vitamin B and vitamin D continuously. Two days later AST had fallen to 789 U/L. The ASPEN consensus grades refeeding syndrome by the fall in phosphate, potassium or magnesium: 10% to 20% mild, 20% to 30% moderate, and over 30% or organ dysfunction severe, occurring within 5 days of reintroducing calories. Her phosphate fell by about 39% (calculated here), although it was documented on day 10. Tests for autoimmune and viral hepatitis were negative.",
+   "g": [
+    "Tan Q et al. Am J Case Rep 2024",
+    "da Silva JSV et al. ASPEN consensus recommendations for refeeding syndrome. Nutr Clin Pract 2020",
+    "NICE CG32. Nutrition support for adults. 2006, updated 2017"
+   ],
+   "p": "Phosphate falling after feeding starts: think refeeding before anything else.",
+   "pre": {
+    "view": "inside",
+    "muscle": 0.3,
+    "fat": 0.1,
+    "pallor": 0.5,
+    "stress": 0.7,
+    "weak": 0.7,
+    "feeding": "ons",
+    "fill": 0.5,
+    "oedema": 0.1,
+    "hr": 96,
+    "alarm": true
+   },
+   "fx": {
+    "ok": {
+     "cap": "Energy reduced for now, phosphate and vitamins given: enzymes start to fall.",
+     "set": {
+      "fill": 0.2,
+      "stress": 0.5,
+      "hr": 84,
+      "alarm": false
+     },
+     "hl": "liver"
+    },
+    "bad": {
+     "cap": "The cause is missed and phosphate keeps falling.",
+     "set": {
+      "stress": 0.9,
+      "weak": 0.85,
+      "hr": 110,
+      "alarm": true
+     },
+     "hl": "liver",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Six days into calorie restriction",
+   "v": "After the early improvement, AST climbs again to 1,216 U/L. Fatigue and weakness are worse, with leg oedema, abdominal distension and moderate ascites on ultrasound. Weight has fallen from 34 kg to 32 kg, albumin to 29.2 g/L and haemoglobin to 77 g/L, with no sign of bleeding. Phosphate stays low despite replacement. Ultrasound and elastography show no fatty liver.",
+   "q": "What should happen to her feeding now?",
+   "o": [
+    [
+     "Recognise starvation-related injury from prolonged restriction: increase energy again in careful steps, continue phosphate, iron and vitamins, and keep monitoring daily",
+     "Falling weight, albumin and haemoglobin with a non-fatty liver point to starvation rather than ongoing refeeding injury.",
+     1
+    ],
+    [
+     "Restrict energy further until the enzymes fall",
+     "Further restriction is what is now driving the injury.",
+     0
+    ],
+    [
+     "Treat as autoimmune hepatitis with corticosteroids",
+     "Autoimmune and viral markers were negative, and the course follows the changes in energy intake.",
+     0
+    ],
+    [
+     "Hold 9 kcal/kg/day and treat the oedema with albumin infusions and diuretics",
+     "This treats a sign and leaves the cause, inadequate energy, in place.",
+     0
+    ]
+   ],
+   "a": "The team concluded that she had starvation-induced injury (liver damage, severe hypoalbuminaemia and anaemia) from calorie restriction that was too strict. From day 21 they reintroduced nutrition at 700 to 800 kcal/day (22 to 25 kcal/kg/day) with continued phosphate, iron and vitamins. Weight rose, fatigue eased and AST fell from 1,216 to 98 U/L by day 38. The authors separate the two injuries by three features: hypophosphataemia (refeeding), the direction of body weight after feeding starts, and liver imaging (an enlarged fatty liver in refeeding, a near-normal liver in starvation). They add that a sharp fall in haemoglobin and albumin favoured starvation in this patient. NICE frames the low starting rate as a short phase, with intake built up to meet or exceed full needs by 4 to 7 days.",
+   "g": [
+    "Tan Q et al. Am J Case Rep 2024",
+    "NICE CG32. Nutrition support for adults. 2006, updated 2017"
+   ],
+   "p": "Calorie restriction for refeeding syndrome is a brief pause, not a new target.",
+   "dp": "When energy is cut for refeeding syndrome, write the review date and the planned step-up on the same prescription. Track weight, phosphate, transaminases, albumin and haemoglobin together: enzymes that rise while weight falls suggest too little energy, not too much.",
+   "pre": {
+    "view": "inside",
+    "muscle": 0.27,
+    "fat": 0.08,
+    "pallor": 0.7,
+    "oedema": 0.5,
+    "distension": 0.5,
+    "stress": 0.8,
+    "weak": 0.85,
+    "feeding": "ons",
+    "fill": 0.1,
+    "hr": 92,
+    "alarm": true
+   },
+   "fx": {
+    "ok": {
+     "cap": "Energy stepped up with cover: weight rises and the enzymes fall.",
+     "set": {
+      "fill": 0.4,
+      "stress": 0.4,
+      "oedema": 0.25,
+      "distension": 0.25,
+      "weak": 0.6,
+      "hr": 80,
+      "alarm": false
+     },
+     "hl": "liver"
+    },
+    "bad": {
+     "cap": "Starvation continues: the liver, albumin and haemoglobin worsen.",
+     "set": {
+      "muscle": 0.22,
+      "pallor": 0.85,
+      "oedema": 0.7,
+      "distension": 0.7,
+      "stress": 1,
+      "weak": 1,
+      "hr": 100,
+      "alarm": true
+     },
+     "hl": "liver",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Discharge on day 38",
+   "v": "AST is 98 U/L and ALT 105 U/L. She is gaining weight, and the fatigue has largely gone.",
+   "q": "What should the plan after discharge include?",
+   "o": [
+    [
+     "A stepwise increase in energy intake with dietitian follow-up, continued vitamin and mineral supplements with blood monitoring, a weight-gain target, and psychological and bariatric team review of her eating and vomiting",
+     "Her malnutrition arose from an eating disorder after surgery; nutrition alone will not prevent relapse.",
+     1
+    ],
+    [
+     "No follow-up: the liver enzymes are nearly normal",
+     "She is still severely underweight, and the eating pattern that caused this is unchanged.",
+     0
+    ],
+    [
+     "Rapid catch-up at home on 3,000 kcal/day",
+     "A sudden large increase without monitoring risks refeeding problems again.",
+     0
+    ],
+    [
+     "Reassure her that vomiting after meals is expected after sleeve gastrectomy",
+     "Persistent vomiting with extreme weight loss needs nutritional, psychological and surgical assessment.",
+     0
+    ]
+   ],
+   "a": "She kept an intake of 800 to 1,000 kcal/day after discharge. At one month she had gained 4 kg, haemoglobin had risen from 77 to 99 g/L, albumin from 28.8 to 36 g/L, and liver enzymes were near normal (AST 64 U/L, ALT 45 U/L). The authors advise that excessive early weight loss after bariatric surgery should prompt nutritional, psychological or further surgical intervention, and cite a recommended weight gain of 0.5 to 1.5 kg a week during nutritional rehabilitation. The paper does not describe the longer-term plan or her eating-disorder care in detail.",
+   "g": [
+    "Tan Q et al. Am J Case Rep 2024",
+    "NICE CG32. Nutrition support for adults. 2006, updated 2017"
+   ],
+   "p": "Treat the cause of the starvation as well as the starvation.",
+   "dp": "At discharge weight, 800 to 1,000 kcal/day is roughly 24 to 30 kcal/kg/day (calculated here). Agree the next energy step, a weekly weight target and the dates for phosphate, liver tests, full blood count and micronutrient checks.",
+   "pre": {
+    "view": "outside",
+    "muscle": 0.32,
+    "fat": 0.12,
+    "pallor": 0.5,
+    "oedema": 0.15,
+    "distension": 0.1,
+    "stress": 0.3,
+    "weak": 0.5,
+    "feeding": "ons",
+    "fill": 0.4,
+    "hr": 76,
+    "spo2": 98,
+    "alarm": false
+   },
+   "fx": {
+    "ok": {
+     "cap": "Home with a stepped plan and a team: 4 kg gained at one month.",
+     "set": {
+      "muscle": 0.4,
+      "fat": 0.2,
+      "pallor": 0.3,
+      "oedema": 0,
+      "distension": 0,
+      "stress": 0.15,
+      "weak": 0.35
+     },
+     "hl": "liver"
+    },
+    "bad": {
+     "cap": "Without follow-up the pattern that led to admission returns.",
+     "set": {
+      "muscle": 0.28,
+      "fat": 0.08,
+      "stress": 0.6,
+      "weak": 0.7
+     },
+     "hl": "stomach",
+     "kind": "warn"
+    }
+   }
+  }
+ ],
+ "refs": [
+  "Tan Q et al. Dual Hepatic Injury from Refeeding Syndrome and Starvation in a Malnourished Woman After Bariatric Surgery: A Case Report. Am J Case Rep 2024;25:e944088",
+  "NICE CG32. Nutrition support for adults: oral nutrition support, enteral tube feeding and parenteral nutrition. National Institute for Health and Care Excellence, 2006 (updated 2017)",
+  "da Silva JSV et al. ASPEN Consensus Recommendations for Refeeding Syndrome. Nutr Clin Pract 2020;35(2):178-195"
+ ]
+}

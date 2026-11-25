@@ -350,3 +350,25 @@ var CASES = [
   ],
   refs: ["Alvarez-Lopez O, Hernandez-Lopez K, Castañeda JA, Herrera EN. Second-look surgery for intestinal salvage in a neonate with midgut volvulus and intestinal malrotation: a case report. Cureus 2025;17:e88600", "Langer JC. Surg Clin North Am 2017;97:147-59"] }
 ];
+
+/* v11: topics for patients beyond infancy, and the reference-link table (shared by the app and the case admin page) */
+Object.assign(CASE_TRACKS,{ sarc:{name:"Sarcopenia and muscle",color:"#C2553F"}, maln:{name:"Malnutrition and refeeding",color:"#B98A2E"}, onc:{name:"Cancer and cachexia",color:"#7C5CDB"}, obes:{name:"Obesity and body composition",color:"#2F80ED"}, gi:{name:"Gut and absorption",color:"#178E80"} });
+var REFLINKS=[
+  [/Benninga|Rome IV/,"https://doi.org/10.1053/j.gastro.2016.02.016"],[/Freedman/,"https://doi.org/10.1542/peds.2008-0113"],
+  [/Biagioli/,"https://doi.org/10.1002/14651858.CD009999.pub2"],[/Sung V/,"https://doi.org/10.1542/peds.2017-1811"],
+  [/NG143/,"https://www.nice.org.uk/guidance/ng143"],[/CG192/,"https://www.nice.org.uk/guidance/cg192"],[/CG98/,"https://www.nice.org.uk/guidance/cg98"],
+  [/Barr RG/,"https://doi.org/10.1503/cmaj.081419"],[/Rosen/,"https://doi.org/10.1097/MPG.0000000000001889"],
+  [/Vandenplas/,"https://doi.org/10.1097/MPG.0000000000003897"],[/Langer/,"https://doi.org/10.1016/j.suc.2016.08.011"],
+  [/Fawaz/,"https://doi.org/10.1097/MPG.0000000000001334"],[/Serinet/,"https://doi.org/10.1542/peds.2008-1949"],
+  [/Hsiao/,"https://doi.org/10.1002/hep.22182"],[/Mouzaki/,"https://doi.org/10.1097/MPG.0000000000002443"],
+  [/Parker LA/,"https://doi.org/10.1001/jamapediatrics.2019.0800"],[/Walsh MC/,"https://doi.org/10.1016/S0031-3955(16)34975-6"],
+  [/Neu J/,"https://doi.org/10.1056/NEJMra1005408"],[/Quigley/,"https://doi.org/10.1002/14651858.CD002971.pub5"],
+  [/Embleton/,"https://doi.org/10.1097/MPG.0000000000003642"],[/Tabbers/,"https://doi.org/10.1097/MPG.0000000000000266"],
+  [/Lu Y|Lu and Zhang/,"https://doi.org/10.21037/tp-21-9"],[/Cendal/,"https://doi.org/10.3389/fped.2021.758006"],
+  [/Das SK/,"https://doi.org/10.1186/s13256-015-0611-y"],[/Nowak-W/,"https://doi.org/10.1016/j.jaci.2016.12.966"],
+  [/Wedenoja/,"https://doi.org/10.1111/j.1365-2036.2009.04197.x"],
+  [/Couturier/,"https://pmc.ncbi.nlm.nih.gov/articles/PMC4642905/"],[/Gelsomino/,"https://doi.org/10.1136/bcr-2021-244918"],
+  [/Alvarez-Lopez/,"https://doi.org/10.7759/cureus.88600"],
+  [/WHO\/UNICEF|WHO\/Unicef|zinc statement/i,"https://www.who.int/publications/i/item/WHO_FCH_CAH_04.7"],
+  [/WHO/,"https://www.who.int/publications/i/item/9241593180"]
+];

@@ -1,0 +1,276 @@
+{
+ "id": "volvulus-second-look",
+ "engine": "home",
+ "track": "surg",
+ "aud": [
+  "paed"
+ ],
+ "level": "Advanced",
+ "min": 6,
+ "pub": {
+  "cite": "Alvarez-Lopez O, Hernandez-Lopez K, Castañeda JA, Herrera EN. Second-look surgery for intestinal salvage in a neonate with midgut volvulus and intestinal malrotation: a case report. Cureus 2025;17(7):e88600",
+  "url": "https://doi.org/10.7759/cureus.88600"
+ },
+ "title": "Bilious vomiting on day 5",
+ "sub": "Midgut volvulus with ischaemic bowel saved by a second-look operation",
+ "pt": {
+  "tag": "Day 5",
+  "name": "Baby girl, Alvarez-Lopez 2025",
+  "line": "Five-day-old girl with bilious vomiting, a distended abdomen and no stool for 48 hours."
+ },
+ "vitals": [
+  [
+   "Age",
+   "Day 5"
+  ],
+  [
+   "WBC",
+   "14,000/μL"
+  ],
+  [
+   "Stool",
+   "None 48 h"
+  ]
+ ],
+ "scene": {
+  "view": "outside",
+  "spit": 2,
+  "spitCol": "bile",
+  "distension": 0.45,
+  "stress": 0.55,
+  "hr": 168,
+  "temp": 36.9
+ },
+ "steps": [
+  {
+   "s": "Emergency department",
+   "v": "Bilious vomiting, abdominal distension and no stool for 48 hours. Vital signs are normal for age. White cell count 14,000/μL. The abdominal X-ray shows no distal gas. There is no peritonism.",
+   "q": "What is the next step?",
+   "o": [
+    [
+     "Treat as midgut volvulus: stop feeds, decompress the stomach, give IV fluids and go for urgent surgical exploration",
+     "Bilious vomiting is a surgical emergency, and exploration should not wait for imaging to confirm volvulus.",
+     1
+    ],
+    [
+     "Book a contrast study for the next morning",
+     "Waiting risks bowel necrosis.",
+     0
+    ],
+    [
+     "Ultrasound, and discharge if there is no whirlpool sign",
+     "The whirlpool sign is present in only about 64% of cases.",
+     0
+    ],
+    [
+     "Offer small feeds and observe",
+     "Feeding a possibly twisted bowel is dangerous.",
+     0
+    ]
+   ],
+   "a": "Midgut volvulus most often presents with sudden bilious vomiting between the third and fifth day of life and is a surgical emergency until proven otherwise. The authors note that when volvulus is suspected, urgent exploration should go ahead even without radiographic confirmation, to avoid massive resections and short bowel syndrome. Here the plain X-ray showing obstruction prompted exploratory laparotomy.",
+   "g": [
+    "Alvarez-Lopez O et al. Second-look surgery for intestinal salvage in a neonate with midgut volvulus. Cureus 2025",
+    "Langer JC. Intestinal rotation abnormalities and midgut volvulus. Surg Clin North Am 2017"
+   ],
+   "p": "Green vomit: theatre first, pictures later if needed.",
+   "pre": {
+    "view": "outside",
+    "spit": 2,
+    "spitCol": "bile",
+    "distension": 0.45,
+    "stress": 0.55,
+    "hr": 168
+   },
+   "fx": {
+    "ok": {
+     "cap": "Feeds stopped, stomach decompressed, straight to theatre.",
+     "set": {
+      "view": "inside",
+      "spit": 0,
+      "fill": 0.05,
+      "dusky": 0.7
+     },
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "The twisted bowel loses its blood supply while she waits.",
+     "set": {
+      "view": "inside",
+      "dusky": 1,
+      "distension": 0.8,
+      "stress": 0.85,
+      "hr": 186
+     },
+     "hl": "gut",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "First laparotomy",
+   "v": "The small bowel is twisted around its mesentery. After detorsion the loops are ischaemic throughout. Ladd's bands are divided and the mesentery is broadened, but the ischaemic changes persist.",
+   "q": "What should the surgeons do now?",
+   "o": [
+    [
+     "Avoid resecting bowel of doubtful viability, and plan a second-look laparotomy in 48 hours",
+     "Bowel that looks ischaemic after detorsion often recovers.",
+     1
+    ],
+    [
+     "Resect all the ischaemic small bowel now",
+     "Risks an avoidable short bowel syndrome.",
+     0
+    ],
+    [
+     "Close and plan no further operation",
+     "Loses the chance to check viability and finish the repair.",
+     0
+    ],
+    [
+     "Twist the bowel back to its original position",
+     "Detorsion is the treatment.",
+     0
+    ]
+   ],
+   "a": "A second-look operation was planned at 48 hours to complete the Ladd procedure and reassess viability. The authors explain that bowel often looks congested and ischaemic after detorsion but recovers with time, so the resection needed may be smaller than first estimated; second-look surgery has been used to save bowel in such cases.",
+   "g": [
+    "Alvarez-Lopez O et al. Cureus 2025"
+   ],
+   "p": "When viability is in doubt, wait and look again.",
+   "pre": {
+    "view": "inside",
+    "dusky": 0.8,
+    "distension": 0.35,
+    "stress": 0.4,
+    "hr": 160,
+    "spit": 0
+   },
+   "fx": {
+    "ok": {
+     "cap": "Doubtful bowel kept; second look in 48 hours.",
+     "set": {
+      "dusky": 0.6
+     },
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "Bowel that might have recovered is removed.",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Second look",
+   "v": "At 48 hours the small bowel is pink and viable throughout. The Ladd procedure is completed with an appendectomy, and no resection is needed.",
+   "q": "Which steps make up the Ladd procedure?",
+   "o": [
+    [
+     "Counter-clockwise detorsion, division of Ladd's bands, broadening of the mesenteric base, small bowel placed to the right and colon to the left, usually with appendectomy",
+     "The surgical principles described in the case.",
+     1
+    ],
+    [
+     "Detorsion and suturing the bowel to the abdominal wall only",
+     "Not the Ladd procedure.",
+     0
+    ],
+    [
+     "Resection of the caecum",
+     "Not part of the procedure.",
+     0
+    ],
+    [
+     "Gastrostomy alone",
+     "Does not treat malrotation.",
+     0
+    ]
+   ],
+   "a": "The authors list the Ladd principles as counter-clockwise detorsion, division of Ladd's bands, broadening of the mesenteric root, placing the small intestine on the right and the colon on the left, and usually appendectomy, with bowel viability checked after detorsion and at the end of the operation.",
+   "g": [
+    "Alvarez-Lopez O et al. Cureus 2025"
+   ],
+   "p": "Check viability twice: after detorsion and before closing.",
+   "pre": {
+    "view": "inside",
+    "dusky": 0.2,
+    "distension": 0.15,
+    "stress": 0.25,
+    "hr": 150
+   },
+   "fx": {
+    "ok": {
+     "cap": "Healthy pink bowel, nothing removed.",
+     "set": {
+      "dusky": 0,
+      "distension": 0
+     },
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "An incomplete repair.",
+     "kind": "warn"
+    }
+   }
+  },
+  {
+   "s": "Why it mattered",
+   "v": "She restarts oral feeds on day 6 after surgery, goes home on day 7, and is well at 7 months.",
+   "q": "What complication did keeping the bowel most likely prevent?",
+   "o": [
+    [
+     "Short bowel syndrome and intestinal failure from a large resection",
+     "The main long-term harm of massive bowel loss.",
+     1
+    ],
+    [
+     "Pyloric stenosis",
+     "Unrelated.",
+     0
+    ],
+    [
+     "Cow's milk allergy",
+     "Unrelated.",
+     0
+    ],
+    [
+     "Gastro-oesophageal reflux disease",
+     "Not the main risk here.",
+     0
+    ]
+   ],
+   "a": "Feeds restarted on postoperative day 6, she was discharged on day 7, and there were no complications at 7 months. The authors stress that second-look surgery can prevent irreversible necrosis and extensive resection, and that short bowel syndrome is a leading cause of morbidity and mortality in these infants.",
+   "g": [
+    "Alvarez-Lopez O et al. Cureus 2025"
+   ],
+   "p": "Every centimetre of bowel saved is future nutrition.",
+   "dp": "After a long ischaemic insult, restart feeds gradually with human milk where available and watch tolerance and growth.",
+   "pre": {
+    "view": "outside",
+    "dusky": 0,
+    "distension": 0,
+    "stress": 0.05,
+    "hr": 136,
+    "spit": 0,
+    "feeding": true,
+    "fill": 0.4
+   },
+   "fx": {
+    "ok": {
+     "cap": "Home on day 7, well at 7 months.",
+     "set": {
+      "stress": 0
+     }
+    },
+    "bad": {
+     "cap": "Short bowel syndrome is the harm second-look surgery aims to prevent.",
+     "kind": "warn"
+    }
+   }
+  }
+ ],
+ "refs": [
+  "Alvarez-Lopez O, Hernandez-Lopez K, Castañeda JA, Herrera EN. Second-look surgery for intestinal salvage in a neonate with midgut volvulus and intestinal malrotation: a case report. Cureus 2025;17:e88600",
+  "Langer JC. Surg Clin North Am 2017;97:147-59"
+ ]
+}

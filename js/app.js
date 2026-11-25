@@ -159,7 +159,7 @@ const TOPIC_ICON = {cry:"cry",gas:"gas",stool:"stool",colour:"colour",spit:"spit
 const TOPIC_VAL = (b,a)=>a[b.q];
 
 /* ---------- state ---------- */
-let ans = {}, step = 0, view = "q", lens = false;
+let ans = {}, step = 0, view = "q", lens = true; document.body.classList.add("lens-on");
 const $ = (s,r=document)=>r.querySelector(s);
 const rail = $("#rail"), beads = $("#beads"), say = $("#say"), legend = $("#legend");
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -327,7 +327,7 @@ const MODS = [
   {id:"M5b",label:"Vomiting and GERD",from:[6],on:a=>a.spit==="vomit",hot:a=>a.spit==="vomit"},
   {id:"M6",label:"Food allergy watch-list",from:[7],on:a=>a.allergy==="yes"}
 ];
-function renderMap(){
+function renderMap(){ if(!$("#map")) return;
   const W=560, rowQ=44, H=8*rowQ+8, rowM=(H-8)/MODS.length;
   const qy=i=>8+i*rowQ, my=j=>8+j*rowM;
   let edges="", nodes="";
@@ -341,7 +341,7 @@ function renderMap(){
   $("#map").innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Logic map from 8 questions to content modules, with this path's modules highlighted">${edges}${nodes}</svg>`;
 }
 const trunc=(s,n)=>s.length>n?s.slice(0,n-1)+"…":s;
-function renderPath(){
+function renderPath(){ if(!$("#pathPanel")) return;
   const done = Q.every(q=>ans[q.id]);
   let idx=0; Q.forEach(q=>{ idx = idx*q.opts.length + Math.max(0,q.opts.findIndex(o=>o.v===ans[q.id])); });
   const total = Q.reduce((p,q)=>p*q.opts.length,1);
@@ -360,7 +360,7 @@ const PRESETS = [
   {n:"Colic pattern, allergy history",c:"M1 + M2 + M5a + M6",a:{age:"3-4w",feed:"breast",cry:"long",gas:"painful",stool:"normal",colour:"normal",spit:"often",allergy:"yes"}},
   {n:"Vomiting with watery stools",c:"M3b + M5b",a:{age:"4-6m",feed:"formula",cry:"often",gas:"none",stool:"watery",colour:"normal",spit:"vomit",allergy:"no"}}
 ];
-function renderPresets(){
+function renderPresets(){ if(!$("#presets")) return;
   $("#presets").innerHTML = PRESETS.map((p,i)=>`<button type="button" data-i="${i}">${p.n}<small>${p.c}</small></button>`).join("");
   $("#presets").querySelectorAll("button").forEach(b=>b.onclick=()=>{
     ans={...PRESETS[+b.dataset.i].a};
@@ -379,20 +379,16 @@ function restartCheck(msg){
 function setLens(on){
   const changed = on!==lens;
   lens=on; document.body.classList.toggle("lens-on",on);
-  $("#vParent").setAttribute("aria-pressed",!on); $("#vHcp").setAttribute("aria-pressed",on);
   if(changed){ restartCheck(on?"Clinician lens: starting from question 1. Each answer shows the clinical read and the modules it triggers.":"Parent view: starting from question 1."); window.scrollTo({top:0,behavior:reduce?"auto":"smooth"}); }
   else if(view==="report") showReport(true); else go(step,1);
 }
-$("#vParent").onclick=()=>setLens(false);
-$("#vHcp").onclick=()=>setLens(true);
 
-/* ---------- theme ---------- */
+
+
+/* ---------- theme (the light / dark switch itself is js/theme.js, shared with the admin page) ---------- */
 const root=document.documentElement;
 function isDark(){ const t=root.getAttribute("data-theme"); return t? t==="dark" : matchMedia("(prefers-color-scheme: dark)").matches; }
-function syncNight(){ $("#night").setAttribute("aria-pressed", isDark()); if(scene) scene.theme(); }
-$("#night").onclick=()=>{ root.setAttribute("data-theme", isDark()?"light":"dark"); syncNight(); };
-matchMedia("(prefers-color-scheme: dark)").addEventListener("change",syncNight);
-new MutationObserver(()=>{ $("#night").setAttribute("aria-pressed", isDark()); if(scene) scene.theme(); }).observe(root,{attributes:true,attributeFilter:["data-theme"]});
+new MutationObserver(()=>{ if(scene) scene.theme(); }).observe(root,{attributes:true,attributeFilter:["data-theme"]});
 
 /* =========================================================
    Baby (BABYFRONT, home cot setting): outside view for crying, rash, size; see-inside view for milk, gas, stools
@@ -443,25 +439,16 @@ const viewCheck=$("#viewCheck"), viewLab=$("#viewLab");
 let labEngine=null, labFilter="all", tab="lab";
 const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 /* reference links: every cited source opens the paper or guideline (DOI where one exists) */
-const REFLINKS=[
-  [/Benninga|Rome IV/,"https://doi.org/10.1053/j.gastro.2016.02.016"],[/Freedman/,"https://doi.org/10.1542/peds.2008-0113"],
-  [/Biagioli/,"https://doi.org/10.1002/14651858.CD009999.pub2"],[/Sung V/,"https://doi.org/10.1542/peds.2017-1811"],
-  [/NG143/,"https://www.nice.org.uk/guidance/ng143"],[/CG192/,"https://www.nice.org.uk/guidance/cg192"],[/CG98/,"https://www.nice.org.uk/guidance/cg98"],
-  [/Barr RG/,"https://doi.org/10.1503/cmaj.081419"],[/Rosen/,"https://doi.org/10.1097/MPG.0000000000001889"],
-  [/Vandenplas/,"https://doi.org/10.1097/MPG.0000000000003897"],[/Langer/,"https://doi.org/10.1016/j.suc.2016.08.011"],
-  [/Fawaz/,"https://doi.org/10.1097/MPG.0000000000001334"],[/Serinet/,"https://doi.org/10.1542/peds.2008-1949"],
-  [/Hsiao/,"https://doi.org/10.1002/hep.22182"],[/Mouzaki/,"https://doi.org/10.1097/MPG.0000000000002443"],
-  [/Parker LA/,"https://doi.org/10.1001/jamapediatrics.2019.0800"],[/Walsh MC/,"https://doi.org/10.1016/S0031-3955(16)34975-6"],
-  [/Neu J/,"https://doi.org/10.1056/NEJMra1005408"],[/Quigley/,"https://doi.org/10.1002/14651858.CD002971.pub5"],
-  [/Embleton/,"https://doi.org/10.1097/MPG.0000000000003642"],[/Tabbers/,"https://doi.org/10.1097/MPG.0000000000000266"],
-  [/Lu Y|Lu and Zhang/,"https://doi.org/10.21037/tp-21-9"],[/Cendal/,"https://doi.org/10.3389/fped.2021.758006"],
-  [/Das SK/,"https://doi.org/10.1186/s13256-015-0611-y"],[/Nowak-W/,"https://doi.org/10.1016/j.jaci.2016.12.966"],
-  [/Wedenoja/,"https://doi.org/10.1111/j.1365-2036.2009.04197.x"],
-  [/Couturier/,"https://pmc.ncbi.nlm.nih.gov/articles/PMC4642905/"],[/Gelsomino/,"https://doi.org/10.1136/bcr-2021-244918"],
-  [/Alvarez-Lopez/,"https://doi.org/10.7759/cureus.88600"],
-  [/WHO\/UNICEF|WHO\/Unicef|zinc statement/i,"https://www.who.int/publications/i/item/WHO_FCH_CAH_04.7"],
-  [/WHO/,"https://www.who.int/publications/i/item/9241593180"]
-];
+
+/* v11: cases beyond infancy live in data/cases-extra.js (written by the admin page); ?preview=1 also loads the admin draft from this browser */
+function validCase(c){ return !!(c&&c.id&&c.title&&c.pt&&c.pt.name&&c.pt.tag&&Array.isArray(c.vitals)&&c.vitals.length>=3&&c.scene&&Array.isArray(c.steps)&&c.steps.length&&c.steps.every(x=>x.s&&x.v&&x.q&&Array.isArray(x.o)&&x.o.filter(o=>o[2]).length===1&&Array.isArray(x.g))&&c.pub&&c.pub.cite&&Array.isArray(c.refs)&&CASE_TRACKS[c.track]); }
+function addCases(list){ (list||[]).forEach(c=>{ if(!validCase(c)){ console.warn("Case skipped: incomplete", c&&c.id); return; } const i=CASES.findIndex(x=>x.id===c.id); if(i>=0) CASES[i]=c; else CASES.push(c); }); }
+addCases(window.CASES_EXTRA);
+(window.REFLINKS_EXTRA||[]).forEach(([re,u])=>{ try{ REFLINKS.unshift([new RegExp(re),u]); }catch(e){} });
+/* cases added from the admin page on this device */
+try{ (JSON.parse(localStorage.getItem("nts-local-cases")||"[]")||[]).forEach(d=>{ if(d&&d.case){ addCases([d.case]); (d.links||[]).forEach(([re,u])=>{ try{ REFLINKS.unshift([new RegExp(re),u]); }catch(e){} }); } }); }catch(e){}
+const PREVIEW=/[?&]preview=1/.test(location.search);
+if(PREVIEW){ try{ const d=JSON.parse(localStorage.getItem("nts-admin-draft")||"null"); if(d){ addCases([d.case]); (d.links||[]).forEach(([re,u])=>{ try{ REFLINKS.unshift([new RegExp(re),u]); }catch(e){} }); } }catch(e){} }
 function refUrl(t){ for(const [re,u] of REFLINKS) if(re.test(t)) return u; return ""; }
 function refHTML(t){ const u=refUrl(t); return u?`<a class="ref" href="${u}" target="_blank" rel="noopener noreferrer">${esc(t)}<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span></a>`:esc(t); }
 function refsHTML(s){ return String(s).split(/;\s*/).map(refHTML).join("; "); }
@@ -478,36 +465,47 @@ function setTab(t, caseId){
   window.scrollTo({top:0});
 }
 document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
+const PREVIEW_ID=PREVIEW?(()=>{ try{ return (JSON.parse(localStorage.getItem("nts-admin-draft")||"{}").case||{}).id; }catch(e){ return null; } })():null;
 
-const FILTERS=[["all","All cases"],["nicu","Neonatal unit"],["opd","Outpatient and emergency"]];
-const caseMatch=(c,f)=> f==="all" || (f==="nicu"&&c.engine==="nicu") || (f==="opd"&&c.engine!=="nicu");
+const FILTERS=[["all","All cases"],["nicu","Neonatal unit"],["opd","Newborn and infant"],["child","Child and adolescent"],["adult","Adult and older adult"]];
+const grpOfCase=c=> c.engine==="nicu"?"nicu":(c.group==="child"||c.group==="adult")?c.group:"opd";
+const WARD={nicu:"Neonatal unit", opd:"Outpatient and emergency", child:"Child and adolescent", adult:"Adult medicine"};
+const wardOf=c=>WARD[grpOfCase(c)];
+const caseMatch=(c,f)=> f==="all" || grpOfCase(c)===f;
 const bedNo=c=> "Case "+String(CASES.indexOf(c)+1).padStart(2,"0");
-const audTxt=a=> a==="paed"?"Paediatrics":"Dietetics";
+const audTxt=a=>({paed:"Paediatrics",diet:"Dietetics",phys:"Physicians",geri:"Geriatrics"})[a]||a;
 const ptName=c=> c.pt.name.replace(/,.*$/,"");
 const yearOf=c=>{ const m=/ (\d{4});[^;]*$/.exec(c.pub.cite); return m?+m[1]:null; };
 let heroEngine=null;
 function renderLab(){
   disposeLab();
+  const latest=[...CASES].sort((x,y)=>String(y.added||"").localeCompare(String(x.added||"")))[0];
   const done=store.get(), nSteps=CASES.reduce((s,c)=>s+c.steps.length,0), yrs=CASES.map(yearOf).filter(Boolean);
   const cards=CASES.filter(c=>caseMatch(c,labFilter)).map(c=>{ const d=done[c.id];
     return `<article class="cc${d?" done":""}" tabindex="0" role="button" data-id="${c.id}" aria-label="Start ${bedNo(c)}: ${esc(c.title)}">
-      <p class="cc-k"><span>${bedNo(c)}</span><span>${c.engine==="nicu"?"Neonatal unit":"Outpatient and emergency"}</span></p>
+      <p class="cc-k"><span>${bedNo(c)}</span><span>${wardOf(c)}</span></p>
       <h3>${esc(c.title)}</h3>
       <p class="cc-pt">${esc(ptName(c))} · ${esc(c.pt.tag)}</p>
-      <div class="cc-f"><span>${c.steps.length} decision points · ${c.min} min · ${c.level}</span><span class="cc-go">${d?`Completed ${d.score}/${d.total} · Retry`:"Start case"}<span aria-hidden="true"> →</span></span></div>
+      <div class="cc-f"><span>${c.steps.length} decision points · ${c.min} min · ${c.level}</span><span class="cc-go">${d?`Completed ${d.score}/${d.total} · Retry`:"Start case"}<span class="cc-arr" aria-hidden="true">→</span></span></div>
     </article>`; }).join("") || `<p class="small">No cases match this filter.</p>`;
   viewLab.innerHTML=`<div class="lab">
     <header class="lh">
       <div class="lh-t">
         <p class="lab-k">Case lab · For healthcare professionals</p>
-        <h1>Clinical reasoning in paediatric gastroenterology and nutrition</h1>
-        <p class="sub">${CASES.length} peer-reviewed case reports, reconstructed as stepwise clinical decisions. Commit to each decision before the published management, outcome and supporting evidence are revealed.</p>
+        <h1>Clinical reasoning in nutrition, <em>from newborn to older adult</em></h1>
+        <p class="sub">Peer-reviewed case reports, reconstructed as stepwise clinical decisions, with new cases added every week. Commit to each decision before the published management, outcome and supporting evidence are revealed.</p>
         <ol class="lh-steps"><li><b>01</b>Review the presentation</li><li><b>02</b>Commit to a decision</li><li><b>03</b>Compare with the published management</li></ol>
-        <p class="lh-meta">${CASES.length} cases · ${nSteps} decision points · Peer-reviewed sources, ${Math.min(...yrs)}–${Math.max(...yrs)}</p>
+        <div class="lh-cta"><button class="act" type="button" id="heroGo">Browse the cases <span aria-hidden="true">↓</span></button></div>
+        <dl class="lh-stats"><div><dt>Cases live</dt><dd>${CASES.length}</dd></div><div><dt>Decision points</dt><dd>${nSteps}</dd></div><div><dt>Peer-reviewed sources</dt><dd>${Math.min(...yrs)}–${Math.max(...yrs)}</dd></div></dl>
       </div>
-      <div class="lh-v" aria-hidden="true">
-        <div class="lh-baby" id="heroBaby"></div>
-        <div class="lh-pill"><svg viewBox="0 0 20 20" width="16" height="16"><path class="hx-heart" d="M10 17 C3 12 1.5 7.5 4.5 5 C7 3.2 9 5 10 6.6 C11 5 13 3.2 15.5 5 C18.5 7.5 17 12 10 17Z" fill="#F2684A"/></svg><b id="hxHr">138</b><span>bpm</span><i>SpO₂ <b id="hxSp">98</b>%</i></div>
+      <div class="hero3d">
+        <div class="h3-card">
+          <div class="lh-baby" id="heroBaby"></div>
+          <div class="h3-hud h3-tl"><span class="lh-live"></span>Neonatal unit · live model</div>
+          <div class="h3-hud h3-vit" aria-hidden="true"><span><small>HR</small><b id="hxHr">138</b></span><span><small>SpO₂</small><b id="hxSp">97</b></span><span><small>Temp</small><b>36.8°</b></span></div>
+          <div class="h3-chip h3-a"><div><small>Newest case</small><b>${esc(latest.title)}</b></div><button class="h3-b" type="button" id="heroStart" data-id="${latest.id}">Start <span aria-hidden="true">→</span></button></div>
+        </div>
+        <p class="h3-credit">Preterm baby, 3D model rendered for this tool. Not a photograph of a patient.</p>
       </div>
     </header>
     <section class="cl-cases" aria-label="Cases">
@@ -515,18 +513,21 @@ function renderLab(){
       <div class="cc-grid">${cards}</div>
       <p class="cl-note">Case details are kept to the initial presentation. Diagnosis, published management and the source article are revealed as you work through each case.</p>
     </section>
-    <details class="ws-d"><summary><span><b>Nutrition worksheet</b><span>ORS, maintenance fluid, intake and growth velocity calculators for dietitians</span></span></summary>
+    <details class="ws-d"><summary><span><b>Nutrition worksheet</b><span>ORS, maintenance fluid, intake, growth velocity and older-adult guide values for dietitians</span></span></summary>
     <section class="ws" aria-label="Nutrition worksheet">
       <div class="ws-h" style="border-bottom-width:1px"><p>Educational aids that show their working. Check every figure against your unit's protocol before use.</p></div>
       <div class="ws-row"><div class="ws-q"><b>ORS for some dehydration</b><span>WHO Plan B, first 4 hours</span></div><div class="ws-in"><label for="c-ors-w">Weight (kg)<input id="c-ors-w" type="number" inputmode="decimal" min="1" max="30" step="0.1" value="7.5"></label></div><div class="ws-out" id="r-ors"></div></div>
       <div class="ws-row"><div class="ws-q"><b>Daily maintenance fluid</b><span>Holliday-Segar, beyond the newborn period; total fluid, not a milk target</span></div><div class="ws-in"><label for="c-mf-w">Weight (kg)<input id="c-mf-w" type="number" inputmode="decimal" min="3" max="40" step="0.1" value="6"></label></div><div class="ws-out" id="r-mf"></div></div>
       <div class="ws-row"><div class="ws-q"><b>Intake from a feeding diary</b><span>Rule of thumb for term formula-fed infants under 6 months: about 150 mL/kg/day; not for preterm babies</span></div><div class="ws-in"><label for="c-in-v">Milk per day (mL)<input id="c-in-v" type="number" inputmode="decimal" min="0" step="10" value="1080"></label><label for="c-in-w">Weight (kg)<input id="c-in-w" type="number" inputmode="decimal" min="0.5" step="0.1" value="6"></label></div><div class="ws-out" id="r-in"></div></div>
       <div class="ws-row"><div class="ws-q"><b>Growth velocity</b><span>Exponential method (<a class="ref" href="https://doi.org/10.1038/jp.2009.55" target="_blank" rel="noopener noreferrer">Patel et al., J Perinatol 2009<span aria-hidden="true"> ↗</span></a>)</span></div><div class="ws-in"><label for="c-gv-1">Earlier (g)<input id="c-gv-1" type="number" inputmode="decimal" min="300" step="10" value="1250"></label><label for="c-gv-2">Latest (g)<input id="c-gv-2" type="number" inputmode="decimal" min="300" step="10" value="1460"></label><label for="c-gv-d">Days<input id="c-gv-d" type="number" inputmode="numeric" min="1" step="1" value="14"></label></div><div class="ws-out" id="r-gv"></div></div>
+      <div class="ws-row"><div class="ws-q"><b>Older adult: energy and protein guide values</b><span>ESPEN guideline on clinical nutrition and hydration in geriatrics (<a class="ref" href="https://doi.org/10.1016/j.clnu.2018.05.024" target="_blank" rel="noopener noreferrer">Volkert et al., Clin Nutr 2019<span aria-hidden="true"> ↗</span></a>): about 30 kcal/kg/day and at least 1 g protein/kg/day, adjusted individually</span></div><div class="ws-in"><label for="c-oa-w">Weight (kg)<input id="c-oa-w" type="number" inputmode="decimal" min="25" max="200" step="0.5" value="52"></label></div><div class="ws-out" id="r-oa"></div></div>
     </section></details>
     <p class="cl-disc">Educational material for healthcare professionals. Cases follow the cited published reports; decision points and response options are constructed for learning. Generic terms only; no products are named or recommended. Not a substitute for clinical judgement or local protocols.</p>
   </div>`;
   viewLab.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{ labFilter=b.dataset.f; renderLab(); });
   startHero();
+  { const hs=$("#heroStart"); if(hs) hs.onclick=()=>playCase(hs.dataset.id); }
+  { const hg=$("#heroGo"); if(hg) hg.onclick=()=>viewLab.querySelector(".cl-cases").scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"}); }
   viewLab.querySelectorAll(".cc[data-id]").forEach(r=>{ r.onclick=()=>playCase(r.dataset.id); r.onkeydown=e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); playCase(r.dataset.id); } }; });
   const num=id=>parseFloat(($("#"+id)||{}).value);
   const fmt=n=>Math.round(n).toLocaleString("en-IN");
@@ -538,11 +539,13 @@ function renderLab(){
     const a=num("c-gv-1"), b=num("c-gv-2"), d=num("c-gv-d"); if(a>0&&b>0&&d>0){ const gv=1000*Math.log(b/a)/d; $("#r-gv").innerHTML=`1000 × ln(${fmt(b)} ÷ ${fmt(a)}) ÷ ${fmt(d)} = <b>${gv.toFixed(1)} g/kg/day</b><em>${fmt((b-a)/d)} g a day on average</em>`; } else $("#r-gv").textContent="Enter both weights and the days";
   }
   viewLab.querySelectorAll(".ws input").forEach(i=>i.oninput=calc); calc();
+  function calcOa(){ const w=num("c-oa-w"); $("#r-oa").innerHTML = w>0 ? `${f1(w)} kg × 30 kcal = <b>${fmt(w*30)} kcal/day</b><em>protein at least ${fmt(w)} g/day (1 g/kg); adjust for illness, activity and tolerance</em>` : "Enter a weight"; }
+  $("#c-oa-w").addEventListener("input",calcOa); calcOa();
 }
 
 function startHero(){
   const host=$("#heroBaby"); if(!host||!window.BABYFRONT||!BABYFRONT.supported()) return;
-  try{ heroEngine=BABYFRONT.create(host,{variant:"term", engine:"nicu", age:"newborn", smile:true, ogt:false, padTop:0, padBot:0, hr:138, onReady(){ host.classList.add("ready"); }}); }catch(e){ heroEngine=null; }
+  try{ heroEngine=BABYFRONT.create(host,{variant:"term", engine:"nicu", age:"newborn", feeding:true, vignette:.35, padTop:0, padBot:0, hr:138, onReady(){ host.classList.add("ready"); }}); }catch(e){ heroEngine=null; }
   const tick=()=>{ const h=document.getElementById("hxHr"); if(!h) return; h.textContent=134+Math.round(Math.random()*8); $("#hxSp").textContent=97+Math.round(Math.random()*2); setTimeout(tick,2600); };
   setTimeout(tick,2600);
 }
@@ -576,22 +579,24 @@ function startMonitor(cv, V){
 function playCase(id){
   const c=CASES.find(x=>x.id===id); if(!c) return renderLab();
   disposeLab();
-  const t=CASE_TRACKS[c.track], nicu=c.engine==="nicu", ans=[]; let step=0;
-  const V={hr:c.scene.hr||140, spo2:c.scene.spo2||null, temp:c.scene.temp||36.8, alarm:!!c.scene.alarm, shownHr:c.scene.hr||140, shownSp:c.scene.spo2||0};
-  const MODES = nicu ? [["nicu","Incubator"],["inside","Inside"],["gut","Gut"]] : [["outside","Outside"],["inside","See inside"]];
+  const t=CASE_TRACKS[c.track], nicu=c.engine==="nicu", adult=c.engine==="adult", ans=[]; let step=0;
+  const hr0=c.scene.hr||(adult?(c.group==="child"?92:78):140);
+  const V={hr:hr0, spo2:c.scene.spo2||null, temp:c.scene.temp||36.8, alarm:!!c.scene.alarm, shownHr:hr0, shownSp:c.scene.spo2||0};
+  const hrLo=adult?(c.group==="child"?60:45):100, hrHi=adult?(c.group==="child"?150:125):185;
+  const MODES = nicu ? [["nicu","Incubator"],["inside","Inside"],["gut","Gut"]] : adult ? [["outside","Outside"],["inside","Muscle and gut"]] : [["outside","Outside"],["inside","See inside"]];
   viewLab.innerHTML=`<div class="lab" style="--tc:${t.color}">
     <div class="cs-top"><button class="lnk" type="button" id="exit">Back to cases</button>
       <div class="band"><span class="tri"></span><b>${esc(ptName(c))}</b><span>${esc(c.pt.tag)}</span><span>${esc(c.vitals[1][0])} ${esc(c.vitals[1][1])}</span><span>${esc(c.vitals[2][0])} ${esc(c.vitals[2][1])}</span><span>${bedNo(c)}</span></div>
       <div class="prog" id="prog" aria-label="Decisions"></div></div>
     <div class="cs-grid">
       <aside class="bedside" id="bedside" aria-label="Bedside">
-        <div class="p3d" id="p3d"><div class="loader"><span></span>Preparing the baby</div></div>
+        <div class="p3d" id="p3d"><div class="loader"><span></span>${adult?"Preparing the patient":"Preparing the baby"}</div></div>
         <div class="monitor"><span class="mon-tag"><i></i>${nicu?"NICU MONITOR":"OBSERVATIONS"} · ${esc(ptName(c).toUpperCase())}</span><canvas id="mon-c" aria-hidden="true"></canvas>
           <div class="mon-num"><small>HR</small><b class="hr" id="v-hr">-</b><small>SpO2</small><b class="sp" id="v-sp">${V.spo2?"-":"--"}</b><small>Temp</small><b class="tp" id="v-t">-</b></div></div>
         <p class="pt-line">${esc(c.pt.line)}</p>
       </aside>
       <article class="sheet" id="sheet" aria-label="Case sheet">
-        <header class="sheet-h"><div><p class="lab-k">${bedNo(c)} · ${nicu?"Neonatal unit":"Outpatient and emergency"}</p><h2>${esc(c.title)}</h2></div><div class="meta">${c.aud.map(audTxt).join(" + ")}<br>${c.level} · ${c.min} min</div>${c.pub?`<p class="pubsrc">Based on a peer-reviewed case report. The source article is revealed in the case summary.</p>`:""}</header>
+        <header class="sheet-h"><div><p class="lab-k">${bedNo(c)} · ${wardOf(c)}</p><h2>${esc(c.title)}</h2></div><div class="meta">${c.aud.map(audTxt).join(" + ")}<br>${c.level} · ${c.min} min</div>${c.pub?`<p class="pubsrc">Based on a peer-reviewed case report. The source article is revealed in the case summary.</p>`:""}</header>
         <ol class="entries" id="entries"></ol>
         <section class="cs-now" id="now" aria-live="polite"></section>
       </article>
@@ -600,10 +605,11 @@ function playCase(id){
   const host=$("#p3d");
   function labFail(){ host.classList.add("ready"); if(!host.querySelector(".fallback")) host.insertAdjacentHTML("beforeend",`<div class="fallback"><div class="blob"></div></div>`); }
   try{
-    if(window.BABYFRONT && BABYFRONT.supported()) labEngine = BABYFRONT.create(host, Object.assign({variant:nicu?"preterm":"term", engine:nicu?"nicu":"home", age:/\bmo\b/.test(c.pt.tag)?"infant":"newborn", padTop:46, padBot:8, onReady(){ host.classList.add("ready"); }, onFail: labFail}, c.scene));
+    if(adult){ if(window.ADULTFRONT && ADULTFRONT.supported()) labEngine = ADULTFRONT.create(host, Object.assign({sex:/^(Woman|Girl)/i.test(c.pt.name)?"f":"m", padTop:46, padBot:8, onReady(){ host.classList.add("ready"); }}, c.scene)); host.classList.add("p3d-adult"); }
+    else if(window.BABYFRONT && BABYFRONT.supported()) labEngine = BABYFRONT.create(host, Object.assign({variant:nicu?"preterm":"term", engine:nicu?"nicu":"home", age:/\bmo\b/.test(c.pt.tag)?"infant":"newborn", padTop:46, padBot:8, onReady(){ host.classList.add("ready"); }, onFail: labFail}, c.scene));
   }catch(e){ console.warn("Baby view unavailable", e); labEngine=null; }
   if(!labEngine) labFail();
-  const seg=document.createElement("div"); seg.className="seg vseg"; seg.setAttribute("role","group"); seg.setAttribute("aria-label","Baby view");
+  const seg=document.createElement("div"); seg.className="seg vseg"; seg.setAttribute("role","group"); seg.setAttribute("aria-label",adult?"Patient view":"Baby view");
   seg.innerHTML=MODES.map(([k,l])=>`<button type="button" data-m="${k}" aria-pressed="false">${l}</button>`).join(""); host.appendChild(seg);
   function syncSeg(m){ seg.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.m===m))); }
   seg.querySelectorAll("button").forEach(b=>b.onclick=()=>{ if(!labEngine) return; labEngine.set(nicu?{mode:b.dataset.m}:{view:b.dataset.m}); syncSeg(b.dataset.m); });
@@ -618,7 +624,7 @@ function playCase(id){
   (function vloop(){
     if(!document.body.contains(hrEl)) return;
     V.shownHr+=(V.hr-V.shownHr)*.05; if(V.spo2) V.shownSp+=(V.spo2-V.shownSp)*.05;
-    hrEl.textContent=Math.round(V.shownHr); hrEl.classList.toggle("alarm", V.shownHr>185||V.shownHr<100||V.alarm);
+    hrEl.textContent=Math.round(V.shownHr); hrEl.classList.toggle("alarm", V.shownHr>hrHi||V.shownHr<hrLo||V.alarm);
     if(V.spo2){ spEl.textContent=Math.round(V.shownSp); spEl.classList.toggle("alarm", V.shownSp<88); }
     tEl.textContent=V.temp.toFixed(1)+"°";
     requestAnimationFrame(vloop);
@@ -909,6 +915,6 @@ function exportCsv(){
 }
 
 /* ---------- boot ---------- */
-renderPresets(); renderLens(); go(0,1); syncNight();
-{ const h=(location.hash||"").slice(1); if(h==="check") setTab("check"); else if(h==="kol") setTab("kol"); else if(h.startsWith("case-") && CASES.some(c=>c.id===h.slice(5))) setTab("lab", h.slice(5)); else setTab("lab"); }
+renderPresets(); renderLens(); go(0,1); if(scene) scene.theme();
+{ const h=(location.hash||"").slice(1); if(h==="check") setTab("check"); else if(h==="kol") setTab("kol"); else if(h.startsWith("case-") && CASES.some(c=>c.id===h.slice(5))) setTab("lab", h.slice(5)); else if(PREVIEW_ID && CASES.some(c=>c.id===PREVIEW_ID)) setTab("lab", PREVIEW_ID); else setTab("lab"); }
 })();

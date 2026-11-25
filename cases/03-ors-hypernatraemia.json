@@ -1,0 +1,272 @@
+{
+ "id": "ors-hypernatraemia",
+ "engine": "home",
+ "track": "fluid",
+ "aud": [
+  "paed",
+  "diet"
+ ],
+ "level": "Advanced",
+ "min": 7,
+ "pub": {
+  "cite": "Das SK et al. Extreme hypernatremic dehydration due to potential sodium intoxication: consequences and management for an infant with diarrhea at an urban intensive care unit in Bangladesh: a case report. J Med Case Rep 2015;9:124",
+  "url": "https://doi.org/10.1186/s13256-015-0611-y"
+ },
+ "title": "Lethargy and extreme thirst during acute diarrhoea",
+ "sub": "Extreme hypernatraemic dehydration after wrongly mixed ORS in a 6-month-old with diarrhoea",
+ "pt": {
+  "tag": "6 mo",
+  "name": "Baby girl, Das 2015",
+  "line": "6-month-old girl, 5.9 kg, breastfed with diluted formula. Watery diarrhoea 12 to 15 times a day for 2 days, fever, lethargic for 12 hours."
+ },
+ "vitals": [
+  [
+   "Age",
+   "6 mo"
+  ],
+  [
+   "Weight",
+   "5.9 kg"
+  ],
+  [
+   "Feeding",
+   "BF + formula"
+  ]
+ ],
+ "scene": {
+  "view": "outside",
+  "stool": "watery",
+  "stress": 0.35,
+  "sleepy": 0.7,
+  "fill": 0.2,
+  "hr": 134,
+  "temp": 39.4
+ },
+ "steps": [
+  {
+   "s": "Triage",
+   "v": "At triage she was recorded as having no signs of dehydration, but a nurse thought she looked abnormally ill. She is lethargic, irritable when touched and extremely thirsty; capillary refill is 3 seconds and temperature 39.4°C. At home she drank ORS instead of her usual feeds, and a packet of rice-based ORS had been made up in 500 mL of water instead of 1,100 mL.",
+   "q": "What is the most important next step?",
+   "o": [
+    [
+     "Suspect hypernatraemic dehydration and check the serum sodium urgently",
+     "Lethargy, irritability on touch and intense thirst with few classic signs is typical of hypernatraemia.",
+     1
+    ],
+    [
+     "Classify as no dehydration and send her home on ORS",
+     "Classic signs are masked in hypernatraemia, and lethargy is a danger sign.",
+     0
+    ],
+    [
+     "Give an antidiarrhoeal and review tomorrow",
+     "Antimotility drugs are not recommended, and this is an emergency.",
+     0
+    ],
+    [
+     "Give a fast bolus of hypotonic fluid before any tests",
+     "Rapid hypotonic fluid risks cerebral oedema in hypernatraemia.",
+     0
+    ]
+   ],
+   "a": "In hypernatraemia, water moves out of the cells, so the circulation and skin can look deceptively normal while the brain is affected. Her serum sodium was 208 mmol/L. The WHO manual notes that hypernatraemic dehydration develops especially when children are given hypertonic drinks with too much sugar or salt.",
+   "g": [
+    "Das SK et al. Extreme hypernatremic dehydration: a case report. J Med Case Rep 2015",
+    "WHO. The treatment of diarrhoea: a manual for physicians and other senior health workers (2005)"
+   ],
+   "p": "A lethargic, very thirsty child with diarrhoea needs a sodium level, whatever the skin pinch shows.",
+   "pre": {
+    "view": "outside",
+    "stool": "watery",
+    "stress": 0.35,
+    "hr": 134
+   },
+   "fx": {
+    "ok": {
+     "cap": "Sodium 208 mmol/L: extreme hypernatraemia.",
+     "set": {
+      "view": "inside"
+     },
+     "hl": "gut"
+    },
+    "bad": {
+     "cap": "A lethargic baby nearly goes home.",
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Correction",
+   "v": "Sodium 208 mmol/L and calcium low. She is perfusing well and can take fluid by nasogastric tube.",
+   "q": "How fast should the sodium come down?",
+   "o": [
+    [
+     "Slowly, aiming for a fall of no more than 10 mmol/L in 24 hours with frequent sodium checks; this team gave calculated ORS by nasogastric tube",
+     "Slow correction protects the brain.",
+     1
+    ],
+    [
+     "Back to normal within 6 hours",
+     "Rapid falls cause cerebral oedema and seizures.",
+     0
+    ],
+    [
+     "Plain water by bottle, as much as she wants",
+     "Free water drops sodium unpredictably fast.",
+     0
+    ],
+    [
+     "Nothing until she passes urine",
+     "Delays treatment of a life-threatening state.",
+     0
+    ]
+   ],
+   "a": "The brain adapts to hypernatraemia; if sodium then falls fast, water moves into brain cells. The team calculated the ORS volume with a sodium formula, aiming for a fall of no more than 10 mmol/L in 24 hours, and corrected the low calcium with IV calcium gluconate. A blood culture later grew Enterobacter, treated with ciprofloxacin.",
+   "g": [
+    "Das SK et al. J Med Case Rep 2015"
+   ],
+   "p": "Write the target fall per 24 hours on the chart, with the time of the next sodium.",
+   "dp": "Calculate the ORS volume from weight, reassess every few hours, and restart breastfeeding as soon as she is alert.",
+   "pre": {
+    "view": "inside",
+    "stool": "watery",
+    "fill": 0.2,
+    "stress": 0.4,
+    "hr": 134
+   },
+   "fx": {
+    "ok": {
+     "cap": "Fluid by nasogastric tube; sodium falling slowly.",
+     "set": {
+      "feeding": true,
+      "fill": 0.45,
+      "stress": 0.25
+     },
+     "hl": "stomach"
+    },
+    "bad": {
+     "cap": "A fast fall in sodium: the brain swells.",
+     "set": {
+      "stress": 0.85,
+      "hr": 170
+     },
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "24 hours",
+   "v": "Sodium is now 174 mmol/L: a fall of 34 mmol/L in a day, and still dropping by more than 0.5 mmol/L an hour.",
+   "q": "What do you do?",
+   "o": [
+    [
+     "Slow the fall: recalculate and cut the fluid, add sodium, check sodium more often and watch closely for seizures",
+     "The fall is far faster than planned.",
+     1
+    ],
+    [
+     "Carry on, as she is improving",
+     "The fall already exceeds the safe rate.",
+     0
+    ],
+    [
+     "Switch to plain water to finish quickly",
+     "Would speed the fall further.",
+     0
+    ],
+    [
+     "Give furosemide",
+     "Not indicated.",
+     0
+    ]
+   ],
+   "a": "The team recalculated the ORS and added salt (1 g/L) to her diet. On day 3 she still had a generalised tonic-clonic seizure, controlled with lorazepam, phenobarbitone and phenytoin; sodium was normal by about 72 hours. MRI at discharge showed cerebral oedema, but MRI and EEG were normal 3 months later.",
+   "g": [
+    "Das SK et al. J Med Case Rep 2015"
+   ],
+   "p": "Correction speed is a dose: chart it like one.",
+   "pre": {
+    "view": "inside",
+    "stool": "watery",
+    "fill": 0.45,
+    "feeding": true,
+    "stress": 0.25,
+    "hr": 140
+   },
+   "fx": {
+    "ok": {
+     "cap": "Correction slowed and she is watched closely; the seizure is treated fast.",
+     "set": {
+      "stress": 0.2,
+      "hr": 138
+     },
+     "hl": "stomach"
+    },
+    "bad": {
+     "cap": "Sodium keeps plunging, and seizures follow.",
+     "set": {
+      "stress": 0.9,
+      "hr": 176
+     },
+     "kind": "bad"
+    }
+   }
+  },
+  {
+   "s": "Prevention",
+   "v": "Before discharge, her mother asks what to do the next time her baby has diarrhoea.",
+   "q": "What advice would have prevented this admission?",
+   "o": [
+    [
+     "Show her how to mix ORS with exactly the volume of clean water on the packet, give it alongside continued breastfeeding and feeds, add zinc, and come back if the baby becomes very thirsty, drinks poorly, develops a fever or is unusually sleepy",
+     "Correct mixing and continued feeding protect against hypernatraemia.",
+     1
+    ],
+    [
+     "Use extra powder to make the ORS stronger",
+     "Concentrated ORS causes hypernatraemia.",
+     0
+    ],
+    [
+     "Replace milk feeds with ORS only",
+     "Feeding should continue; ORS in place of feeds contributed here.",
+     0
+    ],
+    [
+     "Avoid ORS and give plain water",
+     "Water does not replace lost salts.",
+     0
+    ]
+   ],
+   "a": "The family had been told to give ORS but were never shown how to prepare it, and she had ORS in place of her usual diet. The WHO manual asks health workers to show the mother how to prepare ORS, to continue feeding, to give zinc, and to teach the signs that mean the child should be brought back, such as becoming very thirsty, eating or drinking poorly, or fever.",
+   "g": [
+    "Das SK et al. J Med Case Rep 2015",
+    "WHO 2005 diarrhoea treatment manual",
+    "WHO/UNICEF joint statement: clinical management of acute diarrhoea (2004)"
+   ],
+   "p": "Don't just prescribe ORS: watch the family make up one packet.",
+   "pre": {
+    "view": "outside",
+    "stool": "normal",
+    "stress": 0.05,
+    "hr": 126,
+    "feeding": false
+   },
+   "fx": {
+    "ok": {
+     "cap": "A demonstration in the family's own cup.",
+     "set": {}
+    },
+    "bad": {
+     "cap": "The same mistake can happen next time.",
+     "kind": "warn"
+    }
+   }
+  }
+ ],
+ "refs": [
+  "Das SK, Afroze F, Ahmed T et al. Extreme hypernatremic dehydration due to potential sodium intoxication: consequences and management for an infant with diarrhea at an urban intensive care unit in Bangladesh: a case report. J Med Case Rep 2015;9:124",
+  "WHO. The treatment of diarrhoea (2005)",
+  "WHO/UNICEF joint statement on the clinical management of acute diarrhoea (2004)"
+ ]
+}
