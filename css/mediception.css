@@ -1,4 +1,4 @@
-/* Mediception theme: the same look as OrthoSim Atlas, in dark (default) and light.
+/* Mediception theme: the same look as OrthoSim Atlas, in light (the default the pages open in) and dark.
    Dark: deep navy page with teal and blue glows, glass cards. Light: pale blue-white page, white cards, navy ink.
    Both: teal-to-blue primary buttons, gold accents, Inter for text and Outfit for headings.
    Loads last and restyles the existing markup. The switch in the header (js/theme.js) sets <html data-theme>.
@@ -10,7 +10,7 @@
 @font-face{font-family:"Outfit";font-style:normal;font-weight:500 700;font-display:swap;src:url(../fonts/Outfit-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Outfit";font-style:normal;font-weight:500 700;font-display:swap;src:url(../fonts/Outfit-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 
-/* tokens, dark (the default). The specificity beats the light/dark blocks in styles.css and premium.css, so this file
+/* tokens, dark (the base set; the pages open in light, set on <html data-theme>). The specificity beats the light/dark blocks in styles.css and premium.css, so this file
    alone decides the colours. The light block further down overrides only what changes. */
 html:root, html:root[data-theme]{
   color-scheme:dark;

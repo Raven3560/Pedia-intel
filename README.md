@@ -35,7 +35,7 @@ Serve it from a web address (http or https), not by double-clicking the file: br
 
 ## Light and dark
 
-The site opens in the dark navy theme. The sun / moon switch at the top right of every page changes it to light and back. Each browser remembers its own choice; nothing is sent anywhere. To open in light for visitors who have not chosen yet, change `data-theme="dark"` to `data-theme="light"` on the `<html>` line of `index.html` and `admin.html`.
+First-time visitors see the light theme. The sun / moon switch at the top right of every page changes it to dark and back, and each browser remembers its visitor's choice for later visits; nothing is sent anywhere. To make first-time visitors see dark instead, change `data-theme="light"` to `data-theme="dark"` on the `<html>` line of `index.html` and `admin.html`.
 
 ## Adding a new case
 

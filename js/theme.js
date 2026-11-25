@@ -1,7 +1,8 @@
 /* Light / dark switch, shared by index.html and admin.html.
-   Loads in <head> so a saved choice is applied before the page draws (no flash of the other theme).
-   The choice is remembered in this browser only (localStorage "nts-theme"). With nothing saved the site opens in the
-   theme written on <html data-theme="..."> in the page, which is dark. Any element with class "theme-sw" is a switch. */
+   A first-time visitor sees the theme written on <html data-theme="..."> in the page, which is light. Once they use
+   the switch, their choice is remembered in this browser (localStorage "nts-theme") and every later visit opens in it.
+   Nothing is sent anywhere. Loads in <head> so a saved choice is applied before the page draws (no flash of the other
+   theme). Any element with class "theme-sw" is a switch. */
 (function () {
   var KEY = "nts-theme", root = document.documentElement;
 
