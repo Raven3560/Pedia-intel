@@ -37,6 +37,15 @@ Serve it from a web address (http or https), not by double-clicking the file: br
 
 First-time visitors see the light theme. The sun / moon switch at the top right of every page changes it to dark and back, and each browser remembers its visitor's choice for later visits; nothing is sent anywhere. To make first-time visitors see dark instead, change `data-theme="light"` to `data-theme="dark"` on the `<html>` line of `index.html` and `admin.html`.
 
+## Free and Pro cases
+
+Three cases are free for everyone: Case 01, 02 and 03. Every other case, including each new one you publish, is a Pro case. In the Case lab its card sits behind a translucent screen with a gold Pro badge. Clicking it, or opening a link to it, shows a "Mediception Pro" box with a "Contact us to subscribe" button and links to the free cases.
+
+- **Which cases are free:** edit the `FREE_CASES` list (case ids) near the top of the Case lab section in `js/app.js`. Each case's id is the name of its file in `cases/`.
+- **Where "Contact us to subscribe" goes:** edit `PRO_CONTACT` just below it. It is an email link now; it can be any web address, such as a payment or sign-up page.
+- **This is a display lock, not protection.** The site has no server, so the Pro cases are still in the public files and a technical person can read them. Nobody, including a paying subscriber, can open a Pro case on the site itself yet. To let subscribers in, the Pro cases need to be encrypted behind an access code (the same method as the admin sign-in) or put behind a sign-in and payment service.
+- Cases previewed from the admin page on your own device are never locked.
+
 ## Adding a new case
 
 1. Open `admin.html` on your site and sign in with the admin email and password.

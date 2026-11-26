@@ -195,3 +195,58 @@ footer .ims{color:var(--m-gold)}
 @media (max-width:420px){ .brand img{height:34px} .brand{gap:8px} }
 @media (max-width:400px){ .brand .wm span{display:none} }
 @media print{ body{background:#fff;color:#000} }
+
+/* Pro cases (js/app.js, FREE_CASES): gold Pro badge, translucent screen over locked case cards, and the Mediception Pro box.
+   The badge keeps the same gold in both themes, with dark lettering for contrast. */
+.pro-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 10px;border-radius:999px;background:linear-gradient(135deg,#f6dc9c,#e0ad4c 55%,#c08a2f);color:#2a1a02;font:700 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;box-shadow:0 6px 18px -6px rgba(176,120,32,.65),inset 0 1px 0 rgba(255,255,255,.6);white-space:nowrap}
+.pro-badge svg{width:14px;height:14px;flex:none}
+.pro-badge.sm{padding:4px 9px 4px 7px;font-size:10.5px;gap:5px;box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+.pro-badge.sm svg{width:11px;height:11px}
+.pro-badge.lg{padding:8px 16px 8px 13px;font-size:13.5px;gap:8px}
+.pro-badge.lg svg{width:18px;height:18px}
+
+/* the screen: frosted all over, clearer at the top so the case title still shows, and the Pro badge where "Start case" sits */
+.cc>.cc-lock{position:absolute;inset:0;z-index:3;box-sizing:border-box;padding:inherit;display:flex;flex-wrap:wrap;align-items:center;align-content:flex-end;gap:10px;border-radius:inherit;background:linear-gradient(180deg,color-mix(in srgb,var(--m-surf) 34%,transparent),color-mix(in srgb,var(--m-surf) 58%,transparent) 55%,color-mix(in srgb,var(--m-surf) 90%,transparent));-webkit-backdrop-filter:blur(1.6px) saturate(110%);backdrop-filter:blur(1.6px) saturate(110%);transition:opacity .25s}
+.cc.locked:hover>.cc-lock,.cc.locked:focus-visible>.cc-lock{opacity:.94}
+.cc-lock .pro-badge{padding:10px 16px 10px 13px;font-size:13px;gap:8px}
+.cc-lock .pro-badge svg{width:16px;height:16px}
+.cc-lock-t{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--m-strong)}
+.cc-lock-t::after{content:"→";transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.cc.locked:hover .cc-lock-t::after,.cc.locked:focus-visible .cc-lock-t::after{transform:translateX(3px)}
+.cc .cc-go.cc-pro{visibility:hidden}
+.cc-pro svg{width:14px;height:14px}
+@media (prefers-reduced-motion:reduce){ .cc-lock-t::after{transition:none} }
+/* the case list column never grows past the screen (the filter row scrolls sideways on phones instead) */
+.cl-cases{grid-template-columns:minmax(0,1fr)}
+
+.h3-b.is-pro,.h3-b.is-pro:hover{background:linear-gradient(135deg,#f6dc9c,#e0ad4c 55%,#c08a2f);color:#2a1a02;text-transform:uppercase;letter-spacing:.12em;font-weight:700;box-shadow:0 14px 30px -12px rgba(176,120,32,.7)}
+.h3-b.is-pro svg{width:16px;height:16px}
+
+.pro-strip{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 18px;font-size:14px;color:var(--ink-2)}
+.pro-note{margin:18px 0 0}
+
+.pro-dlg{padding:0;border:1px solid var(--m-line2);border-radius:24px;background:var(--m-surf);color:var(--ink);width:min(460px,calc(100vw - 32px));max-height:calc(100dvh - 32px);box-shadow:var(--sh-2)}
+.pro-dlg::backdrop{background:rgba(5,15,36,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.pro-in{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:28px 28px 24px;font-size:15px;line-height:1.5}
+.pro-dlg h2{margin:4px 0 0;font-size:26px;line-height:1.15;color:var(--m-strong)}
+.pro-dlg p{margin:0;color:var(--ink-2)}
+.pro-case{display:flex;flex-direction:column;gap:3px;width:100%;box-sizing:border-box;padding:10px 14px;border-radius:14px;background:var(--m-tint);border:1px solid var(--m-line)}
+.pro-dlg .pro-case span{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--m-teal2)}
+.pro-case b{color:var(--m-strong);font-weight:600}
+.pro-list{margin:2px 0;padding:0;list-style:none;display:grid;gap:8px}
+.pro-list li{position:relative;padding-left:28px;color:var(--ink)}
+.pro-list li::before{content:"";position:absolute;left:2px;top:3px;width:18px;height:18px;border-radius:50%;background:rgba(26,143,181,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a8fb5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat}
+.pro-act{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.pro-go,.pro-sec{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:999px;font-weight:700;font-size:15px}
+.pro-go{background:var(--m-grad);color:#fff;box-shadow:var(--m-glow);transition:filter .2s,transform .2s}
+.pro-go:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.pro-sec{background:var(--m-tint);color:var(--ink);box-shadow:inset 0 0 0 1px var(--m-line2)}
+.pro-sec:hover{background:var(--m-tint-2)}
+.pro-x{all:unset;box-sizing:border-box;cursor:pointer;position:absolute;right:14px;top:14px;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--m-tint);box-shadow:inset 0 0 0 1px var(--m-line);color:var(--ink);font-size:22px;line-height:1}
+.pro-x:hover{background:var(--m-tint-2)}
+.pro-free{display:flex;flex-direction:column;align-items:flex-start;gap:6px;width:100%;margin-top:6px;padding-top:14px;border-top:1px solid var(--m-line)}
+.pro-dlg .pro-free p{font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pro-lnk{all:unset;cursor:pointer;font-size:14px;font-weight:600;color:var(--m-teal2);text-align:left}
+.pro-lnk:hover{text-decoration:underline}
+.pro-go:focus-visible,.pro-sec:focus-visible,.pro-x:focus-visible,.pro-lnk:focus-visible{outline:2px solid var(--m-teal2);outline-offset:3px}
+@media (max-width:420px){ .pro-in{padding:24px 20px 20px} .pro-act{width:100%} .pro-go,.pro-sec{flex:1 1 100%} }

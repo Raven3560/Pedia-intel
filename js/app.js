@@ -445,10 +445,11 @@ function validCase(c){ return !!(c&&c.id&&c.title&&c.pt&&c.pt.name&&c.pt.tag&&Ar
 function addCases(list){ (list||[]).forEach(c=>{ if(!validCase(c)){ console.warn("Case skipped: incomplete", c&&c.id); return; } const i=CASES.findIndex(x=>x.id===c.id); if(i>=0) CASES[i]=c; else CASES.push(c); }); }
 addCases(window.CASES_EXTRA);
 (window.REFLINKS_EXTRA||[]).forEach(([re,u])=>{ try{ REFLINKS.unshift([new RegExp(re),u]); }catch(e){} });
-/* cases added from the admin page on this device */
-try{ (JSON.parse(localStorage.getItem("nts-local-cases")||"[]")||[]).forEach(d=>{ if(d&&d.case){ addCases([d.case]); (d.links||[]).forEach(([re,u])=>{ try{ REFLINKS.unshift([new RegExp(re),u]); }catch(e){} }); } }); }catch(e){}
+/* cases added from the admin page on this device (never locked as Pro, see FREE_CASES) */
+const OPEN_HERE=new Set();
+try{ (JSON.parse(localStorage.getItem("nts-local-cases")||"[]")||[]).forEach(d=>{ if(d&&d.case){ addCases([d.case]); if(d.case.id) OPEN_HERE.add(d.case.id); (d.links||[]).forEach(([re,u])=>{ try{ REFLINKS.unshift([new RegExp(re),u]); }catch(e){} }); } }); }catch(e){}
 const PREVIEW=/[?&]preview=1/.test(location.search);
-if(PREVIEW){ try{ const d=JSON.parse(localStorage.getItem("nts-admin-draft")||"null"); if(d){ addCases([d.case]); (d.links||[]).forEach(([re,u])=>{ try{ REFLINKS.unshift([new RegExp(re),u]); }catch(e){} }); } }catch(e){} }
+if(PREVIEW){ try{ const d=JSON.parse(localStorage.getItem("nts-admin-draft")||"null"); if(d){ addCases([d.case]); if(d.case&&d.case.id) OPEN_HERE.add(d.case.id); (d.links||[]).forEach(([re,u])=>{ try{ REFLINKS.unshift([new RegExp(re),u]); }catch(e){} }); } }catch(e){} }
 function refUrl(t){ for(const [re,u] of REFLINKS) if(re.test(t)) return u; return ""; }
 function refHTML(t){ const u=refUrl(t); return u?`<a class="ref" href="${u}" target="_blank" rel="noopener noreferrer">${esc(t)}<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span></a>`:esc(t); }
 function refsHTML(s){ return String(s).split(/;\s*/).map(refHTML).join("; "); }
@@ -476,18 +477,49 @@ const bedNo=c=> "Case "+String(CASES.indexOf(c)+1).padStart(2,"0");
 const audTxt=a=>({paed:"Paediatrics",diet:"Dietetics",phys:"Physicians",geri:"Geriatrics"})[a]||a;
 const ptName=c=> c.pt.name.replace(/,.*$/,"");
 const yearOf=c=>{ const m=/ (\d{4});[^;]*$/.exec(c.pub.cite); return m?+m[1]:null; };
+
+/* Pro access. The cases listed in FREE_CASES (by id) are open to everyone; every other case is a Pro case: its card sits
+   behind a translucent screen with a Pro badge, and opening it shows the "Mediception Pro" box with PRO_CONTACT instead.
+   This is a display lock only: the case files are still public, so it is for presentation, not for protecting content.
+   Cases opened from the admin page on this device (preview, or "Add to the tool on this device") are never locked. */
+const FREE_CASES=["fpies-after-nec","ccd-preterm","ors-hypernatraemia"];
+const PRO_CONTACT="mailto:info@mediception.com?subject="+encodeURIComponent("Mediception Pro subscription: AI Driven Nutritional Tool");
+const isPro=c=> !!c && !FREE_CASES.includes(c.id) && !OPEN_HERE.has(c.id);
+const CROWN=`<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.5 7.2 7.4 11.6 12 4.5l4.6 7.1 4.9-4.4-2 10.8H4.5z"/><rect x="4.5" y="19.6" width="15" height="2" rx="1"/></svg>`;
+const LOCK=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`;
+function openPro(c){
+  let dl=document.getElementById("proDlg");
+  if(!dl){ dl=document.createElement("dialog"); dl.id="proDlg"; dl.className="pro-dlg"; dl.setAttribute("aria-labelledby","proDlgT"); document.body.appendChild(dl);
+    dl.addEventListener("click",e=>{ if(e.target===dl) dl.close(); }); }
+  const free=CASES.filter(x=>!isPro(x)), nPro=CASES.length-free.length;
+  dl.innerHTML=`<div class="pro-in">
+    <button class="pro-x" type="button" aria-label="Close" data-close><span aria-hidden="true">×</span></button>
+    <span class="pro-badge lg">${CROWN}Pro</span>
+    <h2 id="proDlgT">${c?"This is a Pro case":"Mediception Pro"}</h2>
+    ${c?`<p class="pro-case"><span>${bedNo(c)} · ${wardOf(c)}</span><b>${esc(c.title)}</b></p>`:""}
+    <p>${free.length} cases are free for everyone. Subscribe to Mediception Pro to open all ${CASES.length}.</p>
+    <ul class="pro-list"><li>${nPro} Pro cases, from newborn to older adult</li><li>New peer-reviewed cases added every week</li><li>Published management, evidence and a discharge summary for every case</li></ul>
+    <div class="pro-act"><a class="pro-go" href="${PRO_CONTACT}">Contact us to subscribe</a><button class="pro-sec" type="button" data-close>Not now</button></div>
+    ${free.length?`<div class="pro-free"><p>Try a free case</p>${free.map(x=>`<button type="button" class="pro-lnk" data-free="${x.id}">${bedNo(x)}: ${esc(x.title)}</button>`).join("")}</div>`:""}
+  </div>`;
+  dl.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>dl.close());
+  dl.querySelectorAll("[data-free]").forEach(b=>b.onclick=()=>{ dl.close(); setTab("lab", b.dataset.free); });
+  if(!dl.open) dl.showModal();
+}
 let heroEngine=null;
 function renderLab(){
   disposeLab();
   const latest=[...CASES].sort((x,y)=>String(y.added||"").localeCompare(String(x.added||"")))[0];
   const done=store.get(), nSteps=CASES.reduce((s,c)=>s+c.steps.length,0), yrs=CASES.map(yearOf).filter(Boolean);
-  const cards=CASES.filter(c=>caseMatch(c,labFilter)).map(c=>{ const d=done[c.id];
-    return `<article class="cc${d?" done":""}" tabindex="0" role="button" data-id="${c.id}" aria-label="Start ${bedNo(c)}: ${esc(c.title)}">
+  const cards=CASES.filter(c=>caseMatch(c,labFilter)).map(c=>{ const d=done[c.id], pro=isPro(c);
+    return `<article class="cc${d&&!pro?" done":""}${pro?" locked":""}" tabindex="0" role="button" data-id="${c.id}" aria-label="${pro?`Pro case. ${bedNo(c)}: ${esc(c.title)}. Subscribe to open`:`Start ${bedNo(c)}: ${esc(c.title)}`}">
       <p class="cc-k"><span>${bedNo(c)}</span><span>${wardOf(c)}</span></p>
       <h3>${esc(c.title)}</h3>
       <p class="cc-pt">${esc(ptName(c))} · ${esc(c.pt.tag)}</p>
-      <div class="cc-f"><span>${c.steps.length} decision points · ${c.min} min · ${c.level}</span><span class="cc-go">${d?`Completed ${d.score}/${d.total} · Retry`:"Start case"}<span class="cc-arr" aria-hidden="true">→</span></span></div>
+      <div class="cc-f"><span>${c.steps.length} decision points · ${c.min} min · ${c.level}</span>${pro?`<span class="cc-go cc-pro">${LOCK}Pro case</span>`:`<span class="cc-go">${d?`Completed ${d.score}/${d.total} · Retry`:"Start case"}<span class="cc-arr" aria-hidden="true">→</span></span>`}</div>
+      ${pro?`<div class="cc-lock" aria-hidden="true"><span class="pro-badge">${CROWN}Pro</span><span class="cc-lock-t">Subscribe to open this case</span></div>`:""}
     </article>`; }).join("") || `<p class="small">No cases match this filter.</p>`;
+  const nPro=CASES.filter(isPro).length;
   viewLab.innerHTML=`<div class="lab">
     <header class="lh">
       <div class="lh-t">
@@ -503,13 +535,14 @@ function renderLab(){
           <div class="lh-baby" id="heroBaby"></div>
           <div class="h3-hud h3-tl"><span class="lh-live"></span>Neonatal unit · live model</div>
           <div class="h3-hud h3-vit" aria-hidden="true"><span><small>HR</small><b id="hxHr">138</b></span><span><small>SpO₂</small><b id="hxSp">97</b></span><span><small>Temp</small><b>36.8°</b></span></div>
-          <div class="h3-chip h3-a"><div><small>Newest case</small><b>${esc(latest.title)}</b></div><button class="h3-b" type="button" id="heroStart" data-id="${latest.id}">Start <span aria-hidden="true">→</span></button></div>
+          <div class="h3-chip h3-a"><div><small>Newest case</small><b>${esc(latest.title)}</b></div>${isPro(latest)?`<button class="h3-b is-pro" type="button" id="heroStart" data-id="${latest.id}" aria-label="Pro case: ${esc(latest.title)}">${CROWN}Pro</button>`:`<button class="h3-b" type="button" id="heroStart" data-id="${latest.id}">Start <span aria-hidden="true">→</span></button>`}</div>
         </div>
         <p class="h3-credit">Preterm baby, 3D model rendered for this tool. Not a photograph of a patient.</p>
       </div>
     </header>
     <section class="cl-cases" aria-label="Cases">
       <div class="cl-bar"><h2>Cases</h2><div class="seg" role="group" aria-label="Filter cases">${FILTERS.map(([k,l])=>`<button type="button" data-f="${k}" aria-pressed="${labFilter===k}">${l}</button>`).join("")}</div></div>
+      ${nPro?`<p class="pro-strip"><span class="pro-badge sm">${CROWN}Pro</span><span>${CASES.length-nPro} cases are free for everyone. The other ${nPro} are part of Mediception Pro.</span><button class="lnk" type="button" id="proMore">See what's included</button></p>`:""}
       <div class="cc-grid">${cards}</div>
       <p class="cl-note">Case details are kept to the initial presentation. Diagnosis, published management and the source article are revealed as you work through each case.</p>
     </section>
@@ -528,6 +561,7 @@ function renderLab(){
   startHero();
   { const hs=$("#heroStart"); if(hs) hs.onclick=()=>playCase(hs.dataset.id); }
   { const hg=$("#heroGo"); if(hg) hg.onclick=()=>viewLab.querySelector(".cl-cases").scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"}); }
+  { const pm=$("#proMore"); if(pm) pm.onclick=()=>openPro(null); }
   viewLab.querySelectorAll(".cc[data-id]").forEach(r=>{ r.onclick=()=>playCase(r.dataset.id); r.onkeydown=e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); playCase(r.dataset.id); } }; });
   const num=id=>parseFloat(($("#"+id)||{}).value);
   const fmt=n=>Math.round(n).toLocaleString("en-IN");
@@ -578,6 +612,7 @@ function startMonitor(cv, V){
 
 function playCase(id){
   const c=CASES.find(x=>x.id===id); if(!c) return renderLab();
+  if(isPro(c)){ if(!viewLab.querySelector(".cl-cases")) renderLab(); openPro(c); return; }
   disposeLab();
   const t=CASE_TRACKS[c.track], nicu=c.engine==="nicu", adult=c.engine==="adult", ans=[]; let step=0;
   const hr0=c.scene.hr||(adult?(c.group==="child"?92:78):140);
@@ -674,7 +709,7 @@ function playCase(id){
   function finish(){
     const sc=ans.filter(a=>a.ok).length, n=c.steps.length;
     const all=store.get(); all[c.id]={score:Math.max(sc,(all[c.id]||{}).score||0), total:n}; store.set(all);
-    const nxt=CASES[(CASES.indexOf(c)+1)%CASES.length];
+    const open=CASES.filter(x=>!isPro(x)), nxt=open[(open.indexOf(c)+1)%open.length], nPro=CASES.length-open.length;
     step=n; prog();
     $("#entries").innerHTML="";
     $("#now").innerHTML=`<div class="dc"><p class="lab-k">Discharge summary · ${today()}</p>
@@ -683,8 +718,10 @@ function playCase(id){
       <h3>Teaching points</h3><ul>${c.steps.map(s=>`<li>${esc(s.p)}</li>`).join("")}</ul>
       ${c.steps.some(s=>s.dp)?`<h3>Dietitian notes</h3><ul>${c.steps.filter(s=>s.dp).map(s=>`<li>${esc(s.dp)}</li>`).join("")}</ul>`:""}
       <h3>References</h3><ol>${c.pub?`<li>Case source: ${refHTML(c.pub.cite)}</li>`:""}${c.refs.filter(r=>!c.pub||refUrl(r)!==c.pub.url).map(r=>`<li>${refHTML(r)}</li>`).join("")}</ol>
-      <div class="cs-nav" style="margin-top:18px"><button class="act sec" type="button" id="again2">Replay this case</button><button class="act" type="button" id="next2">Next patient: ${esc(nxt.title)}</button></div></div>`;
+      <div class="cs-nav" style="margin-top:18px"><button class="act sec" type="button" id="again2">Replay this case</button><button class="act" type="button" id="next2">Next patient: ${esc(nxt.title)}</button></div>
+      ${nPro?`<p class="pro-strip pro-note"><span class="pro-badge sm">${CROWN}Pro</span><span>${nPro} more cases are part of Mediception Pro.</span><button class="lnk" type="button" id="proMore2">See what's included</button></p>`:""}</div>`;
     $("#again2").onclick=()=>playCase(c.id); $("#next2").onclick=()=>playCase(nxt.id);
+    { const pm=$("#proMore2"); if(pm) pm.onclick=()=>openPro(null); }
     $("#sheet").scrollIntoView({behavior:reduce?"auto":"smooth", block:"start"});
   }
   render();
